@@ -19,7 +19,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             if isLoggedIn {
-                HomeView()
+                HomeView() ///sadfasdfsdffsdf
             } else {
                 loginView
             }
