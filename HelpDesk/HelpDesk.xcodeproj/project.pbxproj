@@ -16,13 +16,28 @@
 		16CE2E0B2C53071200295A69 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E0A2C53071200295A69 /* SessionManager.swift */; };
 		16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E0D2C53078800295A69 /* LoginView.swift */; };
 		16CE2E102C5307DF00295A69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E0F2C5307DF00295A69 /* HomeView.swift */; };
-		16CE2E122C53083C00295A69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16CE2E112C53083C00295A69 /* GoogleService-Info.plist */; };
 		16CE2E142C53092000295A69 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E132C53092000295A69 /* FirebaseAuth */; };
 		16CE2E162C53092000295A69 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E152C53092000295A69 /* FirebaseDatabase */; };
 		16CE2E182C53092000295A69 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E172C53092000295A69 /* FirebaseFirestore */; };
 		16CE2E1A2C53092000295A69 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E192C53092000295A69 /* FirebaseFirestoreSwift */; };
 		16CE2E1C2C53092000295A69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E1B2C53092000295A69 /* FirebaseStorage */; };
+		7AD4527C2C530F4300D7B73C /* HelpDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452782C530F4300D7B73C /* HelpDesk.swift */; };
+		7AD4527D2C530F4300D7B73C /* HelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452792C530F4300D7B73C /* HelpService.swift */; };
+		7AD4527E2C530F4300D7B73C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4527A2C530F4300D7B73C /* NetworkClient.swift */; };
+		7AD452862C530F5E00D7B73C /* HelpDeskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452852C530F5E00D7B73C /* HelpDeskTests.swift */; };
+		7AD4528E2C530F9600D7B73C /* NetworkClientRequestUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4528C2C530F9600D7B73C /* NetworkClientRequestUseCases.swift */; };
+		7AD452902C530FAB00D7B73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AD4528F2C530FAB00D7B73C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7AD452872C530F5E00D7B73C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16CE2DEA2C53059500295A69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16CE2DF12C53059500295A69;
+			remoteInfo = HelpDesk;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		16CE2DF22C53059500295A69 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,8 +50,14 @@
 		16CE2E0A2C53071200295A69 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		16CE2E0D2C53078800295A69 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		16CE2E0F2C5307DF00295A69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		16CE2E112C53083C00295A69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16CE2E1D2C530AC100295A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7AD452782C530F4300D7B73C /* HelpDesk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpDesk.swift; sourceTree = "<group>"; };
+		7AD452792C530F4300D7B73C /* HelpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpService.swift; sourceTree = "<group>"; };
+		7AD4527A2C530F4300D7B73C /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		7AD452832C530F5E00D7B73C /* HelpDeskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelpDeskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD452852C530F5E00D7B73C /* HelpDeskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskTests.swift; sourceTree = "<group>"; };
+		7AD4528C2C530F9600D7B73C /* NetworkClientRequestUseCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientRequestUseCases.swift; sourceTree = "<group>"; };
+		7AD4528F2C530FAB00D7B73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +73,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7AD452802C530F5E00D7B73C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				16CE2DF42C53059500295A69 /* HelpDesk */,
+				7AD452842C530F5E00D7B73C /* HelpDeskTests */,
 				16CE2DF32C53059500295A69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				16CE2DF22C53059500295A69 /* HelpDesk.app */,
+				7AD452832C530F5E00D7B73C /* HelpDeskTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,13 +105,14 @@
 			isa = PBXGroup;
 			children = (
 				16CE2E1D2C530AC100295A69 /* Info.plist */,
+				7AD4527B2C530F4300D7B73C /* HelpAPI */,
 				16CE2E0C2C53077900295A69 /* Views */,
 				16CE2E072C5306F300295A69 /* Manager */,
 				16CE2E042C53068700295A69 /* Application */,
 				16CE2DF52C53059500295A69 /* HelpDeskApp.swift */,
 				16CE2DF72C53059500295A69 /* ContentView.swift */,
 				16CE2DF92C53059500295A69 /* Assets.xcassets */,
-				16CE2E112C53083C00295A69 /* GoogleService-Info.plist */,
+				7AD4528F2C530FAB00D7B73C /* GoogleService-Info.plist */,
 				16CE2DFB2C53059500295A69 /* Preview Content */,
 			);
 			path = HelpDesk;
@@ -121,6 +152,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7AD4527B2C530F4300D7B73C /* HelpAPI */ = {
+			isa = PBXGroup;
+			children = (
+				7AD452782C530F4300D7B73C /* HelpDesk.swift */,
+				7AD452792C530F4300D7B73C /* HelpService.swift */,
+				7AD4527A2C530F4300D7B73C /* NetworkClient.swift */,
+			);
+			path = HelpAPI;
+			sourceTree = "<group>";
+		};
+		7AD452842C530F5E00D7B73C /* HelpDeskTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AD4528D2C530F9600D7B73C /* Network */,
+				7AD452852C530F5E00D7B73C /* HelpDeskTests.swift */,
+			);
+			path = HelpDeskTests;
+			sourceTree = "<group>";
+		};
+		7AD4528D2C530F9600D7B73C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7AD4528C2C530F9600D7B73C /* NetworkClientRequestUseCases.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,6 +206,24 @@
 			productReference = 16CE2DF22C53059500295A69 /* HelpDesk.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7AD452822C530F5E00D7B73C /* HelpDeskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AD452892C530F5E00D7B73C /* Build configuration list for PBXNativeTarget "HelpDeskTests" */;
+			buildPhases = (
+				7AD4527F2C530F5E00D7B73C /* Sources */,
+				7AD452802C530F5E00D7B73C /* Frameworks */,
+				7AD452812C530F5E00D7B73C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AD452882C530F5E00D7B73C /* PBXTargetDependency */,
+			);
+			name = HelpDeskTests;
+			productName = HelpDeskTests;
+			productReference = 7AD452832C530F5E00D7B73C /* HelpDeskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -160,6 +236,10 @@
 				TargetAttributes = {
 					16CE2DF12C53059500295A69 = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					7AD452822C530F5E00D7B73C = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 16CE2DF12C53059500295A69;
 					};
 				};
 			};
@@ -181,6 +261,7 @@
 			projectRoot = "";
 			targets = (
 				16CE2DF12C53059500295A69 /* HelpDesk */,
+				7AD452822C530F5E00D7B73C /* HelpDeskTests */,
 			);
 		};
 /* End PBXProject section */
@@ -192,7 +273,14 @@
 			files = (
 				16CE2DFD2C53059500295A69 /* Preview Assets.xcassets in Resources */,
 				16CE2DFA2C53059500295A69 /* Assets.xcassets in Resources */,
-				16CE2E122C53083C00295A69 /* GoogleService-Info.plist in Resources */,
+				7AD452902C530FAB00D7B73C /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD452812C530F5E00D7B73C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */,
+				7AD4527E2C530F4300D7B73C /* NetworkClient.swift in Sources */,
+				7AD4527C2C530F4300D7B73C /* HelpDesk.swift in Sources */,
+				7AD4527D2C530F4300D7B73C /* HelpService.swift in Sources */,
 				16CE2E102C5307DF00295A69 /* HomeView.swift in Sources */,
 				16CE2E092C53070400295A69 /* User.swift in Sources */,
 				16CE2E062C5306A000295A69 /* AppDelegate.swift in Sources */,
@@ -213,7 +304,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7AD4527F2C530F5E00D7B73C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD452862C530F5E00D7B73C /* HelpDeskTests.swift in Sources */,
+				7AD4528E2C530F9600D7B73C /* NetworkClientRequestUseCases.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7AD452882C530F5E00D7B73C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16CE2DF12C53059500295A69 /* HelpDesk */;
+			targetProxy = 7AD452872C530F5E00D7B73C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		16CE2DFE2C53059500295A69 /* Debug */ = {
@@ -395,6 +503,42 @@
 			};
 			name = Release;
 		};
+		7AD4528A2C530F5E00D7B73C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puc122.HelpDeskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelpDesk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HelpDesk";
+			};
+			name = Debug;
+		};
+		7AD4528B2C530F5E00D7B73C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puc122.HelpDeskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelpDesk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HelpDesk";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -412,6 +556,15 @@
 			buildConfigurations = (
 				16CE2E012C53059500295A69 /* Debug */,
 				16CE2E022C53059500295A69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AD452892C530F5E00D7B73C /* Build configuration list for PBXNativeTarget "HelpDeskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AD4528A2C530F5E00D7B73C /* Debug */,
+				7AD4528B2C530F5E00D7B73C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
