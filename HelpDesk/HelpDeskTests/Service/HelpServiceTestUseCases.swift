@@ -11,15 +11,19 @@ import XCTest
 final class HelpServiceTestUseCases: XCTestCase {
 
     func test_initializer_service_and_validate_urlRequest() {
-        let spy = NetworkClientSpy()
-        let anyUrl = URL(string: "https://localhost:3000/")!
-        let sut = HelpServiceImp(networkClient: spy, fromUrl: anyUrl)
+        let (sut, spy, anyUrl) = makeSUT()
         
         sut.load { _ in }
         
         XCTAssertEqual(spy.urlRequest, [anyUrl])
     }
 
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HelpServiceImp, NetworkClientSpy, URL) {
+        let spy = NetworkClientSpy()
+        let anyUrl = URL(string: "https://localhost:3000/")!
+        let sut = HelpServiceImp(networkClient: spy, fromUrl: anyUrl)
+        return (sut, spy, anyUrl)
+    }
 }
 
 final class NetworkClientSpy: NetworkClient {
@@ -30,5 +34,4 @@ final class NetworkClientSpy: NetworkClient {
                  completion: @escaping (NetworkResult) -> Void) {
         urlRequest.append(url)
     }
-
 }
