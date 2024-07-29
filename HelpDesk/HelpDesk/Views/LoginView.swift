@@ -16,52 +16,97 @@ struct LoginView: View {
     @State private var isLoggedIn = false
     @State private var errorMessage = ""
     
+    
     var body: some View {
-        VStack {
-            if isLoggedIn {
-                HomeView()
-            } else {
-                loginView
+            ZStack {
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
+                
+                VStack {
+                    if isLoggedIn {
+                        HomeView()
+                    } else {
+                        loginView
+                    }
+                }
+                .padding()
+            }
+            .onReceive(sessionManager.$currentUser) { currentUser in
+                isLoggedIn = currentUser != nil
             }
         }
-        .onReceive(sessionManager.$currentUser) { currentUser in
-            isLoggedIn = currentUser != nil
-        }
-    }
+
     
     var loginView: some View {
-        VStack {
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .accessibilityLabel(Text("Email"))
-            
-            SecureField("Senha", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.top, 4)
-                .accessibilityLabel(Text("Senha"))
-            
-            if !errorMessage.isEmpty {
-                Text(errorMessage)
-                    .font(.callout)
-                    .foregroundColor(.red)
-                    .padding(.top, 4)
+            VStack {
+                
+                Image("imagerobot")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.bottom, -20)
+                
+                TextField("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .accessibilityLabel(Text("Email"))
+
+
+                SecureField("Senha", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.top, 6)
+                    .accessibilityLabel(Text("Senha"))
+                
+
+                
+                if !errorMessage.isEmpty {
+                    Text(errorMessage)
+                        .font(.callout)
+                        .foregroundColor(.white)
+                        .padding(.top, 4)
+                }
+                
+                Button(action: {
+                    signIn()
+                }) {
+                    Text("Entrar")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .accessibilityLabel(Text("Entrar"))
+                .padding(.top)
+                
+                
+                
+                
+                HStack(spacing:30) {
+                    
+                    Button("esqueci a senha"){
+                        print("esqueci a senha clicked!")
+                    }
+                    
+                    
+                    Divider()
+                        .background(.blue)
+                    
+                    Button("solicitar cadastro"){
+                        print("fazer cadstro clicked!")
+                    }
+         
+                }
+                .foregroundColor(.white .opacity(0.8))
+                .frame(height: 30)
+                .padding(.top, 20)
+                
+                
+                Spacer()
             }
-            
-            Button(action: {
-                signIn()
-            }) {
-                Text("Entrar")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
-            .accessibilityLabel(Text("Entrar"))
-            .padding(.top)
-        }
-        .padding()
+            .padding()
+
     }
     
     private func signIn() {
