@@ -7,23 +7,23 @@
 
 import Foundation
 
-public enum Departamento: Int, Codable {
+public enum Departamento: Int, Codable, Equatable {
     case informatica
     case rh
 }
 
-public enum Prioridade: Int, Codable {
+public enum Prioridade: Int, Codable, Equatable {
     case pequena
     case media
     case alta
 }
 
-public struct HelpDesk: Codable {
+public struct HelpDesk: Codable, Equatable {
     let uid: String
     let help: HelpRoot
 }
 
-public struct HelpRoot: Codable {
+public struct HelpRoot: Codable, Equatable {
     let titulo: String
     let texto: String
     let patrimonio: String
@@ -31,14 +31,3 @@ public struct HelpRoot: Codable {
     let prioridade: Prioridade
     let solucionado: Bool
 }
-//{
-//    "uid": "usuario_300",
-//    "help": {
-//        "titulo": "Titulo do Chamado",
-//        "texto": "Texto do chamado",
-//        "patrimonio": "Notebook Samsung 033",
-//        "prioridade": 0,
-//        "departamento": 0,
-//        "solucionado": 1
-//    }
-//}

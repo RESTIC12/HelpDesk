@@ -27,6 +27,7 @@
 		7AD452862C530F5E00D7B73C /* HelpDeskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452852C530F5E00D7B73C /* HelpDeskTests.swift */; };
 		7AD4528E2C530F9600D7B73C /* NetworkClientRequestUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4528C2C530F9600D7B73C /* NetworkClientRequestUseCases.swift */; };
 		7AD452902C530FAB00D7B73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AD4528F2C530FAB00D7B73C /* GoogleService-Info.plist */; };
+		7AD452952C53110400D7B73C /* HelpServiceTestUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452942C53110400D7B73C /* HelpServiceTestUseCases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		7AD452852C530F5E00D7B73C /* HelpDeskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskTests.swift; sourceTree = "<group>"; };
 		7AD4528C2C530F9600D7B73C /* NetworkClientRequestUseCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientRequestUseCases.swift; sourceTree = "<group>"; };
 		7AD4528F2C530FAB00D7B73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7AD452942C53110400D7B73C /* HelpServiceTestUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpServiceTestUseCases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 		7AD452842C530F5E00D7B73C /* HelpDeskTests */ = {
 			isa = PBXGroup;
 			children = (
+				7AD452932C5310FA00D7B73C /* Service */,
 				7AD4528D2C530F9600D7B73C /* Network */,
 				7AD452852C530F5E00D7B73C /* HelpDeskTests.swift */,
 			);
@@ -177,6 +180,14 @@
 				7AD4528C2C530F9600D7B73C /* NetworkClientRequestUseCases.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		7AD452932C5310FA00D7B73C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7AD452942C53110400D7B73C /* HelpServiceTestUseCases.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD452952C53110400D7B73C /* HelpServiceTestUseCases.swift in Sources */,
 				7AD452862C530F5E00D7B73C /* HelpDeskTests.swift in Sources */,
 				7AD4528E2C530F9600D7B73C /* NetworkClientRequestUseCases.swift in Sources */,
 			);

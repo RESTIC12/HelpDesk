@@ -18,6 +18,22 @@ final class HelpServiceTestUseCases: XCTestCase {
         XCTAssertEqual(spy.urlRequest, [anyUrl])
     }
 
+    func test_service_returned_error_for_connectivity() {
+        let (sut, spy, _) = makeSUT()
+        let exp = expectation(description: "waiting")
+        var returnedResult: Result<HelpDesk, HelpDeskResultError>?
+
+        sut.load { result in
+            returnedResult = result
+            exp.fulfill()
+        }
+        spy.completionRequestWithError()
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(returnedResult, .failure(.withoutConnectivity))
+        
+    }
+
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HelpServiceImp, NetworkClientSpy, URL) {
         let spy = NetworkClientSpy()
         let anyUrl = URL(string: "https://localhost:3000/")!
@@ -29,9 +45,20 @@ final class HelpServiceTestUseCases: XCTestCase {
 final class NetworkClientSpy: NetworkClient {
 
     var urlRequest = [URL]()
+    private var completionRequestHandler: ((NetworkResult) -> Void)?
 
     func request(from url: URL,
                  completion: @escaping (NetworkResult) -> Void) {
         urlRequest.append(url)
+        completionRequestHandler = completion
     }
+
+    func completionRequestWithError() {
+        completionRequestHandler?(.failure(anyError()))
+    }
+    
+    private func anyError() -> Error {
+        return NSError(domain: "anyError", code: -1)
+    }
+
 }
