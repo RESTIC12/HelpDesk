@@ -13,7 +13,7 @@ public enum HelpDeskResultError: Swift.Error {
 }
 
 public protocol HelpService {
-    typealias HelpResult = Result<HelpDesk, HelpDeskResultError>
+    typealias HelpResult = Result<[HelpDesk], HelpDeskResultError>
     func load(completion: @escaping (HelpResult) -> Void)
 }
 
@@ -29,7 +29,7 @@ public final class HelpServiceImp: HelpService {
     }
 
     private func successfullyValidation(_ data: Data, response: HTTPURLResponse) -> HelpService.HelpResult {
-        guard let json = try? JSONDecoder().decode(HelpDesk.self, from: data),
+        guard let json = try? JSONDecoder().decode([HelpDesk].self, from: data),
               response.statusCode == okResponse else {
             return .failure(.invalidData)
         }
