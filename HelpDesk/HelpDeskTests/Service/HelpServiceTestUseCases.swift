@@ -58,6 +58,21 @@ final class HelpServiceTestUseCases: XCTestCase {
         }
     }
 
+    func test_service_not_returned_after_sut_deallocated() {
+        let anyUrl = URL(string: "https://localhost:3000/")!
+        let spy = NetworkClientSpy()
+        var sut: HelpServiceImp? = HelpServiceImp(networkClient: spy, fromUrl: anyUrl)
+
+        var returnedResult: Result<[HelpDesk], HelpDeskResultError>??
+        sut?.load(completion: { result in
+            returnedResult = result
+        })
+
+        sut = nil
+        spy.completionRequestWithSuccess()
+        XCTAssertNil(returnedResult)
+    }
+
     private func makeHelp(
         id: String = "id_user",
         uid: String = "user_token",
