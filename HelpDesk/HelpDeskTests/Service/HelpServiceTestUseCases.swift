@@ -46,6 +46,18 @@ final class HelpServiceTestUseCases: XCTestCase {
         }
     }
 
+    func test_service_and_returned_error_for_invalid_status_code() throws {
+        let (sut, spy, _) = makeSUT()
+        
+        assert(sut, completion: .failure(.invalidData)) {
+            let (_, json) = makeHelp()
+            let (_, json2) = makeHelp()
+            let jsonItems = [json, json2]
+            let data = try! JSONSerialization.data(withJSONObject: jsonItems)
+            spy.completionRequestWithSuccess(data: data, statusCode: 201)
+        }
+    }
+
     private func makeHelp(
         id: String = "id_user",
         uid: String = "user_token",
