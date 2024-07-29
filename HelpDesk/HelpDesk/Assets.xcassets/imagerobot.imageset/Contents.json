@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "imagerobot.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
