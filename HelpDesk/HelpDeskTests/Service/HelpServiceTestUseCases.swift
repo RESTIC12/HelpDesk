@@ -33,6 +33,22 @@ final class HelpServiceTestUseCases: XCTestCase {
         XCTAssertEqual(returnedResult, .failure(.withoutConnectivity))
         
     }
+    
+    func test_service_returned_error_for_invalid_data() {
+        let (sut, spy, _) = makeSUT()
+        let exp = expectation(description: "waiting")
+        var returnedResult: Result<HelpDesk, HelpDeskResultError>?
+
+        sut.load { result in
+            returnedResult = result
+            exp.fulfill()
+        }
+        spy.completionRequestWithSuccess()
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(returnedResult, .failure(.invalidData))
+        
+    }
 
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HelpServiceImp, NetworkClientSpy, URL) {
         let spy = NetworkClientSpy()
@@ -51,6 +67,16 @@ final class NetworkClientSpy: NetworkClient {
                  completion: @escaping (NetworkResult) -> Void) {
         urlRequest.append(url)
         completionRequestHandler = completion
+    }
+
+    func completionRequestWithSuccess(data: Data = Data(), statusCode: Int = 200) {
+        let response = HTTPURLResponse(
+            url: urlRequest[0],
+            statusCode: statusCode,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+        completionRequestHandler?(.success((data, response)))
     }
 
     func completionRequestWithError() {
