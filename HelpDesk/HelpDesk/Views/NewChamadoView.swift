@@ -44,7 +44,7 @@ struct NewChamadoView: View {
                                     .font(.subheadline)
                             }
                         }
-                        .pickerStyle(MenuPickerStyle()) // Apresenta o Picker como um menu
+                        .pickerStyle(MenuPickerStyle())
                     }
                 }
                 
@@ -57,7 +57,7 @@ struct NewChamadoView: View {
                                     .font(.subheadline)
                             }
                         }
-                        .pickerStyle(MenuPickerStyle()) // Apresenta o Picker como um menu
+                        .pickerStyle(MenuPickerStyle())
                     }
                 }
                 
@@ -73,7 +73,7 @@ struct NewChamadoView: View {
                     .background(Color.yellow)
                     .cornerRadius(10)
             }
-            .accessibilityLabel(Text("Entrar"))
+            .accessibilityLabel(Text("Enviar chamado"))
             .padding()
             
         }
