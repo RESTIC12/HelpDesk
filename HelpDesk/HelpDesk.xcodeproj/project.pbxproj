@@ -21,6 +21,8 @@
 		16CE2E182C53092000295A69 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E172C53092000295A69 /* FirebaseFirestore */; };
 		16CE2E1A2C53092000295A69 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E192C53092000295A69 /* FirebaseFirestoreSwift */; };
 		16CE2E1C2C53092000295A69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E1B2C53092000295A69 /* FirebaseStorage */; };
+		16CE2E202C5312C600295A69 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 16CE2E1F2C5312C600295A69 /* background.png */; };
+		16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E212C584C5F00295A69 /* NewChamadoView.swift */; };
 		7AD4527C2C530F4300D7B73C /* HelpDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452782C530F4300D7B73C /* HelpDesk.swift */; };
 		7AD4527D2C530F4300D7B73C /* HelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD452792C530F4300D7B73C /* HelpService.swift */; };
 		7AD4527E2C530F4300D7B73C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4527A2C530F4300D7B73C /* NetworkClient.swift */; };
@@ -52,6 +54,8 @@
 		16CE2E0D2C53078800295A69 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		16CE2E0F2C5307DF00295A69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		16CE2E1D2C530AC100295A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		16CE2E1F2C5312C600295A69 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../../../../../../../Downloads/background.png; sourceTree = "<group>"; };
+		16CE2E212C584C5F00295A69 /* NewChamadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChamadoView.swift; sourceTree = "<group>"; };
 		7AD452782C530F4300D7B73C /* HelpDesk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpDesk.swift; sourceTree = "<group>"; };
 		7AD452792C530F4300D7B73C /* HelpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpService.swift; sourceTree = "<group>"; };
 		7AD4527A2C530F4300D7B73C /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			children = (
 				16CE2E0D2C53078800295A69 /* LoginView.swift */,
 				16CE2E0F2C5307DF00295A69 /* HomeView.swift */,
+				16CE2E212C584C5F00295A69 /* NewChamadoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */,
+				16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */,
 				7AD4527E2C530F4300D7B73C /* NetworkClient.swift in Sources */,
 				7AD4527C2C530F4300D7B73C /* HelpDesk.swift in Sources */,
 				7AD4527D2C530F4300D7B73C /* HelpService.swift in Sources */,
