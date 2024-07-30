@@ -20,7 +20,7 @@ public protocol HelpService {
 public final class HelpServiceImp: HelpService {
 
     let networkClient: NetworkClient
-    var fromUrl: URL
+    var fromUrl: URL = URL(string:"http:localhost:3000/help")!
     let okResponse: Int = 200
 
     public init(networkClient: NetworkClient, fromUrl: URL) {
@@ -39,6 +39,27 @@ public final class HelpServiceImp: HelpService {
     public func load(filterUser: String? = nil, completion: @escaping (HelpService.HelpResult) -> Void) {
         if let param = filterUser {
             fromUrl = URL(string: "\(fromUrl)?uid_eq=\(filterUser)")!
+        }
+        networkClient.request(from: fromUrl) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success((data, response)):
+                completion(self.successfullyValidation(data, response: response))
+            case .failure:
+                completion(.failure(.withoutConnectivity))
+            }
+        }
+    }
+
+    // TODO: Mudar o permissao para usuário
+    public func loadDepartament(permissao: String, completion: @escaping (HelpService.HelpResult) -> Void) {
+        switch permissao {
+        case "ti":
+            fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=0")!
+        case "rh":
+            fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=1")!
+        default:
+            fromUrl = URL(string: "\(fromUrl)?uid_eq={UID_USUARIO})")!
         }
         networkClient.request(from: fromUrl) { [weak self] result in
             guard let self else { return }
