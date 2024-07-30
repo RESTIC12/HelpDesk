@@ -19,7 +19,7 @@ public enum Prioridade: Int, Codable, Equatable {
 }
 
 public struct HelpDesk: Codable, Equatable {
-    let id: String
+    let id: String?
     let uid: String
     let help: HelpRoot
 }
