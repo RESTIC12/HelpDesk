@@ -87,7 +87,7 @@ final class HelpServiceTestUseCases: XCTestCase {
             id: id,
             uid: uid,
             help: HelpRoot(
-                titulo: titulo,
+                solicitante: "zezinho", titulo: titulo,
                 texto: texto,
                 patrimonio: patrimonio,
                 departamento: Departamento(rawValue: departamento)!,

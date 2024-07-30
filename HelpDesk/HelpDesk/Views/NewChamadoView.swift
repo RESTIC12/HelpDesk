@@ -13,6 +13,12 @@ struct NewChamadoView: View {
     @State private var descricaoChamado: String = ""
     @State private var selectedDepartment: String = ""
     @State private var selectedpriority: String = ""
+    @StateObject var viewModel = NewChamadoViewModel(
+        service: HelpServiceImp(
+            networkClient: NetworkService(session: URLSession.shared),
+            fromUrl: URL(string: "http://localhost:3000/")!
+        )
+    )
     
     let priority = ["Baixa", "Média", "Alta"]
     let departments = ["RH", "Técnico"]
@@ -62,9 +68,23 @@ struct NewChamadoView: View {
                 }
                 
             }
-     
+            
             Button(action: {
                 print("enviar chamado button clicked")
+                viewModel.createChamado(
+                    help: HelpDesk(
+                        id: nil,
+                        uid: SessionManager.shared.currentUser?.uid ?? "userID",
+                        help: HelpRoot(
+                            solicitante: SessionManager.shared.currentUser?.nome ?? "Zezinho da Silva",
+                            titulo: tituloChamado,
+                            texto: descricaoChamado,
+                            patrimonio: "zzzzzz",
+                            departamento: Departamento(rawValue: selectedDepartment == "RH" ? 1 : 0) ?? .rh,
+                            prioridade: .media,
+                            solucionado: false
+                        ))
+                )
             }) {
                 Text("Enviar chamado")
                     .foregroundColor(.black)

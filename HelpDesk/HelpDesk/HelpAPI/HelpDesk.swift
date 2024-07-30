@@ -25,6 +25,7 @@ public struct HelpDesk: Codable, Equatable {
 }
 
 public struct HelpRoot: Codable, Equatable {
+    let solicitante: String
     let titulo: String
     let texto: String
     let patrimonio: String

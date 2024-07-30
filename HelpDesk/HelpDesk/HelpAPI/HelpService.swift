@@ -14,11 +14,11 @@ public enum HelpDeskResultError: Swift.Error {
 
 public protocol HelpService {
     typealias HelpResult = Result<[HelpDesk], HelpDeskResultError>
-    func load(filterUser: String?, completion: @escaping (HelpResult) -> Void)
+    func load(completion: @escaping (HelpResult) -> Void)
+    func createHelp(_ call: HelpDesk, method: String)
 }
 
 public final class HelpServiceImp: HelpService {
-
     let networkClient: NetworkClient
     var fromUrl: URL = URL(string:"http:localhost:3000/help")!
     let okResponse: Int = 200
@@ -36,27 +36,11 @@ public final class HelpServiceImp: HelpService {
         return .success(json)
     }
     
-    public func load(filterUser: String? = nil, completion: @escaping (HelpService.HelpResult) -> Void) {
-        if let param = filterUser {
-            fromUrl = URL(string: "\(fromUrl)?uid_eq=\(filterUser)")!
-        }
-        networkClient.request(from: fromUrl) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case let .success((data, response)):
-                completion(self.successfullyValidation(data, response: response))
-            case .failure:
-                completion(.failure(.withoutConnectivity))
-            }
-        }
-    }
-
-    // TODO: Mudar o permissao para usuário
-    public func loadDepartament(permissao: String, completion: @escaping (HelpService.HelpResult) -> Void) {
-        switch permissao {
-        case "ti":
+    public func load(completion: @escaping (HelpService.HelpResult) -> Void) {
+        switch SessionManager.shared.currentUser?.permissao {
+        case "0":
             fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=0")!
-        case "rh":
+        case "1":
             fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=1")!
         default:
             fromUrl = URL(string: "\(fromUrl)?uid_eq={UID_USUARIO})")!
@@ -72,75 +56,40 @@ public final class HelpServiceImp: HelpService {
         }
     }
 
-    public func createHelp(_ call: HelpDesk) {
-        let help: [String: Any] = [
-            "titulo": call.help.titulo,
-            "texto": call.help.texto,
-            "patrimonio": call.help.patrimonio,
-            "departamento": call.help.departamento,
-            "prioridade": call.help.prioridade,
-            "solucionado": call.help.solucionado
-        ]
-        let itemJson: [String: Any] = [
-            "uid": call.uid,
-            "help": help
-        ]
-        let jsonData = try? JSONSerialization.data(withJSONObject: itemJson)
-        let url = URL(string: "http://localhost:3000/")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
+    func serializeHelpDesk(helpDesk: HelpDesk) -> Data? {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            print("-----> data: \(data)")
-            print("-----> error: \(error)")
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "No data")
-                return
-            }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            print("-----1> responseJSON: \(responseJSON)")
-            if let responseJSON = responseJSON as? [String: Any] {
-                print("-----2> responseJSON: \(responseJSON)")
-            }
-        }.resume()
+        do {
+            let jsonData = try encoder.encode(helpDesk)
+            return jsonData
+        } catch {
+            print("Erro ao serializar JSON: \(error.localizedDescription)")
+        }
+        return nil
     }
-    
-    public func updateHelp(_ call: HelpDesk) {
-        let help: [String: Any] = [
-            "titulo": call.help.titulo,
-            "texto": call.help.texto,
-            "patrimonio": call.help.patrimonio,
-            "departamento": call.help.departamento,
-            "prioridade": call.help.prioridade,
-            "solucionado": call.help.solucionado
-        ]
-        let itemJson: [String: Any] = [
-            "id": call.id,
-            "uid": call.uid,
-            "help": help
-        ]
-        let jsonData = try? JSONSerialization.data(withJSONObject: itemJson)
-        let url = URL(string: "http://localhost:3000/")!
+
+    public func createHelp(_ call: HelpDesk, method: String = "POST") {
+        guard let jsonData = serializeHelpDesk(helpDesk: call) else {
+               print("Erro ao serializar HelpDesk.")
+               return
+        }
+        let url = URL(string: "http://localhost:3000/help")!
         var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
+        request.httpMethod = method
+        request.setValue("\(String(describing: jsonData.count))", forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            print("-----> data: \(data)")
-            print("-----> error: \(error)")
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            print("-----1> responseJSON: \(responseJSON)")
+            print("-----> responseJSON: \(responseJSON)\n")
             if let responseJSON = responseJSON as? [String: Any] {
-                print("-----2> responseJSON: \(responseJSON)")
+                print("-----> responseJSON: \(responseJSON)")
             }
         }.resume()
     }
