@@ -23,6 +23,7 @@
 		16CE2E1C2C53092000295A69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E1B2C53092000295A69 /* FirebaseStorage */; };
 		16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E212C584C5F00295A69 /* NewChamadoView.swift */; };
 		16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */; };
+		16CE2E262C59BA9800295A69 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E252C59BA9800295A69 /* CardView.swift */; };
 		7A748AAD2C59B74100553C05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */; };
 		7A748AB12C5AE4C800553C05 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A748AB02C5AE4C800553C05 /* SearchBarView.swift */; };
 		7AD5504D2C5AF28700F82DAB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5504C2C5AF28700F82DAB /* HeaderView.swift */; };
@@ -42,6 +43,7 @@
 		16CE2E1D2C530AC100295A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16CE2E212C584C5F00295A69 /* NewChamadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChamadoView.swift; sourceTree = "<group>"; };
 		16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamadoDetailView.swift; sourceTree = "<group>"; };
+		16CE2E252C59BA9800295A69 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A748AB02C5AE4C800553C05 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7AD5504C2C5AF28700F82DAB /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				16CE2E042C53068700295A69 /* Application */,
 				16CE2DF52C53059500295A69 /* HelpDeskApp.swift */,
 				16CE2DF72C53059500295A69 /* ContentView.swift */,
+				16CE2E252C59BA9800295A69 /* CardView.swift */,
 				16CE2DF92C53059500295A69 /* Assets.xcassets */,
 				7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */,
 				16CE2DFB2C53059500295A69 /* Preview Content */,
@@ -219,6 +222,7 @@
 				16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */,
 				16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */,
 				16CE2E102C5307DF00295A69 /* HomeView.swift in Sources */,
+				16CE2E262C59BA9800295A69 /* CardView.swift in Sources */,
 				16CE2E092C53070400295A69 /* User.swift in Sources */,
 				16CE2E062C5306A000295A69 /* AppDelegate.swift in Sources */,
 				7A748AB12C5AE4C800553C05 /* SearchBarView.swift in Sources */,
