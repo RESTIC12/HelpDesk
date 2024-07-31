@@ -1,5 +1,5 @@
 //
-//  ProfileIconView.swift
+//  HeaderView.swift
 //  HelpDesk
 //
 //  Created by Joao Rocha on 30/07/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileIconView: View {
+struct HeaderView: View {
     @State var searchText: String = "Em aberto"
     var statusHelp = ["Em aberto", "Concluídos"]
     var body: some View {
@@ -40,5 +40,5 @@ struct ProfileIconView: View {
 }
 
 #Preview {
-    ProfileIconView()
+    HeaderView()
 }
