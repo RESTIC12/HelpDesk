@@ -14,7 +14,7 @@ struct HomeView: View {
         HeaderView()
         
         ScrollView{
-            CardView(tituloChamado: "Chamado 1",
+            CardView(tituloChamado: "Chamado 01",
                      descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
                      prioridadeChamado: "Alta",
                      departamentoChamado: "Departamento Técnico",
