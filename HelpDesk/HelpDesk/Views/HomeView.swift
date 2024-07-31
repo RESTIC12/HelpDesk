@@ -8,37 +8,34 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var sessionManager = SessionManager.shared
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        if sessionManager.userDataLoaded {
-            VStack (spacing: 10){
-                Text("Nome: \(sessionManager.currentUser?.nome ?? "Nome não disponível")")
-                Text("Email: \(sessionManager.currentUser?.email ?? "Email não disponível")")
-                Text("Permissão: \(sessionManager.currentUser?.permissao ?? "Permissão não disponível")")
-                Text("UID: \(sessionManager.currentUser?.uid ?? "UID não disponível")")
-                
-                
-                Button("Sair"){
-                    logOut()
-                }
-                .foregroundColor(.red)
-                .padding()
-                
-            }
-        } else {
-            ProgressView()
-                .padding()
-            Text("Carregando dados do usuário...")
-                .font(.callout)
+        
+        HeaderView()
+        
+        ScrollView{
+            CardView(tituloChamado: "Chamado 1",
+                     descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
+                     prioridadeChamado: "Alta",
+                     departamentoChamado: "Departamento Técnico",
+                     corPrioridade: .red)
             
+            CardView(tituloChamado: "Título Chamado",
+                     descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
+                     prioridadeChamado: "Baixa",
+                     departamentoChamado: "Departamento Técnico",
+                     corPrioridade: .yellow)
+            
+            CardView(tituloChamado: "Título Chamado",
+                     descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
+                     prioridadeChamado: "Média",
+                     departamentoChamado: "Departamento Técnico",
+                     corPrioridade: .orange)
         }
-    }
-    
-    private func logOut() {
-            sessionManager.signOut()
-            presentationMode.wrappedValue.dismiss()
+        .padding()
+        
+        Spacer()
+        
     }
 }
 
