@@ -13,9 +13,15 @@ struct NewChamadoView: View {
     @State private var descricaoChamado: String = ""
     @State private var selectedDepartment: String = ""
     @State private var selectedpriority: String = ""
+    @StateObject var viewModel = NewChamadoViewModel(
+        service: HelpServiceImp(
+            networkClient: NetworkService(session: URLSession.shared),
+            fromUrl: URL(string: "http://localhost:3000/")!
+        )
+    )
     
-    let priority = ["Baixa", "Média", "Alta"]
-    let departments = ["RH", "Técnico"]
+    let priority = ["Baixa", "Media", "Alta"]
+    let departments = ["RH", "TI"]
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -62,9 +68,22 @@ struct NewChamadoView: View {
                 }
                 
             }
-     
+            
             Button(action: {
                 print("enviar chamado button clicked")
+                viewModel.createChamado(
+                    help: HelpDesk(
+                        id: nil,
+                        uid: SessionManager.shared.currentUser?.uid ?? "userID",
+                        help: HelpRoot(
+                            solicitante: SessionManager.shared.currentUser?.nome ?? "Unknown",
+                            titulo: tituloChamado,
+                            texto: descricaoChamado,
+                            departamento: selectedDepartment,
+                            prioridade: selectedpriority,
+                            solucionado: false
+                        ))
+                )
             }) {
                 Text("Enviar chamado")
                     .foregroundColor(.black)

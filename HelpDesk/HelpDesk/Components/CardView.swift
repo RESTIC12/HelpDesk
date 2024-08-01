@@ -15,7 +15,7 @@ struct CardView: View {
     var corPrioridade: Color
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text(tituloChamado)
                     .font(.headline)
@@ -60,7 +60,7 @@ struct CardView: View {
 #Preview {
     CardView(
         tituloChamado: "Título do Chamado",
-        descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
+        descricaoChamado: "Testando Chamado 1936",
         prioridadeChamado: "Média",
         departamentoChamado: "Departamento Técnico",
         corPrioridade: .orange

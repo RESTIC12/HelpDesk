@@ -31,7 +31,7 @@ class SessionManager: ObservableObject {
                 if let data = document.data() {
                     if let nome = data["nome"] as? String,
                        let email = data["email"] as? String,
-                       let permissao = data["permissao"] as? String {
+                       let permissao = data["permissao"] as? Int {
                         
                         let fetchedUser = User(uid: uid, nome: nome, email: email, permissao: permissao)
                         self.currentUser = fetchedUser
