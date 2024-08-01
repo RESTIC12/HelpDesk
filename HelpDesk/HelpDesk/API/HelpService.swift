@@ -38,12 +38,13 @@ public enum HelpDeskResultError: Swift.Error {
 
      public func load(completion: @escaping (HelpService.HelpResult) -> Void) {
          switch SessionManager.shared.currentUser?.permissao {
-         case "0":
+         case 0:
              fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=0")!
-         case "1":
+         case 1:
              fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=1")!
          default:
-             fromUrl = URL(string: "\(fromUrl)?uid_eq=\(SessionManager.shared.currentUser?.uid ?? "")")!
+//             fromUrl = URL(string: "\(fromUrl)?uid_eq=\(SessionManager.shared.currentUser?.uid ?? "")")!
+             fromUrl = URL(string: "\(fromUrl)")!
          }
          networkClient.request(from: fromUrl) { [weak self] result in
              guard let self else { return }

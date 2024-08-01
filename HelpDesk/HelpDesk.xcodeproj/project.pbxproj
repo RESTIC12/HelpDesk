@@ -28,6 +28,7 @@
 		7A30C5252C5C3A6200127E62 /* HelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5242C5C3A6200127E62 /* HelpService.swift */; };
 		7A30C5272C5C3A7D00127E62 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5262C5C3A7D00127E62 /* NetworkClient.swift */; };
 		7A30C52A2C5C3A9F00127E62 /* NewChamadoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5292C5C3A9F00127E62 /* NewChamadoViewModel.swift */; };
+		7A30C52D2C5C3CC200127E62 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C52C2C5C3CC200127E62 /* HomeViewModel.swift */; };
 		7A748AAD2C59B74100553C05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */; };
 		7A748AB12C5AE4C800553C05 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A748AB02C5AE4C800553C05 /* SearchBarView.swift */; };
 		7AD5504D2C5AF28700F82DAB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5504C2C5AF28700F82DAB /* HeaderView.swift */; };
@@ -52,6 +53,7 @@
 		7A30C5242C5C3A6200127E62 /* HelpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpService.swift; sourceTree = "<group>"; };
 		7A30C5262C5C3A7D00127E62 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		7A30C5292C5C3A9F00127E62 /* NewChamadoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChamadoViewModel.swift; sourceTree = "<group>"; };
+		7A30C52C2C5C3CC200127E62 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A748AB02C5AE4C800553C05 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7AD5504C2C5AF28700F82DAB /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				16CE2E0F2C5307DF00295A69 /* HomeView.swift */,
+				7A30C52C2C5C3CC200127E62 /* HomeViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A30C52D2C5C3CC200127E62 /* HomeViewModel.swift in Sources */,
 				16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */,
 				16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */,
 				16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */,

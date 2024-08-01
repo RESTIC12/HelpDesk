@@ -121,7 +121,7 @@ struct LoginView: View {
                     sessionManager.signIn(withUser: User(uid: user.uid,
                                                          nome: "",
                                                          email: "",
-                                                         permissao: ""
+                                                         permissao: 0
                     ))
                     let notificationFeedback = UINotificationFeedbackGenerator()
                     notificationFeedback.notificationOccurred(.success)

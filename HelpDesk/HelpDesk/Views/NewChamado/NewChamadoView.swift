@@ -20,8 +20,8 @@ struct NewChamadoView: View {
         )
     )
     
-    let priority = ["Baixa", "Média", "Alta"]
-    let departments = ["RH", "Técnico"]
+    let priority = ["Baixa", "Media", "Alta"]
+    let departments = ["RH", "TI"]
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -79,8 +79,8 @@ struct NewChamadoView: View {
                             solicitante: SessionManager.shared.currentUser?.nome ?? "Unknown",
                             titulo: tituloChamado,
                             texto: descricaoChamado,
-                            departamento: Departamento(rawValue: selectedDepartment == "RH" ? 1 : 0) ?? .rh,
-                            prioridade: .media,
+                            departamento: selectedDepartment,
+                            prioridade: selectedpriority,
                             solucionado: false
                         ))
                 )

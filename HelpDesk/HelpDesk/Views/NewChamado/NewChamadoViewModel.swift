@@ -8,8 +8,7 @@
 import Foundation
 
 final class NewChamadoViewModel : ObservableObject {
-    @Published var helps: [HelpDesk] = []
-    
+
     private var service: HelpService
     
     init(service: HelpService) {
