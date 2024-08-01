@@ -13,17 +13,33 @@ struct HeaderView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                VStack() {
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                        .cornerRadius(45/2)
-                    Text("Olá, User 1")
+                
+                Button {
+                    print("user clicked")
+                } label: {
+                    VStack() {
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                            .foregroundColor(.gray.opacity(0.5))
+                            .cornerRadius(45/2)
+                        Text("Olá, User 1")
+                            .foregroundColor(.gray)
+                    }
                 }
+                
                 Spacer()
-                Image(systemName: "bell.fill")
-                    .resizable()
-                    .frame(width: 35, height: 35)
+                
+                Button {
+                    print("button novo chamado clicked")
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .foregroundColor(.blue.opacity(0.8))
+                        .frame(width: 35, height: 35)
+                }
+                
+
             }
             .padding(.bottom, 25)
             SearchBarView()
