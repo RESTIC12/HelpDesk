@@ -24,6 +24,10 @@
 		16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E212C584C5F00295A69 /* NewChamadoView.swift */; };
 		16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */; };
 		16CE2E262C59BA9800295A69 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E252C59BA9800295A69 /* CardView.swift */; };
+		7A30C5232C5C3A4300127E62 /* HelpDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5222C5C3A4300127E62 /* HelpDesk.swift */; };
+		7A30C5252C5C3A6200127E62 /* HelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5242C5C3A6200127E62 /* HelpService.swift */; };
+		7A30C5272C5C3A7D00127E62 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5262C5C3A7D00127E62 /* NetworkClient.swift */; };
+		7A30C52A2C5C3A9F00127E62 /* NewChamadoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30C5292C5C3A9F00127E62 /* NewChamadoViewModel.swift */; };
 		7A748AAD2C59B74100553C05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */; };
 		7A748AB12C5AE4C800553C05 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A748AB02C5AE4C800553C05 /* SearchBarView.swift */; };
 		7AD5504D2C5AF28700F82DAB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5504C2C5AF28700F82DAB /* HeaderView.swift */; };
@@ -44,6 +48,10 @@
 		16CE2E212C584C5F00295A69 /* NewChamadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChamadoView.swift; sourceTree = "<group>"; };
 		16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamadoDetailView.swift; sourceTree = "<group>"; };
 		16CE2E252C59BA9800295A69 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		7A30C5222C5C3A4300127E62 /* HelpDesk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDesk.swift; sourceTree = "<group>"; };
+		7A30C5242C5C3A6200127E62 /* HelpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpService.swift; sourceTree = "<group>"; };
+		7A30C5262C5C3A7D00127E62 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		7A30C5292C5C3A9F00127E62 /* NewChamadoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChamadoViewModel.swift; sourceTree = "<group>"; };
 		7A748AAC2C59B74100553C05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A748AB02C5AE4C800553C05 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7AD5504C2C5AF28700F82DAB /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 		16CE2DF42C53059500295A69 /* HelpDesk */ = {
 			isa = PBXGroup;
 			children = (
+				7A30C5212C5C3A3000127E62 /* API */,
 				16CE2E272C5B01A500295A69 /* Components */,
 				16CE2E1D2C530AC100295A69 /* Info.plist */,
 				16CE2E0C2C53077900295A69 /* Views */,
@@ -126,9 +135,9 @@
 		16CE2E0C2C53077900295A69 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7A30C52B2C5C3C7C00127E62 /* HomeView */,
+				7A30C5282C5C3A9300127E62 /* NewChamado */,
 				16CE2E0D2C53078800295A69 /* LoginView.swift */,
-				16CE2E0F2C5307DF00295A69 /* HomeView.swift */,
-				16CE2E212C584C5F00295A69 /* NewChamadoView.swift */,
 				16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */,
 			);
 			path = Views;
@@ -142,6 +151,33 @@
 				7A748AB02C5AE4C800553C05 /* SearchBarView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		7A30C5212C5C3A3000127E62 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7A30C5222C5C3A4300127E62 /* HelpDesk.swift */,
+				7A30C5242C5C3A6200127E62 /* HelpService.swift */,
+				7A30C5262C5C3A7D00127E62 /* NetworkClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		7A30C5282C5C3A9300127E62 /* NewChamado */ = {
+			isa = PBXGroup;
+			children = (
+				16CE2E212C584C5F00295A69 /* NewChamadoView.swift */,
+				7A30C5292C5C3A9F00127E62 /* NewChamadoViewModel.swift */,
+			);
+			path = NewChamado;
+			sourceTree = "<group>";
+		};
+		7A30C52B2C5C3C7C00127E62 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				16CE2E0F2C5307DF00295A69 /* HomeView.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +268,13 @@
 				16CE2E102C5307DF00295A69 /* HomeView.swift in Sources */,
 				16CE2E262C59BA9800295A69 /* CardView.swift in Sources */,
 				16CE2E092C53070400295A69 /* User.swift in Sources */,
+				7A30C5232C5C3A4300127E62 /* HelpDesk.swift in Sources */,
+				7A30C52A2C5C3A9F00127E62 /* NewChamadoViewModel.swift in Sources */,
 				16CE2E062C5306A000295A69 /* AppDelegate.swift in Sources */,
+				7A30C5252C5C3A6200127E62 /* HelpService.swift in Sources */,
 				7A748AB12C5AE4C800553C05 /* SearchBarView.swift in Sources */,
 				7AD5504D2C5AF28700F82DAB /* HeaderView.swift in Sources */,
+				7A30C5272C5C3A7D00127E62 /* NetworkClient.swift in Sources */,
 				16CE2DF82C53059500295A69 /* ContentView.swift in Sources */,
 				16CE2E0B2C53071200295A69 /* SessionManager.swift in Sources */,
 				16CE2DF62C53059500295A69 /* HelpDeskApp.swift in Sources */,
