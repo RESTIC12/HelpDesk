@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-
+    @State var showNewChamadoView = false
     @StateObject var viewModel = HomeViewModel (
         service: HelpServiceImp(
             networkClient: NetworkService(session: URLSession.shared),
@@ -18,7 +18,7 @@ struct HomeView: View {
 
     var body: some View {
         
-        HeaderView()
+        HeaderView(showNewChamadoView: $showNewChamadoView)
         
         ScrollView {
             ForEach(viewModel.helps, id: \.self) { call in
@@ -47,10 +47,14 @@ struct HomeView: View {
         .onAppear() {
             viewModel.fetchChamados()
         }
+        .sheet(isPresented: $showNewChamadoView) {
+            NewChamadoView(isPresented: $showNewChamadoView)
+        }
         .padding()
         Spacer()
         
     }
+    
 }
 
 #Preview {
