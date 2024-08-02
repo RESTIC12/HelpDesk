@@ -11,18 +11,19 @@ struct NewChamadoView: View {
     
     @State private var tituloChamado: String = ""
     @State private var descricaoChamado: String = ""
-    @State private var selectedDepartment: String = ""
-    @State private var selectedpriority: String = ""
+    @State private var selectedDepartment: String = "RH"
+    @State private var selectedpriority: String = "Baixa"
     @Binding var isPresented: Bool
     @StateObject var viewModel = NewChamadoViewModel(
         service: HelpServiceImp(
             networkClient: NetworkService(session: URLSession.shared),
-            fromUrl: URL(string: "http://localhost:3000/")!
+            fromUrl: URL(string: "http://localhost:3000/help")!
         )
     )
     
     let priority = ["Baixa", "Media", "Alta"]
     let departments = ["RH", "TI"]
+    var fetchHelps: (() -> Void)
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -33,10 +34,10 @@ struct NewChamadoView: View {
                     .fontWeight(.bold)
                     .padding(.top, 20)
                 Form {
-                    Section(header: Text("Título")) {
+                    Section(header: Text("Título *")) {
                         TextField("Digite o título do chamado", text: $tituloChamado)
                     }
-                    Section(header: Text("Descrição")) {
+                    Section(header: Text("Descrição *")) {
                         ZStack(alignment: .topLeading) {
                             if descricaoChamado.isEmpty {
                                 Text("Descreva seu chamado")
@@ -78,7 +79,8 @@ struct NewChamadoView: View {
             .background(Color.gray.opacity(0.11))
             
             Button(action: {
-                print("enviar chamado button clicked")
+                if tituloChamado.isEmpty { return }
+                if descricaoChamado.isEmpty { return }
                 viewModel.createChamado(
                     help: HelpDesk(
                         id: nil,
@@ -90,9 +92,13 @@ struct NewChamadoView: View {
                             departamento: selectedDepartment,
                             prioridade: selectedpriority,
                             solucionado: false
-                        ))
+                        )),
+                    completion: {
+                        isPresented = false
+                        fetchHelps()
+                    }
                 )
-                isPresented = false
+                
             }) {
                 Text("Enviar chamado")
                     .foregroundColor(.black)
@@ -109,5 +115,5 @@ struct NewChamadoView: View {
 }
 
 #Preview {
-    NewChamadoView(isPresented: .constant(true))
+    NewChamadoView(isPresented: .constant(true), fetchHelps: { })
 }

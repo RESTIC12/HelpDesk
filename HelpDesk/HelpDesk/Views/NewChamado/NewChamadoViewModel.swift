@@ -15,8 +15,14 @@ final class NewChamadoViewModel : ObservableObject {
         self.service = service
     }
     
-    func createChamado(help: HelpDesk) {
-        service.createHelp(help, method: "POST")
+    func createChamado(help: HelpDesk, completion: @escaping () -> Void) {
+        service.createHelp(help, method: "POST") { value in
+            if value {
+                completion()
+            } else {
+                print("erro")
+            }
+        }
     }
-    
+
 }

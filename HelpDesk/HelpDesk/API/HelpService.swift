@@ -15,7 +15,7 @@ public enum HelpDeskResultError: Swift.Error {
  public protocol HelpService {
      typealias HelpResult = Result<[HelpDesk], HelpDeskResultError>
      func load(completion: @escaping (HelpResult) -> Void)
-     func createHelp(_ call: HelpDesk, method: String)
+     func createHelp(_ call: HelpDesk, method: String, completion: @escaping (Bool) -> Void)
  }
 
  public final class HelpServiceImp: HelpService {
@@ -70,7 +70,7 @@ public enum HelpDeskResultError: Swift.Error {
          return nil
      }
 
-     public func createHelp(_ call: HelpDesk, method: String = "POST") {
+     public func createHelp(_ call: HelpDesk, method: String = "POST", completion: @escaping (Bool) -> Void) {
          guard let jsonData = serializeHelpDesk(helpDesk: call) else {
                 print("Erro ao serializar HelpDesk.")
                 return
@@ -83,7 +83,9 @@ public enum HelpDeskResultError: Swift.Error {
          request.httpBody = jsonData
 
          URLSession.shared.dataTask(with: request) { data, response, error in
-             guard let data = data, error == nil else {
+             guard let data = data,
+                   let response = response as? HTTPURLResponse,
+                   error == nil else {
                  print(error?.localizedDescription ?? "No data")
                  return
              }
@@ -91,6 +93,11 @@ public enum HelpDeskResultError: Swift.Error {
              print("-----> responseJSON: \(responseJSON)\n")
              if let responseJSON = responseJSON as? [String: Any] {
                  print("-----> responseJSON: \(responseJSON)")
+             }
+             if response.statusCode == 201 {
+                 completion(true)
+             } else {
+                 completion(false)
              }
          }.resume()
      }

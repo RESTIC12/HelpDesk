@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @State var searchText: String = ""
+    @Binding var searchText: String
+    var fetchHelps: () -> Void
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
             TextField("Pesquisar por chamado", text: $searchText)
+                .onChange(of: searchText) {
+                    fetchHelps()
+                }
                 .overlay (
                     Image(systemName: "xmark.circle.fill")
                         .padding()
@@ -36,5 +40,5 @@ struct SearchBarView: View {
 }
 
 #Preview {
-    SearchBarView()
+    SearchBarView(searchText: .constant(""), fetchHelps: {})
 }
