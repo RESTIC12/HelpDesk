@@ -26,8 +26,7 @@ struct HomeView: View {
                     tituloChamado: call.help.titulo,
                     descricaoChamado: call.help.texto,
                     prioridadeChamado: call.help.prioridade,
-                    departamentoChamado: "Departamento \(call.help.departamento)",
-                    corPrioridade: .red
+                    departamentoChamado: "Departamento \(call.help.departamento)"
                 )
             }
 
