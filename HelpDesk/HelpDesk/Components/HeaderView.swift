@@ -10,6 +10,9 @@ import SwiftUI
 struct HeaderView: View {
     @State var searchText: String = "Em aberto"
     var statusHelp = ["Em aberto", "Concluídos"]
+    @Binding var showNewChamadoView: Bool
+    
+    
     var body: some View {
         VStack {
             HStack(alignment: .top) {
@@ -31,7 +34,7 @@ struct HeaderView: View {
                 Spacer()
                 
                 Button {
-                    print("button novo chamado clicked")
+                    showNewChamadoView.toggle()
                 } label: {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
@@ -55,6 +58,8 @@ struct HeaderView: View {
     }
 }
 
-#Preview {
-    HeaderView()
+struct HeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        HeaderView(showNewChamadoView: .constant(false))
+    }
 }
