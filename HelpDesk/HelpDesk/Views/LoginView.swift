@@ -85,12 +85,14 @@ struct LoginView: View {
                     
                     HStack(spacing:30) {
                         
-                        Button("esqueci a senha"){
+                        Button("Esqueci a senha"){
                             print("esqueci a senha clicked!")
                         }
                         
-                        Button("solicitar acesso"){
-                            print("fazer acesso clicked!")
+                        Spacer()
+                        
+                        Button("Solicitar acesso"){
+                            print("solicitar acesso clicked!")
                         }
                         
                     }
@@ -122,16 +124,13 @@ struct LoginView: View {
                 print(errorMessage)
             } else {
                 if let user = authResult?.user {
-                    sessionManager.signIn(withUser: User(uid: user.uid,
-                                                         nome: "",
-                                                         email: "",
-                                                         permissao: ""
-                    ))
+                    sessionManager.signIn(withUser: User(uid: user.uid, nome: "", email: user.email ?? "", permissao: ""))
                     let notificationFeedback = UINotificationFeedbackGenerator()
                     notificationFeedback.notificationOccurred(.success)
                     isLoggedIn = true
                     print("Usuário logado: \(user.uid)")
                 }
+                
             }
         }
     }
