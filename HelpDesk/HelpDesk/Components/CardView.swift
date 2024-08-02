@@ -12,8 +12,7 @@ struct CardView: View {
     var descricaoChamado: String
     var prioridadeChamado: String
     var departamentoChamado: String
-    var corPrioridade: Color
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -27,10 +26,10 @@ struct CardView: View {
                     .padding(6)
                     .background(
                         Capsule()
-                            .fill(corPrioridade.opacity(0.8))
+                            .fill(corPrioridade(prioridade: prioridadeChamado).opacity(0.8))
                             .frame(width: 60, height: 26)
                     )
-
+                
             }
             .padding(.trailing)
             
@@ -55,6 +54,19 @@ struct CardView: View {
                 .stroke(Color.gray.opacity(0.4), lineWidth: 0.6)
         )
     }
+    
+    func corPrioridade(prioridade: String) -> Color {
+        switch prioridade.lowercased() {
+        case "alta":
+            return .red
+        case "média", "media":
+            return .orange
+        case "baixa":
+            return .gray
+        default:
+            return .gray
+        }
+    }
 }
 
 #Preview {
@@ -62,8 +74,7 @@ struct CardView: View {
         tituloChamado: "Título do Chamado",
         descricaoChamado: "Testando Chamado 1936",
         prioridadeChamado: "Média",
-        departamentoChamado: "Departamento Técnico",
-        corPrioridade: .orange
+        departamentoChamado: "Departamento Técnico"
     )
 }
 

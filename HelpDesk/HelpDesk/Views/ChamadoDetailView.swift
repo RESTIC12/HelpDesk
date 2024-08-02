@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct ChamadoDetailView: View {
     var tituloChamado: String
     var descricaoChamado: String
