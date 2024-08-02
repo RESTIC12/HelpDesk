@@ -16,7 +16,6 @@ struct LoginView: View {
     @State private var isLoggedIn = false
     @State private var errorMessage = ""
     
-    
     var body: some View {
             ZStack {
                 Image("background")
@@ -40,25 +39,69 @@ struct LoginView: View {
 
     
     var loginView: some View {
+        
             VStack {
                 
-                Image("imagerobot")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.bottom, -20)
+                Circle()
+                    .foregroundColor(.white .opacity(0.3))
+                    .aspectRatio(1.5, contentMode: .fit)
                 
-                TextField("Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .accessibilityLabel(Text("Email"))
-
-
-                SecureField("Senha", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.top, 6)
-                    .accessibilityLabel(Text("Senha"))
+                Text("HelpDesk")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 320, height: 80)
+                    .background(.white .opacity(0.3))
+                        .cornerRadius(15)
                 
-
+                VStack{
+                    
+                    TextField("Email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .accessibilityLabel(Text("Email"))
+                        .padding(.top, 4)
+                        .padding(.bottom, 4)
+                        .font(.title2)
+                    
+                    SecureField("Senha", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.top, 6)
+                        .accessibilityLabel(Text("Senha"))
+                        .padding(.bottom, 4)
+                        .font(.title2)
+                    
+                    Button(action: {
+                        signIn()
+                    }) {
+                        Text("Entrar")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .font(.title3)
+                    }
+                    .accessibilityLabel(Text("Entrar"))
+                    
+                    HStack(spacing:30) {
+                        
+                        Button("Esqueci a senha"){
+                            print("esqueci a senha clicked!")
+                        }
+                        
+                        Spacer()
+                        
+                        Button("Solicitar acesso"){
+                            print("solicitar acesso clicked!")
+                        }
+                        
+                    }
+                    .padding(.top)
+                    .foregroundColor(.white)
+                }
+                .padding()
+                .background(Color.white.opacity(0.3))
+                .cornerRadius(15)
                 
                 if !errorMessage.isEmpty {
                     Text(errorMessage)
@@ -67,46 +110,9 @@ struct LoginView: View {
                         .padding(.top, 4)
                 }
                 
-                Button(action: {
-                    signIn()
-                }) {
-                    Text("Entrar")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-                .accessibilityLabel(Text("Entrar"))
-                .padding(.top)
-                
-                
-                
-                
-                HStack(spacing:30) {
-                    
-                    Button("esqueci a senha"){
-                        print("esqueci a senha clicked!")
-                    }
-                    
-                    
-                    Divider()
-                        .background(.blue)
-                    
-                    Button("solicitar cadastro"){
-                        print("fazer cadstro clicked!")
-                    }
-         
-                }
-                .foregroundColor(.white .opacity(0.8))
-                .frame(height: 30)
-                .padding(.top, 20)
-                
-                
-                Spacer()
             }
-            .padding()
-
+            .padding(15)
+        
     }
     
     private func signIn() {
@@ -118,16 +124,13 @@ struct LoginView: View {
                 print(errorMessage)
             } else {
                 if let user = authResult?.user {
-                    sessionManager.signIn(withUser: User(uid: user.uid,
-                                                         nome: "",
-                                                         email: "",
-                                                         permissao: 0
-                    ))
+                    sessionManager.signIn(withUser: User(uid: user.uid, nome: "", email: user.email ?? "", permissao: 0))
                     let notificationFeedback = UINotificationFeedbackGenerator()
                     notificationFeedback.notificationOccurred(.success)
                     isLoggedIn = true
                     print("Usuário logado: \(user.uid)")
                 }
+                
             }
         }
     }
