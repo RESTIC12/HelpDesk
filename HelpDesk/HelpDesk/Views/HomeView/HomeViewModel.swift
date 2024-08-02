@@ -17,12 +17,17 @@ final class HomeViewModel : ObservableObject {
         self.service = service
     }
     
-    func fetchChamados() {
+    func fetchChamados(filter: String) {
         service.load { result in
             switch result {
             case .success(let helps):
-                print(helps)
-                self.helps = helps
+                DispatchQueue.main.async {
+                    if !filter.isEmpty {
+                        self.helps = helps.filter { $0.help.titulo.contains(filter) }
+                        return
+                    }
+                    self.helps = helps
+                }
             case .failure(_):
                 print("erro")
             }

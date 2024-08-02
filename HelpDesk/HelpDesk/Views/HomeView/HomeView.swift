@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var showNewChamadoView = false
+    @State var searchText: String = ""
     @StateObject var viewModel = HomeViewModel (
         service: HelpServiceImp(
             networkClient: NetworkService(session: URLSession.shared),
@@ -18,7 +19,9 @@ struct HomeView: View {
 
     var body: some View {
         
-        HeaderView(showNewChamadoView: $showNewChamadoView)
+        HeaderView(searchText: $searchText, showNewChamadoView: $showNewChamadoView) {
+            viewModel.fetchChamados(filter: searchText)
+        }
         
         ScrollView {
             ForEach(viewModel.helps, id: \.self) { call in
@@ -29,25 +32,17 @@ struct HomeView: View {
                     departamentoChamado: "Departamento \(call.help.departamento)"
                 )
             }
-
-//            
-//            CardView(tituloChamado: "Título Chamado",
-//                     descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
-//                     prioridadeChamado: "Baixa",
-//                     departamentoChamado: "Departamento Técnico",
-//                     corPrioridade: .yellow)
-//            
-//            CardView(tituloChamado: "Título Chamado",
-//                     descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
-//                     prioridadeChamado: "Média",
-//                     departamentoChamado: "Departamento Técnico",
-//                     corPrioridade: .orange)
         }
         .onAppear() {
-            viewModel.fetchChamados()
+            viewModel.fetchChamados(filter: searchText)
         }
         .sheet(isPresented: $showNewChamadoView) {
-            NewChamadoView(isPresented: $showNewChamadoView)
+            NewChamadoView(
+                isPresented: $showNewChamadoView,
+                fetchHelps: {
+                    viewModel.fetchChamados(filter: searchText)
+                }
+            )
         }
         .padding()
         Spacer()
@@ -57,6 +52,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(searchText: "tsets")
 }
 

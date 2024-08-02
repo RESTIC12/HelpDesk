@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @State var searchText: String = "Em aberto"
+    @Binding var searchText: String
     var statusHelp = ["Em aberto", "Concluídos"]
     @Binding var showNewChamadoView: Bool
-    
+    var fetchHelps: (() -> Void)
     
     var body: some View {
         VStack {
@@ -45,7 +45,9 @@ struct HeaderView: View {
 
             }
             .padding(.bottom, 25)
-            SearchBarView()
+            SearchBarView(searchText: $searchText, fetchHelps: {
+                fetchHelps()
+            })
                 .padding(.bottom, 10)
             Picker("What is your favorite color?", selection: $searchText) {
                 ForEach(statusHelp, id: \.self) {
@@ -60,6 +62,6 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(showNewChamadoView: .constant(false))
+        HeaderView(searchText: .constant("placeholder"), showNewChamadoView: .constant(false), fetchHelps: {})
     }
 }
