@@ -11,10 +11,15 @@ struct PrivacidadeView: View {
     var body: some View {
         
         HStack {
-            Image(systemName: "person.badge.shield.checkmark.fill")
-            Text ("Username")
+            Image(systemName: "line.3.horizontal")
+            Text ("Help desk")
                 .padding(10)
+                .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+            Image(systemName: "person.badge.shield.checkmark.fill")
+
         }
+        .background(.bluePrimary)
+        
         Text("Termo de Privacidade e de Proteção de Dados")
             .font(.title2)
             .fontWeight(.semibold)
@@ -26,6 +31,19 @@ struct PrivacidadeView: View {
                 .lineLimit(nil)
                 .padding(16.0)
                 
+            HStack {
+                
+                Button("Eu aceito o termo") {
+                    // Action to perfom
+                }
+                .buttonStyle(.borderedProminent)
+                
+                Button("Eu recuso o termo", role: .destructive) {
+                    // Action to perfom
+                
+                }
+                .buttonStyle(.borderedProminent)
+            }
                 
         }
     }
