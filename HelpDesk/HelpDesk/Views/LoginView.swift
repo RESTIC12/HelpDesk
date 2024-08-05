@@ -15,103 +15,102 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isLoggedIn = false
     @State private var errorMessage = ""
+    @State private var isShowingHomeView = false
     
     var body: some View {
-            ZStack {
-                Image("background")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                
-                VStack {
-                    if isLoggedIn {
-                        HomeView()
-                    } else {
-                        loginView
-                    }
-                }
+        ZStack {
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+            loginView
                 .padding()
-            }
-            .onReceive(sessionManager.$currentUser) { currentUser in
-                isLoggedIn = currentUser != nil
-            }
         }
-
+        .onReceive(sessionManager.$currentUser) { currentUser in
+            isLoggedIn = currentUser != nil
+        }
+    }
+    
     
     var loginView: some View {
         
-            VStack {
-                
-                Circle()
-                    .foregroundColor(.white .opacity(0.3))
-                    .aspectRatio(1.5, contentMode: .fit)
-                
-                Text("HelpDesk")
-                    .font(.title)
-                    .bold()
-                    .frame(width: 320, height: 80)
-                    .background(.white .opacity(0.3))
-                        .cornerRadius(15)
-                
-                VStack{
-                    
-                    TextField("Email", text: $email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .autocapitalization(.none)
-                        .accessibilityLabel(Text("Email"))
-                        .padding(.top, 4)
-                        .padding(.bottom, 4)
-                        .font(.title2)
-                    
-                    SecureField("Senha", text: $password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.top, 6)
-                        .accessibilityLabel(Text("Senha"))
-                        .padding(.bottom, 4)
-                        .font(.title2)
-                    
-                    Button(action: {
-                        signIn()
-                    }) {
-                        Text("Entrar")
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                            .font(.title3)
-                    }
-                    .accessibilityLabel(Text("Entrar"))
-                    
-                    HStack(spacing:30) {
-                        
-                        Button("Esqueci a senha"){
-                            print("esqueci a senha clicked!")
-                        }
-                        
-                        Spacer()
-                        
-                        Button("Solicitar acesso"){
-                            print("solicitar acesso clicked!")
-                        }
-                        
-                    }
-                    .padding(.top)
-                    .foregroundColor(.white)
-                }
-                .padding()
-                .background(Color.white.opacity(0.3))
+        VStack {
+            
+            Circle()
+                .foregroundColor(.white .opacity(0.3))
+                .aspectRatio(1.5, contentMode: .fit)
+            
+            Text("HelpDesk")
+                .font(.title)
+                .bold()
+                .frame(width: 320, height: 80)
+                .background(.white .opacity(0.3))
                 .cornerRadius(15)
+            
+            VStack{
                 
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .font(.callout)
+                TextField("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .accessibilityLabel(Text("Email"))
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+                    .font(.title2)
+                
+                SecureField("Senha", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.top, 6)
+                    .accessibilityLabel(Text("Senha"))
+                    .padding(.bottom, 4)
+                    .font(.title2)
+                
+                Button(action: {
+                    signIn()
+                }) {
+                    Text("Entrar")
                         .foregroundColor(.white)
-                        .padding(.top, 4)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .font(.title3)
                 }
+                .accessibilityLabel(Text("Entrar"))
                 
+                HStack(spacing:30) {
+                    
+                    Button("Esqueci a senha"){
+                        print("esqueci a senha clicked!")
+                    }
+                    
+                    Spacer()
+                    
+                    Button("Solicitar acesso"){
+                        print("solicitar acesso clicked!")
+                    }
+                    
+                }
+                .padding(.top)
+                .foregroundColor(.white)
             }
-            .padding(15)
+            .padding()
+            .background(Color.white.opacity(0.3))
+            .cornerRadius(15)
+            
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .font(.callout)
+                    .foregroundColor(.white)
+                    .padding(.top, 4)
+            }
+            
+        }
+        .fullScreenCover(isPresented: $isShowingHomeView, content: {
+            if isShowingHomeView && isLoggedIn {
+                HomeView()
+            }
+        })
+        .padding(15)
         
     }
     
@@ -124,11 +123,13 @@ struct LoginView: View {
                 print(errorMessage)
             } else {
                 if let user = authResult?.user {
-                    sessionManager.signIn(withUser: User(uid: user.uid, nome: "", email: user.email ?? "", permissao: 0))
+                    sessionManager.signIn(withUser: user.uid)
                     let notificationFeedback = UINotificationFeedbackGenerator()
                     notificationFeedback.notificationOccurred(.success)
                     isLoggedIn = true
+                    isShowingHomeView = true
                     print("Usuário logado: \(user.uid)")
+
                 }
                 
             }
