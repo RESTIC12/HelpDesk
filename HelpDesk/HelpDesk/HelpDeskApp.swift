@@ -12,7 +12,7 @@ struct HelpDeskApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            HomeView(searchText: "")
+            LoginView()
         }
     }
 }

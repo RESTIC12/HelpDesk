@@ -18,9 +18,8 @@ class SessionManager: ObservableObject {
     
     private init() {}
     
-    func signIn(withUser user: User) {
-        currentUser = user
-        fetchUserData(uid: user.uid)
+    func signIn(withUser userId: String) {
+        fetchUserData(uid: userId)
     }
     
     func fetchUserData(uid: String) {
