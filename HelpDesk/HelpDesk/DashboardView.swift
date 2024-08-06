@@ -25,15 +25,6 @@ struct DashboardView: View {
     var body: some View {
         VStack {
             
-            HStack {
-                Image(systemName: "line.3.horizontal")
-                Text ("Help Desk")
-                    .padding(10)
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                Image(systemName: "person.badge.shield.checkmark.fill")
-
-            }
-                
                 VStack {
                     Text("Dashboard").textCase(.uppercase).bold()
                     HStack {
@@ -58,9 +49,12 @@ struct DashboardView: View {
                         }.frame(width: 230)
                     }
                 }
-        }.background(Color.bluePrimary)
+        }.background(Color.blueTertiary)
+        
+    
         
         VStack(alignment: .leading) {
+            
             ScrollView {
                 Picker("breakdown", selection: $selectedTab) {
                     ForEach(tabs, id: \.self) {
@@ -73,6 +67,17 @@ struct DashboardView: View {
                     ForEach(chartData) { item in
                         BarMark(x: .value("month", item.month), y: .value("value", item.value))
                     }
+                    
+                    ForEach(MockData.PieHelpDesk) { pie in
+                        SectorMark(angle: .value("Qtd", pie.value),
+                                   angularInset: 1.0)
+                        .foregroundStyle(pie.color)
+                        .cornerRadius(6)
+                        .annotation(position: .overlay) {
+                            Text("Qtd\(pie.value)")
+                                .foregroundStyle(.white)
+                        }
+                    }
                 }
             }
         }
@@ -83,6 +88,19 @@ struct DashboardView: View {
         let month: String
         let value: Double
         var id = UUID()
+    }
+    
+    struct PieHelpDesk: Identifiable {
+        let id = UUID()
+        let indicator: String
+        let value: Double
+    }
+    
+    struct MockData {
+        static var pie: [PieHelpDesk] = [
+            .init(indicator: "Qtd de chamados abertos", value: 30),
+            .init(indicator: "Qtd de chamados fechados", value: 60)
+        ]
     }
     
     

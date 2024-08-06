@@ -18,7 +18,7 @@ import SwiftUI
 struct UserProfileView: View {
 
     
-    let configsUserProfile = ["Configurações", "Notificações", "Segurança", "Histórico"]
+    let configsUserProfile = ["Configurações", "Notificações", "Segurança", "Tickets"]
 
     var body: some View {
         VStack {
@@ -38,7 +38,7 @@ struct UserProfileView: View {
                         Image(.imagerobot).resizable().frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                         Text("Username").frame(maxWidth: .infinity, maxHeight: .infinity).background(.white).foregroundColor(.gray).fontWeight(.bold)
-                    }.background(.bluePrimary)
+                    }.background(.blueTertiary)
                     
                     Text("Setor, Empresa").fontWeight(.semibold)
                     
@@ -46,7 +46,7 @@ struct UserProfileView: View {
                     
                     HStack {
                         Text("Editar perfil")
-                            .background(.blueSecondary)
+                            .background(.blueTertiary)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                             .padding(10)
@@ -54,7 +54,7 @@ struct UserProfileView: View {
                         
                         
                         Text("Compartilhar perfil")
-                            .background(.blueSecondary)
+                            .background(.blueTertiary)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                             .bold()
