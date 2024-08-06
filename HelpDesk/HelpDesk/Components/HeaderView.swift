@@ -33,16 +33,17 @@ struct HeaderView: View {
                 
                 Spacer()
                 
-                Button {
-                    showNewChamadoView.toggle()
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .foregroundColor(.blue.opacity(0.8))
-                        .frame(width: 35, height: 35)
+                let permissao = SessionManager.shared.currentUser?.permissao
+                if permissao == 0 {
+                    Button {
+                        showNewChamadoView.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .foregroundColor(.blue.opacity(0.8))
+                            .frame(width: 35, height: 35)
+                    }
                 }
-                
-
             }
             .padding(.bottom, 25)
             SearchBarView(searchText: $searchText, fetchHelps: {

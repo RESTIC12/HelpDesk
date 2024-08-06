@@ -53,22 +53,22 @@ struct ChamadoDetailView: View {
             VStack {
                 Spacer()
                 
-                
                 VStack(spacing: 20) {
-                    Button(action: {
-                        print("encerrar chamado button clicked")
-                    }) {
-                        Text("Encerrar Chamado")
-                            .foregroundColor(.black)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue.opacity(0.8))
-                            .cornerRadius(10)
+                    let permissao = SessionManager.shared.currentUser?.permissao
+                    if permissao == 1 || permissao == 2 {
+                        Button(action: {
+                            print("encerrar chamado button clicked")
+                        }) {
+                            Text("Encerrar Chamado")
+                                .foregroundColor(.black)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue.opacity(0.8))
+                                .cornerRadius(10)
+                        }
+                        .accessibilityLabel(Text("Encerrar chamado"))
                     }
-                    .accessibilityLabel(Text("Encerrar chamado"))
-                    
-                    
-                    
+
                     Button(action: {
                         print("chamado em andamento button clicked")
                     }) {
