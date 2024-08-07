@@ -12,6 +12,7 @@ struct ChamadoDetailView: View {
     var descricaoChamado: String
     var solicitante: String
     var prioridade: String
+    @StateObject var viewModel: ChamadoDetailViewModel
     
     var body: some View {
         ZStack {
@@ -24,7 +25,6 @@ struct ChamadoDetailView: View {
                 HStack {
                     Text("Usuário solicitante:")
                         .font(.headline)
-                    
                     Text(solicitante)
                 }
                 .padding(.top, 40)
@@ -32,32 +32,25 @@ struct ChamadoDetailView: View {
                 HStack {
                     Text("Prioridade:")
                         .font(.headline)
-                    
                     Text(prioridade)
                 }
-               
-                
-                                
                 Text("Descrição:")
                     .font(.headline)
                     
-
                 Text(descricaoChamado)
                     .font(.body)
                     
-                
                 Spacer()
             }
             .padding()
             
             VStack {
                 Spacer()
-                
                 VStack(spacing: 20) {
                     let permissao = SessionManager.shared.currentUser?.permissao
-                    if permissao == 1 || permissao == 2 {
+                    if permissao == 1 || permissao == 2 && viewModel.help.details.solucionado == false {
                         Button(action: {
-                            print("encerrar chamado button clicked")
+                            viewModel.updateHelp()
                         }) {
                             Text("Encerrar Chamado")
                                 .foregroundColor(.black)
@@ -93,7 +86,7 @@ struct ChamadoDetail_Previews: PreviewProvider {
             tituloChamado: "Chamado exemplo",
             descricaoChamado: "Esta é uma descrição de exemplo para o chamado. Inclui todos os detalhes relevantes que devem ser exibidos ao suporte.",
             solicitante: "Zezinho",
-            prioridade: "Alta"
+            prioridade: "Alta", viewModel: ChamadoDetailViewModel(help: HelpDesk(id: nil, uid: "", details: HelpRoot(solicitante: "", titulo: "", texto: "", departamento: "", prioridade: "", solucionado: false)))
         )
     }
 }
