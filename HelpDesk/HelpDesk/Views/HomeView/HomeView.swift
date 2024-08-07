@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    var statusHelp = ["Em aberto", "Concluídos"]
     @State var showNewChamadoView = false
     @State var searchText: String = ""
+    @State var openHelpOrNotText: String = "Em aberto"
     @StateObject var viewModel = HomeViewModel (
         service: HelpServiceImp(
             networkClient: NetworkService(session: URLSession.shared),
@@ -22,36 +24,47 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 HeaderView(searchText: $searchText, showNewChamadoView: $showNewChamadoView) {
-                    viewModel.fetchChamados(filter: searchText)
+                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
                 }
                 
-                
+                Picker("", selection: $openHelpOrNotText) {
+                    ForEach(statusHelp, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .onReceive([openHelpOrNotText].publisher.first(), perform: { _ in
+                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
+                })
+                .pickerStyle(.segmented)
+                .padding(.horizontal)
+
                 ScrollView {
                     ForEach(viewModel.helps, id: \.self) { call in
                         NavigationLink(destination: ChamadoDetailView(
-                            tituloChamado: call.help.titulo,
-                            descricaoChamado: call.help.texto,
-                            solicitante: call.help.solicitante,
-                            prioridade: call.help.prioridade
+                            tituloChamado: call.details.titulo,
+                            descricaoChamado: call.details.texto,
+                            solicitante: call.details.solicitante,
+                            prioridade: call.details.prioridade,
+                            viewModel: ChamadoDetailViewModel(help: call)
                         )) {
                             CardView(
-                                tituloChamado: call.help.titulo,
-                                descricaoChamado: call.help.texto,
-                                prioridadeChamado: call.help.prioridade,
-                                departamentoChamado: "Departamento \(call.help.departamento)"
+                                tituloChamado: call.details.titulo,
+                                descricaoChamado: call.details.texto,
+                                prioridadeChamado: call.details.prioridade,
+                                departamentoChamado: "Departamento \(call.details.departamento)"
                             )
                         }
+                        .foregroundColor(.black)
                     }
-                
                 }
                 .onAppear() {
-                    viewModel.fetchChamados(filter: searchText)
+                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
                 }
                 .sheet(isPresented: $showNewChamadoView) {
                     NewChamadoView(
                         isPresented: $showNewChamadoView,
                         fetchHelps: {
-                            viewModel.fetchChamados(filter: searchText)
+                            viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
                         }
                     )
                 }
