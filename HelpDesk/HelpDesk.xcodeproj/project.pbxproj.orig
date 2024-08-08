@@ -177,8 +177,11 @@
 		16CE2E0C2C53077900295A69 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7AB3334B2C62D3AA00667C1B /* ChamadoDetail */,
+<<<<<<< HEAD
 				A966384D2C64232600BB9BAC /* Fonts */,
+=======
+				7AB3334B2C62D3AA00667C1B /* ChamadoDetail */,
+>>>>>>> develop
 				7A30C52B2C5C3C7C00127E62 /* HomeView */,
 				7A30C5282C5C3A9300127E62 /* NewChamado */,
 				16CE2E0D2C53078800295A69 /* LoginView.swift */,
@@ -224,15 +227,7 @@
 			path = HomeView;
 			sourceTree = "<group>";
 		};
-		7AB3334B2C62D3AA00667C1B /* ChamadoDetail */ = {
-			isa = PBXGroup;
-			children = (
-				16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */,
-				7AB3334C2C62D3BC00667C1B /* ChamadoDetailViewModel.swift */,
-			);
-			path = ChamadoDetail;
-			sourceTree = "<group>";
-		};
+<<<<<<< HEAD
 		A966384D2C64232600BB9BAC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +260,15 @@
 				A966384E2C64239A00BB9BAC /* OFL.txt */,
 			);
 			path = Poppins;
+=======
+		7AB3334B2C62D3AA00667C1B /* ChamadoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */,
+				7AB3334C2C62D3BC00667C1B /* ChamadoDetailViewModel.swift */,
+			);
+			path = ChamadoDetail;
+>>>>>>> develop
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

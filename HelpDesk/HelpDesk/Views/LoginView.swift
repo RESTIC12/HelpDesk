@@ -3,6 +3,7 @@
 //  HelpDesk
 //
 //  Created by Victor Brigido on 25/07/24.
+//  Implemented by Josimar Ferreira
 //
 
 import SwiftUI
@@ -18,13 +19,11 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            Image("background")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.all)
+            Color("BackGround")
             loginView
                 .padding()
         }
+        .ignoresSafeArea()
         .onReceive(sessionManager.$currentUser) { currentUser in
             isLoggedIn = currentUser != nil
         }
@@ -35,66 +34,89 @@ struct LoginView: View {
         
         VStack {
             
-            Circle()
-                .foregroundColor(.white .opacity(0.3))
-                .aspectRatio(1.5, contentMode: .fit)
+            Text("Call Me Desk")
+                .font(.custom("Poppins-SemiBold", size: 42))
+                .foregroundColor(.callMeDesk)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 85)
             
-            Text("HelpDesk")
-                .font(.title)
-                .bold()
-                .frame(width: 320, height: 80)
-                .background(.white .opacity(0.3))
-                .cornerRadius(15)
+            Text("Log In")
+                .font(.custom("Poppins-Regular", size: 32))
+                .padding(.top, 10)
+                .padding(.bottom, 5)
+                            
+            Text("Let's get to work")
+                .font(.custom("Poppins-Regular", size: 16))
+                .foregroundColor(.callMeDesk)
             
-            VStack{
-                
-                TextField("Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .accessibilityLabel(Text("Email"))
-                    .padding(.top, 4)
-                    .padding(.bottom, 4)
-                    .font(.title2)
-                
-                SecureField("Senha", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.top, 6)
-                    .accessibilityLabel(Text("Senha"))
-                    .padding(.bottom, 4)
-                    .font(.title2)
-                
-                Button(action: {
-                    signIn()
-                }) {
-                    Text("Entrar")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .font(.title3)
-                }
-                .accessibilityLabel(Text("Entrar"))
-                
-                HStack(spacing:30) {
-                    
-                    Button("Esqueci a senha"){
-                        print("esqueci a senha clicked!")
-                    }
-                    
-                    Spacer()
-                    
-                    Button("Solicitar acesso"){
-                        print("solicitar acesso clicked!")
-                    }
-                    
-                }
+            Text("Email")
+                .font(.custom("Poppins-Regular", size: 16))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 40)
+            
+            TextField("Digite seu email", text: $email)
+                .font(.custom("Poppins-Regular", size: 12))
+                .frame(height: 45)
+                .cornerRadius(8.0)
+                .padding(.horizontal)
+                .overlay(RoundedRectangle(cornerRadius: 16)
+                    .stroke(.callMeDesk, lineWidth: 0.5))
+                .accessibilityLabel(Text("Digite seu email"))
+                .foregroundColor(.callMeDesk)
+                            
+            Text("Senha")
+                .font(.custom("Poppins-Regular", size: 16))
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top)
-                .foregroundColor(.white)
+            
+            SecureField("Digite sua senha", text: $password)
+                .font(.custom("Poppins-Regular", size: 12))
+                .frame(height: 45)
+                .cornerRadius(8.0)
+                .padding(.horizontal)
+                .overlay(RoundedRectangle(cornerRadius: 16)
+                    .stroke(.callMeDesk, lineWidth: 0.5))
+                .accessibilityLabel(Text("Digite sua senha"))
+                .foregroundColor(.callMeDesk)
+            
+            Button("Esqueci minha senha"){
+                //Solicitar NOVA senha
             }
-            .padding()
-            .background(Color.white.opacity(0.3))
-            .cornerRadius(15)
+            .font(.custom("Poppins-Medium", size: 12))
+            .foregroundColor(.callMeDesk)
+            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+            
+            Button(action: {
+                signIn()
+            }) {
+                Text("Login")
+                    .font(.custom("Poppins-SemiBold", size: 16))
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.callMeDesk)
+                    .cornerRadius(10)
+                    .font(.title3)
+            }
+            .accessibilityLabel(Text("Login"))
+            .padding(.top, 50)
+            
+            HStack {
+                
+                Text("Não possui uma conta?")
+                    .font(.custom("Poppins-Light", size: 12))
+                    .foregroundColor(.callMeDesk)
+                
+                Button("Sign Up!"){
+                    //Solicitar acesso
+                }
+                .font(.custom("Poppins-Medium", size: 12))
+                .foregroundColor(.callMeDesk)
+                
+            }.padding(.top, 5)
+            
+            Image("Nuvens")
+                .padding(.top, 20)
             
             if !errorMessage.isEmpty {
                 Text(errorMessage)
