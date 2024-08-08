@@ -12,13 +12,13 @@ struct CardView: View {
     var descricaoChamado: String
     var prioridadeChamado: String
     var departamentoChamado: String
-    
+    var corPrioridade: Color
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(spacing: 12) {
             HStack {
                 Text(tituloChamado)
                     .font(.headline)
-                    .accessibilityLabel(Text("\(tituloChamado)"))
                 
                 Spacer()
                 
@@ -27,11 +27,10 @@ struct CardView: View {
                     .padding(6)
                     .background(
                         Capsule()
-                            .fill(corPrioridade(prioridade: prioridadeChamado).opacity(0.8))
+                            .fill(corPrioridade.opacity(0.8))
                             .frame(width: 60, height: 26)
                     )
-                    .accessibilityLabel(Text("\(prioridadeChamado)"))
-                
+
             }
             .padding(.trailing)
             
@@ -39,13 +38,11 @@ struct CardView: View {
                 .font(.subheadline)
                 .foregroundColor(.black.opacity(0.6))
                 .multilineTextAlignment(.leading)
-                .accessibilityLabel(Text("\(descricaoChamado)"))
             
             HStack {
                 Text(departamentoChamado)
                     .font(.footnote)
                     .foregroundColor(.gray)
-                    .accessibilityLabel(Text("\(departamentoChamado)"))
                 
                 Spacer()
             }
@@ -58,27 +55,15 @@ struct CardView: View {
                 .stroke(Color.gray.opacity(0.4), lineWidth: 0.6)
         )
     }
-    
-    func corPrioridade(prioridade: String) -> Color {
-        switch prioridade.lowercased() {
-        case "alta":
-            return .red
-        case "média", "media":
-            return .orange
-        case "baixa":
-            return .gray
-        default:
-            return .gray
-        }
-    }
 }
 
 #Preview {
     CardView(
         tituloChamado: "Título do Chamado",
-        descricaoChamado: "Testando Chamado 1936",
+        descricaoChamado: "Descrição prévia do chamado, em poucas linhas. Este é um chamado teste",
         prioridadeChamado: "Média",
-        departamentoChamado: "Departamento Técnico"
+        departamentoChamado: "Departamento Técnico",
+        corPrioridade: .orange
     )
 }
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HeaderView: View {
     @Binding var searchText: String
-    var statusHelp = ["Em aberto", "Concluídos"]
     @Binding var showNewChamadoView: Bool
     var fetchHelps: (() -> Void)
     
@@ -26,35 +25,30 @@ struct HeaderView: View {
                             .frame(width: 35, height: 35)
                             .foregroundColor(.gray.opacity(0.5))
                             .cornerRadius(45/2)
-                        Text("Olá, User 1")
+                        Text("Olá, \(SessionManager.shared.currentUser?.nome ?? "Unknowm")")
                             .foregroundColor(.gray)
                     }
                 }
                 
                 Spacer()
                 
-                Button {
-                    showNewChamadoView.toggle()
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .foregroundColor(.blue.opacity(0.8))
-                        .frame(width: 35, height: 35)
+                let permissao = SessionManager.shared.currentUser?.permissao
+                if permissao == 0 {
+                    Button {
+                        showNewChamadoView.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .foregroundColor(.blue.opacity(0.8))
+                            .frame(width: 35, height: 35)
+                    }
                 }
-                
-
             }
             .padding(.bottom, 25)
             SearchBarView(searchText: $searchText, fetchHelps: {
                 fetchHelps()
             })
                 .padding(.bottom, 10)
-            Picker("What is your favorite color?", selection: $searchText) {
-                ForEach(statusHelp, id: \.self) {
-                    Text($0)
-                }
-            }
-            .pickerStyle(.segmented)
         }
         .padding(.horizontal, 15)
     }

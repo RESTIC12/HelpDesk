@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Firebase
-import UIKit
 
 struct LoginView: View {
     @StateObject var sessionManager = SessionManager.shared

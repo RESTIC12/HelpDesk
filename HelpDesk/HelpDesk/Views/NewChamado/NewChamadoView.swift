@@ -85,7 +85,7 @@ struct NewChamadoView: View {
                     help: HelpDesk(
                         id: nil,
                         uid: SessionManager.shared.currentUser?.uid ?? "userID",
-                        help: HelpRoot(
+                        details: HelpRoot(
                             solicitante: SessionManager.shared.currentUser?.nome ?? "Unknown",
                             titulo: tituloChamado,
                             texto: descricaoChamado,
