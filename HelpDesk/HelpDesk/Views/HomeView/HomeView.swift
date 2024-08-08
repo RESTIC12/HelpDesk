@@ -38,7 +38,7 @@ struct HomeView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
 
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(viewModel.helps, id: \.self) { call in
                         NavigationLink(destination: ChamadoDetailView(
                             tituloChamado: call.details.titulo,

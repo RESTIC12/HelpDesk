@@ -18,6 +18,7 @@ struct CardView: View {
             HStack {
                 Text(tituloChamado)
                     .font(.headline)
+                    .accessibilityLabel(Text("\(tituloChamado)"))
                 
                 Spacer()
                 
@@ -29,6 +30,7 @@ struct CardView: View {
                             .fill(corPrioridade(prioridade: prioridadeChamado).opacity(0.8))
                             .frame(width: 60, height: 26)
                     )
+                    .accessibilityLabel(Text("\(prioridadeChamado)"))
                 
             }
             .padding(.trailing)
@@ -37,11 +39,13 @@ struct CardView: View {
                 .font(.subheadline)
                 .foregroundColor(.black.opacity(0.6))
                 .multilineTextAlignment(.leading)
+                .accessibilityLabel(Text("\(descricaoChamado)"))
             
             HStack {
                 Text(departamentoChamado)
                     .font(.footnote)
                     .foregroundColor(.gray)
+                    .accessibilityLabel(Text("\(departamentoChamado)"))
                 
                 Spacer()
             }

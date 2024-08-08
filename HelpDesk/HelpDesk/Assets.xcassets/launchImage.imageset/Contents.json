@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Launch_Screen_Call_Me_Desk_png.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
