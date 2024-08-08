@@ -13,12 +13,14 @@ struct SearchBarView: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-            TextField("Pesquisar por chamado", text: $searchText)
+                .foregroundColor(.gray.opacity(1))
+            TextField("Buscar Tickets", text: $searchText)
                 .onChange(of: searchText) {
                     fetchHelps()
                 }
                 .overlay (
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: "x.circle.fill")
+                        .foregroundColor(.gray.opacity(1))
                         .padding()
                         .offset(x: 10)
                         .opacity(0.8)
@@ -31,9 +33,9 @@ struct SearchBarView: View {
         .font(.headline)
         .padding()
         .background (
-            RoundedRectangle(cornerRadius: 25)
-                .fill(.background.opacity(0.8))
-                .shadow(radius: 3)
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.gray.opacity(0.2))
+                .frame(height: 40)
         )
         .padding()
     }

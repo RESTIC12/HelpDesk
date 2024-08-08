@@ -48,9 +48,8 @@ struct HeaderView: View {
             SearchBarView(searchText: $searchText, fetchHelps: {
                 fetchHelps()
             })
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
         }
-        .padding(.horizontal, 15)
     }
 }
 

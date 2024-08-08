@@ -48,7 +48,7 @@ struct ChamadoDetailView: View {
                 Spacer()
                 VStack(spacing: 20) {
                     let permissao = SessionManager.shared.currentUser?.permissao
-                    if permissao == 1 || permissao == 2 && viewModel.help.details.solucionado == false {
+                    if (permissao == 1 || permissao == 2) && viewModel.help.details.solucionado == false {
                         Button(action: {
                             viewModel.updateHelp()
                         }) {
