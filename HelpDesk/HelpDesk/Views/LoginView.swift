@@ -55,7 +55,7 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 40)
             
-            TextField("Digite seu email", text: $email)
+            TextField("", text: $email, prompt: Text("Digite seu email").foregroundColor(.callMeDesk.opacity(0.5)))
                 .font(.custom("Poppins-Regular", size: 12))
                 .frame(height: 45)
                 .cornerRadius(8.0)
@@ -70,15 +70,19 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top)
             
-            SecureField("Digite sua senha", text: $password)
-                .font(.custom("Poppins-Regular", size: 12))
-                .frame(height: 45)
-                .cornerRadius(8.0)
-                .padding(.horizontal)
-                .overlay(RoundedRectangle(cornerRadius: 16)
-                    .stroke(.callMeDesk, lineWidth: 0.5))
-                .accessibilityLabel(Text("Digite sua senha"))
-                .foregroundColor(.callMeDesk)
+            HStack {
+                
+                SecureField("", text: $password, prompt: Text("Digite sua senha").foregroundColor(.callMeDesk.opacity(0.5)))
+                    .font(.custom("Poppins-Regular", size: 12))
+                    .frame(height: 45)
+                    .cornerRadius(8.0)
+                    .padding(.horizontal)
+                    .overlay(RoundedRectangle(cornerRadius: 16)
+                        .stroke(.callMeDesk, lineWidth: 0.5))
+                    .accessibilityLabel(Text("Digite sua senha"))
+                    .foregroundColor(.callMeDesk)
+            }
+            
             
             Button("Esqueci minha senha"){
                 //Solicitar NOVA senha
