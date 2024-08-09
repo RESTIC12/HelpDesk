@@ -32,6 +32,8 @@ struct DashboardView: View {
     ]
     
     var user = "HD Team"
+    var grade = 5
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -47,6 +49,10 @@ struct DashboardView: View {
                     Text("Hello")
                         .font(.headline)
                     Spacer()
+                    
+                    Image("cloud")
+                        .resizable()
+                        .frame(width: 80, height: 60)
                 }
                 .padding(.horizontal, 10)
                 
@@ -57,8 +63,8 @@ struct DashboardView: View {
             }
             .padding()
             
+            ScrollView {
             VStack(alignment: .leading) {
-                ScrollView {
                     Picker("breakdown", selection: $selectedTab) {
                         ForEach(tabs, id: \.self) {
                             Text($0)
@@ -125,28 +131,67 @@ struct DashboardView: View {
                     .background(Color.blueTertiary)
                     .cornerRadius(12)
                     .frame(maxWidth: .infinity)
-                }
+                
                 .padding()
 
                 VStack {
                     
                     HStack {
-                        Image(.useer)
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                        Text("\(user)")
-                            .bold()
-                        Image(systemName: )
-                    }
-                    Text("Lorem ipsum dolor sit amet. At odit magnam et mollitia commodi qui exercitationem quidem. Et voluptatem harum in quia ipsa qui expedita autem aut maiores quae.")
+                        VStack {
+                            Image(.useer)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                            Text("\(user)")
+                                .bold()
+                        }
+        
+                        JustifiedTextView(
+                            text: "Lorem ipsum dolor sit amet. At odit magnam et mollitia commodi qui exercitationem quidem.",
+                            lineWidth: 130)
                         .fontWeight(.light)
                         .font(.system(size: 14))
+                        
+                        VStack {
+                            Text("1 mil avaliações")
+                                .textCase(.uppercase)
+                                .font(.system(size: 12))
+                             
+                             
+                             Text("\(grade)")
+                                 .bold()
+                                 .padding(.horizontal, 50)
+                                 .font(.system(size: 28))
+                            
+                            HStack {
+                                Image(.star)
+                                    .resizable()
+                                    .frame(width: 23, height: 23)
+                                Image(.star)
+                                    .resizable()
+                                    .frame(width: 23, height: 23)
+                                Image(.star)
+                                    .resizable()
+                                    .frame(width: 23, height: 23)
+                                Image(.star)
+                                    .resizable()
+                                    .frame(width: 23, height: 23)
+                                Image(.star)
+                                    .resizable()
+                                    .frame(width: 23, height: 23)
+                            }
+                                  
+                        }
+                    }
+    
+                    
                 }.multilineTextAlignment(.leading)
             }
             
-        } .padding(.top, 50)
-        .background(Color.bluePrimary) // Set the entire background color
-            .edgesIgnoringSafeArea(.all) // Extend the background to the edges of the screen
+        }
+        }  .padding(.top, 50)
+            .background(Color.bluePrimary)
+                .edgesIgnoringSafeArea(.all)
+        
 }
     
     struct SavingsDataPoint: Identifiable {
