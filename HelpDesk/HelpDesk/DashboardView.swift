@@ -1,10 +1,3 @@
-//
-//  DashboardView.swift
-//  HelpDesk
-//
-//  Created by Larissa Martins Correa on 01/08/24.
-//
-
 import SwiftUI
 import Charts
 
@@ -31,9 +24,18 @@ struct DashboardView: View {
         SavingsDataPoint(month: "Outros", value: 10)
     ]
     
+    // Dados do gráfico de linha para as avaliações
+    var lineChartData = [
+        SavingsDataPoint(month: "Jan", value: 4.0),
+        SavingsDataPoint(month: "Feb", value: 4.5),
+        SavingsDataPoint(month: "Mar", value: 4.2),
+        SavingsDataPoint(month: "Apr", value: 4.8),
+        SavingsDataPoint(month: "May", value: 4.7),
+        SavingsDataPoint(month: "Jun", value: 5.0)
+    ]
+    
     var user = "HD Team"
     var grade = 5
-
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -64,7 +66,7 @@ struct DashboardView: View {
             .padding()
             
             ScrollView {
-            VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     Picker("breakdown", selection: $selectedTab) {
                         ForEach(tabs, id: \.self) {
                             Text($0)
@@ -113,7 +115,6 @@ struct DashboardView: View {
                             
                         }
                         .padding()
-
                         
                         HStack(spacing: 10) {
                             Text("60 min")
@@ -122,77 +123,102 @@ struct DashboardView: View {
                             Text("1 mil")
                             Text("Qtd de chamados totais")
                     
-                        }             .padding()
-
-                        
+                        }
+                        .padding()
                         
                     }
                     .padding()
                     .background(Color.blueTertiary)
                     .cornerRadius(12)
                     .frame(maxWidth: .infinity)
-                
-                .padding()
+                    .padding()
 
-                VStack {
-                    
-                    HStack {
-                        VStack {
-                            Image(.useer)
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                            Text("\(user)")
-                                .bold()
-                        }
-        
-                        JustifiedTextView(
-                            text: "Lorem ipsum dolor sit amet. At odit magnam et mollitia commodi qui exercitationem quidem.",
-                            lineWidth: 130)
-                        .fontWeight(.light)
-                        .font(.system(size: 14))
+
+                    VStack {
+                        Text("Como somos vistos por nossos usuários?")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).font(.title2).multilineTextAlignment(.trailing)
                         
-                        VStack {
-                            Text("1 mil avaliações")
-                                .textCase(.uppercase)
-                                .font(.system(size: 12))
-                             
-                             
-                             Text("\(grade)")
-                                 .bold()
-                                 .padding(.horizontal, 50)
-                                 .font(.system(size: 28))
-                            
-                            HStack {
-                                Image(.star)
+                        HStack {
+                            VStack {
+                                Image(.useer)
                                     .resizable()
-                                    .frame(width: 23, height: 23)
-                                Image(.star)
-                                    .resizable()
-                                    .frame(width: 23, height: 23)
-                                Image(.star)
-                                    .resizable()
-                                    .frame(width: 23, height: 23)
-                                Image(.star)
-                                    .resizable()
-                                    .frame(width: 23, height: 23)
-                                Image(.star)
-                                    .resizable()
-                                    .frame(width: 23, height: 23)
+                                    .frame(width: 30, height: 30)
+                                Text("\(user)")
+                                    .bold()
                             }
-                                  
-                        }
-                    }
-    
-                    
-                }.multilineTextAlignment(.leading)
-            }
             
+                            JustifiedTextView(
+                                text: "Lorem ipsum dolor sit amet. At odit magnam et mollitia commodi qui exercitationem quidem.",
+                                lineWidth: 130)
+                            .fontWeight(.light)
+                            .font(.system(size: 14))
+                            
+                            VStack {
+                                Text("1 mil avaliações")
+                                    .textCase(.uppercase)
+                                    .font(.system(size: 12))
+                                 
+                                 
+                                 Text("\(grade)")
+                                     .bold()
+                                     .padding(.horizontal, 50)
+                                     .font(.system(size: 28))
+                                
+                                HStack {
+                                    Image(.star)
+                                        .resizable()
+                                        .frame(width: 23, height: 23)
+                                    Image(.star)
+                                        .resizable()
+                                        .frame(width: 23, height: 23)
+                                    Image(.star)
+                                        .resizable()
+                                        .frame(width: 23, height: 23)
+                                    Image(.star)
+                                        .resizable()
+                                        .frame(width: 23, height: 23)
+                                    Image(.star)
+                                        .resizable()
+                                        .frame(width: 23, height: 23)
+                                }
+                                
+                            
+                                      
+                            }
+                            
+                
+                        }
+                        // Gráfico de Linha para Avaliações
+                        VStack(alignment: .leading) {
+                            Text("Avaliações ao longo do tempo")
+                                .font(.headline)
+                                .padding(10)
+                                
+                            
+                            Chart {
+                                ForEach(lineChartData) { item in
+                                    LineMark(
+                                        x: .value("Mês", item.month),
+                                        y: .value("Nota", item.value)
+                                    )
+                                }
+                            }
+                            .frame(height: 200)
+                            .padding()
+                             // Define o valor máximo que o gráfico pode ir
+                        }
+                        
+                        
+                    }.multilineTextAlignment(.leading)
+                    
+                }
+                
+            }
         }
-        }  .padding(.top, 50)
-            .background(Color.bluePrimary)
-                .edgesIgnoringSafeArea(.all)
-        
-}
+        .padding(.top, 50)
+        .background(Color.bluePrimary)
+        .edgesIgnoringSafeArea(.all)
+    }
     
     struct SavingsDataPoint: Identifiable {
         let month: String
