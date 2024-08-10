@@ -30,6 +30,7 @@
 		D8B2C2742C5C3DE2000FD667 /* ConfigsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2C2732C5C3DE2000FD667 /* ConfigsView.swift */; };
 		D8B2C2762C5C55A3000FD667 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2C2752C5C55A3000FD667 /* DashboardView.swift */; };
 		D8B2C2782C5C584F000FD667 /* PrivacidadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2C2772C5C584F000FD667 /* PrivacidadeView.swift */; };
+		D8DE81FE2C66EABF00A6CF91 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DE81FD2C66EABF00A6CF91 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		D8B2C2732C5C3DE2000FD667 /* ConfigsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigsView.swift; sourceTree = "<group>"; };
 		D8B2C2752C5C55A3000FD667 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		D8B2C2772C5C584F000FD667 /* PrivacidadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacidadeView.swift; sourceTree = "<group>"; };
+		D8DE81FD2C66EABF00A6CF91 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				16CE2E0F2C5307DF00295A69 /* HomeView.swift */,
 				16CE2E212C584C5F00295A69 /* NewChamadoView.swift */,
 				16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */,
+				D8DE81FD2C66EABF00A6CF91 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DE81FE2C66EABF00A6CF91 /* SettingsView.swift in Sources */,
 				16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */,
 				D8B2C2762C5C55A3000FD667 /* DashboardView.swift in Sources */,
 				16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */,
