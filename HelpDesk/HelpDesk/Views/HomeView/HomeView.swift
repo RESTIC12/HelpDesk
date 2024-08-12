@@ -38,6 +38,7 @@ struct HomeView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 .padding(.bottom, 15)
+                
                 let permissao = SessionManager.shared.currentUser?.permissao
                 HStack {
                     Spacer()
@@ -90,6 +91,7 @@ struct HomeView: View {
                 Spacer()
                 
             }
+            .background(Color.backGround)
         }
     }
     

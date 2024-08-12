@@ -12,9 +12,7 @@ struct HeaderView: View {
     var fetchHelps: (() -> Void)
     
     var body: some View {
-        VStack {
-            HStack(alignment: .top) {
-                
+        VStack(alignment: .leading) {
                 Button {
                     print("user clicked")
                 } label: {
@@ -26,12 +24,10 @@ struct HeaderView: View {
                             .cornerRadius(45/2)
                         Text("Olá, \(SessionManager.shared.currentUser?.nome ?? "Unknowm")")
                             .foregroundColor(.gray)
+                            .font(.custom("Poppins-light", size: 12))
                     }
+                    .padding(.leading)
                 }
-                
-                Spacer()
-            }
-            .padding(.bottom, 25)
             SearchBarView(searchText: $searchText, fetchHelps: {
                 fetchHelps()
             })

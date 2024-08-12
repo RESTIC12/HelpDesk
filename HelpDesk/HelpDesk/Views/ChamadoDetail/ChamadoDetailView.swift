@@ -18,28 +18,29 @@ struct ChamadoDetailView: View {
         ZStack {
             VStack(alignment: .leading, spacing: 10) {
                 Text(tituloChamado)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(.custom("Poppins-Medium", size: 26))
                     .padding(.top)
+                
                 
                 HStack {
                     Text("Usuário solicitante:")
-                        .font(.headline)
+                        .font(.custom("Poppins-Medium", size: 16))
                     Text(solicitante)
+                        .font(.custom("Poppins-light", size: 16))
                 }
                 .padding(.top, 40)
                 
                 HStack {
                     Text("Prioridade:")
-                        .font(.headline)
+                        .font(.custom("Poppins-medium", size: 16))
                     Text(prioridade)
+                        .font(.custom("Poppins-light", size: 16))
                 }
                 Text("Descrição:")
-                    .font(.headline)
+                    .font(.custom("Poppins-medium", size: 16))
                     
                 Text(descricaoChamado)
-                    .font(.body)
-                    
+                    .font(.custom("Poppins-light", size: 16))
                 Spacer()
             }
             .padding()
@@ -53,30 +54,32 @@ struct ChamadoDetailView: View {
                             viewModel.updateHelp()
                         }) {
                             Text("Encerrar Chamado")
-                                .foregroundColor(.black)
+                                .font(.custom("Poppins-Medium", size: 16))
+                                .foregroundColor(.white)
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(Color.blue.opacity(0.8))
+                                .background(Color.callMeDesk)
                                 .cornerRadius(10)
                         }
                         .accessibilityLabel(Text("Encerrar chamado"))
                     }
 
-                    Button(action: {
-                        print("chamado em andamento button clicked")
-                    }) {
-                        Text("Chamado em andamento")
-                            .foregroundColor(.black)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.yellow)
-                            .cornerRadius(10)
-                    }
-                    .accessibilityLabel(Text("chamado em andamento"))
+//                    Button(action: {
+//                        print("chamado em andamento button clicked")
+//                    }) {
+//                        Text("Chamado em andamento")
+//                            .foregroundColor(.black)
+//                            .padding()
+//                            .frame(maxWidth: .infinity)
+//                            .background(Color.yellow)
+//                            .cornerRadius(10)
+//                    }
+//                    .accessibilityLabel(Text("chamado em andamento"))
                 }
                 .padding([.leading, .trailing, .bottom])
             }
         }
+        .background(Color.backGround)
     }
 }
 
