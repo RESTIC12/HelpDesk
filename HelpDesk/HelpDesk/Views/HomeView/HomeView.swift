@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     var statusHelp = ["Em aberto", "Concluídos"]
+    @State var showAlert = false
     @State var showNewChamadoView = false
     @State var searchText: String = ""
     @State var openHelpOrNotText: String = "Em aberto"
@@ -24,7 +25,9 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 HeaderView(searchText: $searchText) {
-                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
+                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos", completion: {
+                        showAlert = true
+                    })
                 }
                 
                 Picker("", selection: $openHelpOrNotText) {
@@ -33,7 +36,9 @@ struct HomeView: View {
                     }
                 }
                 .onReceive([openHelpOrNotText].publisher.first(), perform: { _ in
-                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
+                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos", completion: {
+                        showAlert = true
+                    })
                 })
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
@@ -77,13 +82,17 @@ struct HomeView: View {
                     }
                 }
                 .onAppear() {
-                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
+                    viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos", completion: {
+                        showAlert = true
+                    })
                 }
                 .sheet(isPresented: $showNewChamadoView) {
                     NewChamadoView(
                         isPresented: $showNewChamadoView,
                         fetchHelps: {
-                            viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
+                            viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos", completion: {
+                                showAlert = true
+                            })
                         }
                     )
                 }
@@ -93,6 +102,14 @@ struct HomeView: View {
             }
             .background(Color.backGround)
         }
+        .alert("Ops!", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {
+                showAlert = false
+            }
+        } message: {
+            Text("Ocorreu um erro inesperado ao tentar obter os chamados.")
+        }
+
     }
     
 }

@@ -17,7 +17,7 @@ final class HomeViewModel : ObservableObject {
         self.service = service
     }
     
-    func fetchChamados(filter: String, solucionado: Bool) {
+    func fetchChamados(filter: String, solucionado: Bool, completion: @escaping () -> Void) {
         service.load { result in
             switch result {
             case .success(let helps):
@@ -31,7 +31,7 @@ final class HomeViewModel : ObservableObject {
                     self.helps = helps.filter { $0.details.solucionado == solucionado}
                 }
             case .failure(_):
-                print("erro")
+                completion()
             }
         }
     }

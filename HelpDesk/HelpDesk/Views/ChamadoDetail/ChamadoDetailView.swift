@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChamadoDetailView: View {
+    @State var showAlert = false
     var tituloChamado: String
     var descricaoChamado: String
     var solicitante: String
@@ -51,7 +52,11 @@ struct ChamadoDetailView: View {
                     let permissao = SessionManager.shared.currentUser?.permissao
                     if (permissao == 1 || permissao == 2) && viewModel.help.details.solucionado == false {
                         Button(action: {
-                            viewModel.updateHelp()
+                            viewModel.updateHelp { success in
+                                if !success {
+                                    showAlert = true
+                                }
+                            }
                         }) {
                             Text("Encerrar Chamado")
                                 .font(.custom("Poppins-Medium", size: 16))
@@ -78,6 +83,13 @@ struct ChamadoDetailView: View {
                 }
                 .padding([.leading, .trailing, .bottom])
             }
+        }
+        .alert("Ops!", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {
+                showAlert = false
+            }
+        } message: {
+            Text("Ocorreu um erro inesperado ao tentar encerrar o chamado. Por favor, tente novamente mais tarde.")
         }
         .background(Color.backGround)
     }

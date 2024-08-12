@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewChamadoView: View {
     
+    @State private var showAlert: Bool = false
+    @State private var showAlertMessage: String = ""
     @State private var tituloChamado: String = ""
     @State private var descricaoChamado: String = ""
     @State private var selectedDepartment: String = "RH"
@@ -93,9 +95,14 @@ struct NewChamadoView: View {
                             prioridade: selectedpriority,
                             solucionado: false
                         )),
-                    completion: {
-                        isPresented = false
-                        fetchHelps()
+                    completion: { success in
+                        if success {
+                            isPresented = false
+                            fetchHelps()
+                            return
+                        }
+                        showAlert = true
+                        showAlertMessage = "Ocorreu um erro inesperado. Tente novamente, por favor."
                     }
                 )
                 
@@ -112,6 +119,14 @@ struct NewChamadoView: View {
             .padding()
             
         }
+        .alert("Ops!", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {
+                showAlert = false
+            }
+        } message: {
+            Text(showAlertMessage)
+        }
+
     }
 }
 
