@@ -23,7 +23,7 @@ struct HomeView: View {
         
         NavigationView {
             VStack {
-                HeaderView(searchText: $searchText, showNewChamadoView: $showNewChamadoView) {
+                HeaderView(searchText: $searchText) {
                     viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos")
                 }
                 
@@ -37,7 +37,24 @@ struct HomeView: View {
                 })
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
-
+                .padding(.bottom, 15)
+                let permissao = SessionManager.shared.currentUser?.permissao
+                HStack {
+                    Spacer()
+//                    if permissao == 0 {
+                        Button {
+                            showNewChamadoView.toggle()
+                        } label: {
+                            Label("Novo ticket", systemImage: "plus")
+                                .padding()
+                                .foregroundStyle(.white)
+                        }
+                        .frame(height: 35)
+                        .background(Color(hex: "#44C4FC"))
+                        .cornerRadius(12)
+//                    }
+                }
+                .padding(.horizontal, 20)
                 ScrollView(showsIndicators: false) {
                     ForEach(viewModel.helps, id: \.self) { call in
                         NavigationLink(destination: ChamadoDetailView(
