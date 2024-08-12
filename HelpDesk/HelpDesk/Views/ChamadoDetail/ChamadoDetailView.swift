@@ -16,7 +16,6 @@ struct ChamadoDetailView: View {
     @StateObject var viewModel: ChamadoDetailViewModel
     
     var body: some View {
-        ZStack {
             VStack(alignment: .leading, spacing: 10) {
                 Text(tituloChamado)
                     .font(.custom("Poppins-Medium", size: 26))
@@ -40,50 +39,58 @@ struct ChamadoDetailView: View {
                 Text("Descrição:")
                     .font(.custom("Poppins-medium", size: 16))
                     
-                Text(descricaoChamado)
-                    .font(.custom("Poppins-light", size: 16))
+                HStack {
+                    Text(descricaoChamado)
+                        .font(.custom("Poppins-light", size: 16))
+                        .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                }
+                .frame(width: .infinity)
+                    
                 Spacer()
             }
+          
             .padding()
             
-            VStack {
-                Spacer()
-                VStack(spacing: 20) {
-                    let permissao = SessionManager.shared.currentUser?.permissao
-                    if (permissao == 1 || permissao == 2) && viewModel.help.details.solucionado == false {
-                        Button(action: {
-                            viewModel.updateHelp { success in
-                                if !success {
-                                    showAlert = true
-                                }
+        VStack {
+            Spacer()
+            VStack(spacing: 20) {
+                let permissao = SessionManager.shared.currentUser?.permissao
+                if (permissao == 1 || permissao == 2) && viewModel.help.details.solucionado == false {
+                    Button(action: {
+                        viewModel.updateHelp { success in
+                            if !success {
+                                showAlert = true
                             }
-                        }) {
-                            Text("Encerrar Chamado")
-                                .font(.custom("Poppins-Medium", size: 16))
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.callMeDesk)
-                                .cornerRadius(10)
                         }
-                        .accessibilityLabel(Text("Encerrar chamado"))
+                    }) {
+                        Text("Encerrar Chamado")
+                            .font(.custom("Poppins-Medium", size: 16))
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.callMeDesk)
+                            .cornerRadius(10)
                     }
-
-//                    Button(action: {
-//                        print("chamado em andamento button clicked")
-//                    }) {
-//                        Text("Chamado em andamento")
-//                            .foregroundColor(.black)
-//                            .padding()
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color.yellow)
-//                            .cornerRadius(10)
-//                    }
-//                    .accessibilityLabel(Text("chamado em andamento"))
+                    .accessibilityLabel(Text("Encerrar chamado"))
                 }
-                .padding([.leading, .trailing, .bottom])
+                
+                //                    Button(action: {
+                //                        print("chamado em andamento button clicked")
+                //                    }) {
+                //                        Text("Chamado em andamento")
+                //                            .foregroundColor(.black)
+                //                            .padding()
+                //                            .frame(maxWidth: .infinity)
+                //                            .background(Color.yellow)
+                //                            .cornerRadius(10)
+                //                    }
+                //                    .accessibilityLabel(Text("chamado em andamento"))
             }
+            .padding([.leading, .trailing, .bottom])
         }
+        .frame(maxWidth: .infinity)
         .alert("Ops!", isPresented: $showAlert) {
             Button("OK", role: .cancel) {
                 showAlert = false
