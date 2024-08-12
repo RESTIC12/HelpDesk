@@ -41,7 +41,7 @@ struct HomeView: View {
                 let permissao = SessionManager.shared.currentUser?.permissao
                 HStack {
                     Spacer()
-//                    if permissao == 0 {
+                    if permissao == 0 {
                         Button {
                             showNewChamadoView.toggle()
                         } label: {
@@ -52,7 +52,7 @@ struct HomeView: View {
                         .frame(height: 35)
                         .background(Color(hex: "#44C4FC"))
                         .cornerRadius(12)
-//                    }
+                    }
                 }
                 .padding(.horizontal, 20)
                 ScrollView(showsIndicators: false) {
