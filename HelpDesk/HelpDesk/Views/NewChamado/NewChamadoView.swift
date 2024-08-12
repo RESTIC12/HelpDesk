@@ -28,15 +28,11 @@ struct NewChamadoView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             
-            VStack(){
-                Text("Novo chamado")
-                    .font(.callout)
-                    .fontWeight(.bold)
-                    .padding(.top, 20)
                 Form {
                     Section(header: Text("Título *")) {
                         TextField("Digite o título do chamado", text: $tituloChamado)
                     }
+                    .font(.custom("Poppins-light", size: 12))
                     Section(header: Text("Descrição *")) {
                         ZStack(alignment: .topLeading) {
                             if descricaoChamado.isEmpty {
@@ -49,6 +45,7 @@ struct NewChamadoView: View {
                                 .padding(.leading, -4)
                         }
                     }
+                    .font(.custom("Poppins-light", size: 12))
                     
                     Section(header: Text("Detalhes do Chamado")) {
                         HStack {
@@ -59,8 +56,10 @@ struct NewChamadoView: View {
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
+                            .font(.custom("Poppins-light", size: 14))
                         }
                     }
+                    .font(.custom("Poppins-light", size: 12))
                     
                     
                     Section(header: Text("Prioridade do Chamado")) {
@@ -72,9 +71,10 @@ struct NewChamadoView: View {
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
+                            .font(.custom("Poppins-light", size: 14))
                         }
                     }
-                }
+                    .font(.custom("Poppins-light", size: 12))
             }
             .background(Color.gray.opacity(0.11))
             
@@ -101,10 +101,11 @@ struct NewChamadoView: View {
                 
             }) {
                 Text("Enviar chamado")
-                    .foregroundColor(.black)
+                    .font(.custom("Poppins-Medium", size: 16))
+                    .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.yellow)
+                    .background(Color.callMeDesk)
                     .cornerRadius(10)
             }
             .accessibilityLabel(Text("Enviar chamado"))

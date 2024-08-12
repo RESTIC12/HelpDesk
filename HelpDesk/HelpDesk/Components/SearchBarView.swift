@@ -30,7 +30,7 @@ struct SearchBarView: View {
                     , alignment: .trailing
                 )
         }
-        .font(.headline)
+        .font(.custom("Poppins-light", size: 14))
         .padding()
         .background (
             RoundedRectangle(cornerRadius: 8)
