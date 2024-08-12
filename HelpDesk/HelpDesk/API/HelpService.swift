@@ -102,9 +102,9 @@ public enum HelpDeskResultError: Swift.Error {
              }
              if response.statusCode == 201 || response.statusCode == 200 {
                  completion(true)
-             } else {
-                 completion(false)
+                 return
              }
+             completion(false)
          }.resume()
      }
 

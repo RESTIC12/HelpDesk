@@ -22,7 +22,7 @@ final class ChamadoDetailViewModel : ObservableObject {
         self.service = service
     }
     
-    func updateHelp() {
+    func updateHelp(completion: @escaping (Bool) -> Void) {
         let helpCopy = HelpDesk(
             id: help.id,
             uid: help.uid,
@@ -36,7 +36,7 @@ final class ChamadoDetailViewModel : ObservableObject {
             )
         )
         service.createHelp(helpCopy, method: "PUT") { value in
-            print(value)
+            completion(value)
         }
     }
     
