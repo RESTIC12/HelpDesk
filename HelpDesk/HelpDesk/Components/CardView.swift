@@ -12,50 +12,78 @@ struct CardView: View {
     var descricaoChamado: String
     var prioridadeChamado: String
     var departamentoChamado: String
+    var solicitanteChamado: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
+        VStack(alignment: .leading, spacing: 6) {
+            
+            HStack(alignment: .center) {
+                Image(systemName: "tag.fill")
+                    .font(.system(size: 6))
+                    .foregroundColor(.callMeDesk)
+                Text("ID / 0001")
+                    .font(.system(size: 10))
+                    .foregroundColor(.gray)
+            }
+            .padding(.top, -12)
+        
+
                 Text(tituloChamado)
-                    .font(.headline)
+                    .font(.custom("Poppins-Medium", size: 16))
                     .accessibilityLabel(Text("\(tituloChamado)"))
+                    
+       
+                Text(descricaoChamado)
+                    .font(.custom("Poppins-light", size: 12))
+                    .foregroundColor(.black.opacity(0.8))
+                    .multilineTextAlignment(.leading)
+                    .accessibilityLabel(Text("\(descricaoChamado)"))
+                    .padding(.top, -2)
+            
+            HStack(spacing: 20) {
+                
+                
+                VStack(alignment: .leading) {
+                    Text("Owner")
+                        .font(.custom("Poppins", size: 8))
+                        .foregroundColor(.gray)
+                    
+                    Text(solicitanteChamado)
+                        .font(.custom("Poppins-light", size: 8))
+                    .accessibilityLabel(Text("\(solicitanteChamado)"))
+                }
+                
+                
+                VStack(alignment: .leading) {
+                    Text("Departament")
+                        .font(.custom("Poppins", size: 8))
+                        .foregroundColor(.gray)
+                    
+                    Text(departamentoChamado)
+                        .font(.custom("Poppins-light", size: 8))
+                    .accessibilityLabel(Text("\(departamentoChamado)"))
+                }
                 
                 Spacer()
                 
                 Text(prioridadeChamado)
-                    .font(.caption)
+                    .font(.custom("Poppins-light", size: 10))
                     .padding(6)
                     .background(
                         Capsule()
-                            .fill(corPrioridade(prioridade: prioridadeChamado).opacity(0.8))
-                            .frame(width: 60, height: 26)
+                            .fill(corPrioridade(prioridade: prioridadeChamado).opacity(0.7))
+                            .frame(width: 50, height: 22)
                     )
                     .accessibilityLabel(Text("\(prioridadeChamado)"))
-                
             }
-            .padding(.trailing)
-            
-            Text(descricaoChamado)
-                .font(.subheadline)
-                .foregroundColor(.black.opacity(0.6))
-                .multilineTextAlignment(.leading)
-                .accessibilityLabel(Text("\(descricaoChamado)"))
-            
-            HStack {
-                Text(departamentoChamado)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                    .accessibilityLabel(Text("\(departamentoChamado)"))
-                
-                Spacer()
-            }
+            .padding(.bottom, -12)
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: 142)
+        .frame(maxWidth: .infinity, maxHeight: 152)
         .cornerRadius(8.0)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray.opacity(0.4), lineWidth: 0.6)
+                .stroke(Color.blue.opacity(0.4), lineWidth: 0.8)
         )
     }
     
@@ -75,10 +103,11 @@ struct CardView: View {
 
 #Preview {
     CardView(
-        tituloChamado: "Título do Chamado",
-        descricaoChamado: "Testando Chamado 1936",
+        tituloChamado: "Esqueci a senha do meu MAC",
+        descricaoChamado: "Escrevi minhas credenciais de login em um papel, guardei mas esqueci onde e agora esqueci minha senha, consegue me ajudar?",
         prioridadeChamado: "Média",
-        departamentoChamado: "Departamento Técnico"
+        departamentoChamado: "TI",
+        solicitanteChamado: "Alex"
     )
 }
 

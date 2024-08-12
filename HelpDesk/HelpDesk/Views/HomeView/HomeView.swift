@@ -51,7 +51,8 @@ struct HomeView: View {
                                 tituloChamado: call.details.titulo,
                                 descricaoChamado: call.details.texto,
                                 prioridadeChamado: call.details.prioridade,
-                                departamentoChamado: "Departamento \(call.details.departamento)"
+                                departamentoChamado: "Departamento \(call.details.departamento)", 
+                                solicitanteChamado: call.details.solicitante
                             )
                         }
                         .foregroundColor(.black)
