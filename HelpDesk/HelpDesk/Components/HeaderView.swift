@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HeaderView: View {
     @Binding var searchText: String
-    @Binding var showNewChamadoView: Bool
     var fetchHelps: (() -> Void)
     
     var body: some View {
@@ -31,18 +30,6 @@ struct HeaderView: View {
                 }
                 
                 Spacer()
-                
-                let permissao = SessionManager.shared.currentUser?.permissao
-                if permissao == 0 {
-                    Button {
-                        showNewChamadoView.toggle()
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .foregroundColor(.blue.opacity(0.8))
-                            .frame(width: 35, height: 35)
-                    }
-                }
             }
             .padding(.bottom, 25)
             SearchBarView(searchText: $searchText, fetchHelps: {
@@ -55,6 +42,6 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(searchText: .constant("placeholder"), showNewChamadoView: .constant(false), fetchHelps: {})
+        HeaderView(searchText: .constant("placeholder"), fetchHelps: {})
     }
 }
