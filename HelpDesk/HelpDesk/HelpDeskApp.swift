@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 @main
 struct HelpDeskApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            if Auth.auth().currentUser == nil {
+                LoginView()
+            } else {
+                HomeView()
+            }
         }
     }
 }
