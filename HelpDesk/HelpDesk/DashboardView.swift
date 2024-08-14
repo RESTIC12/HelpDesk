@@ -5,14 +5,9 @@ struct DashboardView: View {
 
     @State var selectedTab = "Diário"
     var tabs = ["Diário", "Semanal", "Mensal"]
-    
-    var month = ["May", "Jun", "Jul", "Aug", "Setem"]
-    var weeks = [""]
-    var days = ["Seg", "Ter", "Quar", "Quin", "Sex"]
-    var indicador = ["Chamados Abertos", "Chamados Fechados", "Outros"]
-    
-    // Dados do gráfico de barras
-    var chartData = [
+
+    // Dados para diferentes seleções
+    var dailyData = [
         SavingsDataPoint(month: "Seg", value: 4000),
         SavingsDataPoint(month: "Ter", value: 5000),
         SavingsDataPoint(month: "Quar", value: 6000),
@@ -20,14 +15,27 @@ struct DashboardView: View {
         SavingsDataPoint(month: "Sex", value: 4000)
     ]
     
-    // Dados do gráfico de pizza
+    var weeklyData = [
+        SavingsDataPoint(month: "Semana 1", value: 12000),
+        SavingsDataPoint(month: "Semana 2", value: 15000),
+        SavingsDataPoint(month: "Semana 3", value: 20000),
+        SavingsDataPoint(month: "Semana 4", value: 18000)
+    ]
+    
+    var monthlyData = [
+        SavingsDataPoint(month: "Jan", value: 50000),
+        SavingsDataPoint(month: "Fev", value: 60000),
+        SavingsDataPoint(month: "Mar", value: 70000),
+        SavingsDataPoint(month: "Abr", value: 80000),
+        SavingsDataPoint(month: "Mai", value: 90000)
+    ]
+
     var pieChartData = [
         PieChartDataPoint(indicador: "Chamados Abertos", value: 30),
         PieChartDataPoint(indicador: "Chamados Fechados", value: 60),
         PieChartDataPoint(indicador: "Outros", value: 10)
     ]
-    
-    // Dados do gráfico de linha para as avaliações
+
     var lineChartData = [
         SavingsDataPoint(month: "Jan", value: 4.0),
         SavingsDataPoint(month: "Feb", value: 4.5),
@@ -36,12 +44,13 @@ struct DashboardView: View {
         SavingsDataPoint(month: "May", value: 4.7),
         SavingsDataPoint(month: "Jun", value: 5.0)
     ]
-    
+
     var user: String = "HD Team"
     var grade: Int = 5
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+
             VStack(alignment: .leading, spacing: 10) {
 
                 HStack {
@@ -49,24 +58,24 @@ struct DashboardView: View {
                         .resizable()
                         .frame(width: 40, height: 40)
                         .accessibilityLabel("User Profile Image")
-                    
+
                     Text("Hello")
                         .font(.headline)
                     Spacer()
-                    
+
                     Image("cloud")
                         .resizable()
                         .frame(width: 80, height: 60)
                 }
                 .padding(.horizontal, 10)
-                
+
                 Text("\(user)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.leading, 50)
             }
             .padding()
-            
+
             ScrollView {
                 VStack(alignment: .leading) {
                     Picker("breakdown", selection: $selectedTab) {
@@ -75,19 +84,22 @@ struct DashboardView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    
+                    .onChange(of: selectedTab) { _ in
+                        // Trigga a atualização dos gráficos
+                    }
+
                     // Gráfico de Barras
                     Chart {
-                        ForEach(chartData) { item in
+                        ForEach(dataForSelectedTab()) { item in
                             BarMark(
-                                x: .value("Dia", item.month ?? ""), // Descompactando o valor opcional
+                                x: .value("Período", item.month ?? ""),
                                 y: .value("Valor", item.value)
                             )
                         }
                     }
                     .frame(height: 200)
                     .padding()
-                    
+
                     // Gráfico de Pizza
                     Chart {
                         ForEach(pieChartData) { item in
@@ -106,38 +118,53 @@ struct DashboardView: View {
                     }
                     .frame(height: 200)
                     .padding()
-                    
-                    VStack(spacing: 20) {
+
+                    VStack {
+                        Text("Métrica de Chamados")
+                            .fontWeight(.bold)
+                            .font(.title2)
+                            
                         HStack {
                             Text("30")
                             Text("Qtd de chamados abertos")
-                            
+
                             Text("60")
                             Text("Qtd de chamados fechados")
                         }
                         .padding()
-                        
+                        .background(Color.blueTertiary)
+                        .cornerRadius(12)
+                        .frame(width: 350)
+                        .padding()
+                    }
+
+                    Spacer()
+
+                    VStack {
+                        Text("Indicador de Produtividade de Suporte")
+                            .fontWeight(.bold)
+                            .font(.title2)
+
                         HStack {
                             Text("60 min")
                             Text("Tempo médio de respostas")
-                            
+
                             Text("1 mil")
                             Text("Qtd de chamados totais")
                         }
                         .padding()
+                        .background(Color.blueTertiary)
+                        .cornerRadius(12)
+                        .frame(width: 350)
+                        .padding()
                     }
-                    .padding()
-                    .background(Color.blueTertiary)
-                    .cornerRadius(12)
-                    .frame(maxWidth: .infinity)
-                    .padding()
 
                     VStack {
                         Text("Como somos vistos por nossos usuários?")
                             .fontWeight(.bold)
                             .font(.title2)
                             .multilineTextAlignment(.trailing)
-                        
+
                         HStack {
                             VStack {
                                 Image(systemName: "person.circle")
@@ -153,17 +180,17 @@ struct DashboardView: View {
                             )
                             .fontWeight(.light)
                             .font(.system(size: 14))
-                            
+
                             VStack {
                                 Text("1 mil avaliações")
                                     .textCase(.uppercase)
                                     .font(.system(size: 12))
-                                
+
                                 Text("\(grade)")
                                     .bold()
                                     .padding(.horizontal, 50)
                                     .font(.system(size: 28))
-                                
+
                                 HStack {
                                     Image(.star)
                                         .resizable()
@@ -189,11 +216,11 @@ struct DashboardView: View {
                             Text("Avaliações ao longo do tempo")
                                 .font(.headline)
                                 .padding(10)
-                            
+
                             Chart {
                                 ForEach(lineChartData) { item in
                                     LineMark(
-                                        x: .value("Mês", item.month ?? ""), // Descompactando o valor opcional
+                                        x: .value("Mês", item.month ?? ""),
                                         y: .value("Nota", item.value)
                                     )
                                 }
@@ -210,13 +237,27 @@ struct DashboardView: View {
         .background(Color.blue.opacity(0.05))
         .edgesIgnoringSafeArea(.all)
     }
+
+    // Função que retorna os dados de acordo com a aba selecionada
+    func dataForSelectedTab() -> [SavingsDataPoint] {
+        switch selectedTab {
+        case "Diário":
+            return dailyData
+        case "Semanal":
+            return weeklyData
+        case "Mensal":
+            return monthlyData
+        default:
+            return dailyData
+        }
+    }
     
     struct SavingsDataPoint: Identifiable {
         let month: String?
         let value: Double
         var id = UUID()
     }
-    
+
     struct PieChartDataPoint: Identifiable {
         let indicador: String
         let value: Double

@@ -43,6 +43,14 @@ struct UserProfileView: View {
                     .cornerRadius(8)
                     .padding(.horizontal, 10)  // Espaçamento horizontal
                     .bold()
+                
+                Text("Dashboard")
+                    .frame(width: 356, height: 50)  // Define a largura e a altura desejada
+                    .background(.cyan)
+                    .foregroundColor(.black)
+                    .cornerRadius(8)
+                    .padding(.horizontal, 10)  // Espaçamento horizontal
+                    .bold()
                     
                     Text("Privacidade")
                         .frame(width: 356, height: 50)  // Define a largura e a altura desejada
