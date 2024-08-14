@@ -55,7 +55,9 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 40)
             
-            TextField("", text: $email, prompt: Text("Digite seu email").foregroundColor(.callMeDesk.opacity(0.5)))
+            TextField("", text: $email, prompt: Text("Digite seu email")
+                    .foregroundColor(.callMeDesk.opacity(0.5))
+                )
                 .font(.custom("Poppins-Regular", size: 12))
                 .frame(height: 45)
                 .cornerRadius(8.0)
@@ -72,15 +74,16 @@ struct LoginView: View {
             
             HStack {
                 
-                SecureField("", text: $password, prompt: Text("Digite sua senha").foregroundColor(.callMeDesk.opacity(0.5)))
-                    .font(.custom("Poppins-Regular", size: 12))
-                    .frame(height: 45)
-                    .cornerRadius(8.0)
-                    .padding(.horizontal)
-                    .overlay(RoundedRectangle(cornerRadius: 16)
-                        .stroke(.callMeDesk, lineWidth: 0.5))
-                    .accessibilityLabel(Text("Digite sua senha"))
-                    .foregroundColor(.callMeDesk)
+                SecureField("", text: $password, prompt: Text("Digite sua senha").foregroundColor(.callMeDesk.opacity(0.5))
+                )
+                .font(.custom("Poppins-Regular", size: 12))
+                .frame(height: 45)
+                .cornerRadius(8.0)
+                .padding(.horizontal)
+                .overlay(RoundedRectangle(cornerRadius: 16)
+                    .stroke(.callMeDesk, lineWidth: 0.5))
+                .accessibilityLabel(Text("Digite sua senha"))
+                .foregroundColor(.callMeDesk)
             }
             
             
@@ -123,17 +126,16 @@ struct LoginView: View {
             Image("Nuvens")
                 .padding(.top, 20)
             
-            if !errorMessage.isEmpty {
-                Text(errorMessage)
-                    .font(.callout)
-                    .foregroundColor(.white)
-                    .padding(.top, 4)
-            }
-            
         }
         .fullScreenCover(isPresented: $isShowingHomeView, content: {
             if isShowingHomeView && isLoggedIn {
                 HomeView()
+            }
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .font(.callout)
+                    .foregroundColor(.red)
+                    .padding(.top, 4)
             }
         })
         .padding(15)
@@ -155,9 +157,7 @@ struct LoginView: View {
                     isLoggedIn = true
                     isShowingHomeView = true
                     print("Usuário logado: \(user.uid)")
-
                 }
-                
             }
         }
     }
