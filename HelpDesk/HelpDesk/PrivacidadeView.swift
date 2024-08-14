@@ -73,7 +73,7 @@ struct PrivacidadeView: View {
                 }
                     
             }
-        } .background(.bluePrimary)
+        } 
         
     }
 }

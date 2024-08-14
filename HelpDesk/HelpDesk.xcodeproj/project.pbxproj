@@ -23,6 +23,7 @@
 		16CE2E1C2C53092000295A69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 16CE2E1B2C53092000295A69 /* FirebaseStorage */; };
 		16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E212C584C5F00295A69 /* NewChamadoView.swift */; };
 		16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */; };
+		D8203DE02C6C21D0005E5FC9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8203DDF2C6C21D0005E5FC9 /* AboutView.swift */; };
 		D88434772C59B1730043892E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D88434762C59B1730043892E /* GoogleService-Info.plist */; };
 		D88434792C59B17A0043892E /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D88434782C59B17A0043892E /* background.png */; };
 		D884347B2C59B4E60043892E /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884347A2C59B4E60043892E /* UserProfileView.swift */; };
@@ -31,6 +32,7 @@
 		D8B2C2762C5C55A3000FD667 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2C2752C5C55A3000FD667 /* DashboardView.swift */; };
 		D8B2C2782C5C584F000FD667 /* PrivacidadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2C2772C5C584F000FD667 /* PrivacidadeView.swift */; };
 		D8DE81FE2C66EABF00A6CF91 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DE81FD2C66EABF00A6CF91 /* SettingsView.swift */; };
+		D8F462422C6C0D110039082D /* AskedQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F462412C6C0D110039082D /* AskedQuestionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		16CE2E1D2C530AC100295A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16CE2E212C584C5F00295A69 /* NewChamadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChamadoView.swift; sourceTree = "<group>"; };
 		16CE2E232C5992F700295A69 /* ChamadoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamadoDetailView.swift; sourceTree = "<group>"; };
+		D8203DDF2C6C21D0005E5FC9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		D88434762C59B1730043892E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D88434782C59B17A0043892E /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../../../../../Downloads/background.png; sourceTree = "<group>"; };
 		D884347A2C59B4E60043892E /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		D8B2C2752C5C55A3000FD667 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		D8B2C2772C5C584F000FD667 /* PrivacidadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacidadeView.swift; sourceTree = "<group>"; };
 		D8DE81FD2C66EABF00A6CF91 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D8F462412C6C0D110039082D /* AskedQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskedQuestionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,8 @@
 				16CE2E072C5306F300295A69 /* Manager */,
 				16CE2E042C53068700295A69 /* Application */,
 				16CE2DF52C53059500295A69 /* HelpDeskApp.swift */,
-				16CE2DF72C53059500295A69 /* ContentView.swift */,
 				16CE2DF92C53059500295A69 /* Assets.xcassets */,
+				16CE2DF72C53059500295A69 /* ContentView.swift */,
 				D88434762C59B1730043892E /* GoogleService-Info.plist */,
 				16CE2DFB2C53059500295A69 /* Preview Content */,
 				D884347A2C59B4E60043892E /* UserProfileView.swift */,
@@ -107,6 +111,8 @@
 				D8B2C2752C5C55A3000FD667 /* DashboardView.swift */,
 				D8B2C2772C5C584F000FD667 /* PrivacidadeView.swift */,
 				D8986F1B2C6586180036C09E /* DraftView.swift */,
+				D8F462412C6C0D110039082D /* AskedQuestionsView.swift */,
+				D8203DDF2C6C21D0005E5FC9 /* AboutView.swift */,
 			);
 			path = HelpDesk;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8DE81FE2C66EABF00A6CF91 /* SettingsView.swift in Sources */,
+				D8F462422C6C0D110039082D /* AskedQuestionsView.swift in Sources */,
+				D8203DE02C6C21D0005E5FC9 /* AboutView.swift in Sources */,
 				16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */,
 				D8B2C2762C5C55A3000FD667 /* DashboardView.swift in Sources */,
 				16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */,
