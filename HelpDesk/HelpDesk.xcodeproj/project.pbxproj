@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163885872C6C0FE400A08E79 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163885862C6C0FE400A08E79 /* UserView.swift */; };
 		16CE2DF62C53059500295A69 /* HelpDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF52C53059500295A69 /* HelpDeskApp.swift */; };
 		16CE2DF82C53059500295A69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF72C53059500295A69 /* ContentView.swift */; };
 		16CE2DFA2C53059500295A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16CE2DF92C53059500295A69 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		163885862C6C0FE400A08E79 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		16CE2DF22C53059500295A69 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CE2DF52C53059500295A69 /* HelpDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskApp.swift; sourceTree = "<group>"; };
 		16CE2DF72C53059500295A69 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163885852C6C0FC800A08E79 /* UserView */ = {
+			isa = PBXGroup;
+			children = (
+				163885862C6C0FE400A08E79 /* UserView.swift */,
+			);
+			path = UserView;
+			sourceTree = "<group>";
+		};
 		16CE2DE92C53059500295A69 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 		16CE2E0C2C53077900295A69 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				163885852C6C0FC800A08E79 /* UserView */,
 				7AB3334B2C62D3AA00667C1B /* ChamadoDetail */,
 				A966384D2C64232600BB9BAC /* Fonts */,
 				7A30C52B2C5C3C7C00127E62 /* HomeView */,
@@ -386,6 +397,7 @@
 				16CE2E102C5307DF00295A69 /* HomeView.swift in Sources */,
 				16CE2E262C59BA9800295A69 /* CardView.swift in Sources */,
 				16CE2E092C53070400295A69 /* User.swift in Sources */,
+				163885872C6C0FE400A08E79 /* UserView.swift in Sources */,
 				7A30C5232C5C3A4300127E62 /* HelpDesk.swift in Sources */,
 				7A30C52A2C5C3A9F00127E62 /* NewChamadoViewModel.swift in Sources */,
 				16CE2E062C5306A000295A69 /* AppDelegate.swift in Sources */,
