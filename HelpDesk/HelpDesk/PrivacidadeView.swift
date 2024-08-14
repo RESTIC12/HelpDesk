@@ -1,15 +1,12 @@
-//
-//  PrivacidadeView.swift
-//  HelpDesk
-//
-//  Created by Larissa Martins Correa on 01/08/24.
-//
-
 import SwiftUI
 
 struct PrivacidadeView: View {
     
     var user = "HD Team"
+    
+    // State para controlar o alerta
+    @State private var showAlert = false
+    @State private var alertMessage = ""
 
     var body: some View {
         
@@ -41,9 +38,6 @@ struct PrivacidadeView: View {
             .padding()
             .background(.blueTertiary)
             
-    
-            
-            
             ScrollView {
                 Text("Termo de Privacidade e de Proteção de Dados")
                     .font(.title2)
@@ -55,29 +49,48 @@ struct PrivacidadeView: View {
 
                 
                 HStack(spacing: 20) {  // Adiciona espaçamento entre os botões
-                    Text("Eu aceito o termo")
-                        .frame(width: 160, height: 50)  // Define a largura e a altura desejada
-                        .background(.blueTertiary)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .padding(.horizontal, 10)  // Espaçamento horizontal
-                        .bold()
+                    Button(action: {
+                        // Exibe o alerta para "Eu aceito o termo"
+                        alertMessage = "Você aceitou os termos."
+                        showAlert = true
+                    }) {
+                        Text("Eu aceito o termo")
+                            .frame(width: 160, height: 50)  // Define a largura e a altura desejada
+                            .background(.blueTertiary)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                            .padding(.horizontal, 10)  // Espaçamento horizontal
+                            .bold()
+                    }
                     
-                    Text("Eu recuso o termo")
-                        .frame(width: 160, height: 50)  // Define a largura e a altura desejada
-                        .background(.blueTertiary)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .padding(.horizontal, 10)  // Espaçamento horizontal
-                        .bold()
+                    Button(action: {
+                        // Exibe o alerta para "Eu recuso o termo"
+                        alertMessage = "Você recusou os termos."
+                        showAlert = true
+                    }) {
+                        Text("Eu recuso o termo")
+                            .frame(width: 160, height: 50)  // Define a largura e a altura desejada
+                            .background(.blueTertiary)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                            .padding(.horizontal, 10)  // Espaçamento horizontal
+                            .bold()
+                    }
                 }
                     
             }
-        } 
-        
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Termos de Privacidade"),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 
 #Preview {
     PrivacidadeView()
 }
+
