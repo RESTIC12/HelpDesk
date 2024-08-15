@@ -5,8 +5,8 @@
 //  Created by Joao Rocha on 01/08/24.
 //
 
-//import Foundation
-//
+import Foundation
+
 // public struct HelpDesk: Codable, Equatable, Hashable {
 //     let id: String?
 //     let uid: String
@@ -22,12 +22,11 @@
 //    var solucionado: Bool
 //}
 
-import Foundation
 import FirebaseFirestoreSwift
 
 public struct HelpDesk: Codable, Equatable, Hashable, Identifiable {
-    @DocumentID public var id: String? 
-    let uid: String
+    @DocumentID public var id: String?
+    let uid: String?
     let details: HelpRoot
 }
 
@@ -39,3 +38,4 @@ public struct HelpRoot: Codable, Equatable, Hashable {
     let prioridade: String
     var solucionado: Bool
 }
+

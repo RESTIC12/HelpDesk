@@ -161,7 +161,6 @@ struct LoginView: View {
                     isLoggedIn = true
                     isShowingHomeView = true
                     print("Usuário logado: \(user.uid)")
-
                 }
                 
             }

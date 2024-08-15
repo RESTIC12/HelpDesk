@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1604AA752C6E5BBE00D3DE4D /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */; };
 		163885872C6C0FE400A08E79 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163885862C6C0FE400A08E79 /* UserView.swift */; };
 		16CE2DF62C53059500295A69 /* HelpDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF52C53059500295A69 /* HelpDeskApp.swift */; };
 		16CE2DF82C53059500295A69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF72C53059500295A69 /* ContentView.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1604AA762C6E70D800D3DE4D /* HelpDesk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpDesk.entitlements; sourceTree = "<group>"; };
 		163885862C6C0FE400A08E79 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		16CE2DF22C53059500295A69 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CE2DF52C53059500295A69 /* HelpDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskApp.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1604AA752C6E5BBE00D3DE4D /* FirebaseMessaging in Frameworks */,
 				16CE2E162C53092000295A69 /* FirebaseDatabase in Frameworks */,
 				16CE2E142C53092000295A69 /* FirebaseAuth in Frameworks */,
 				16CE2E182C53092000295A69 /* FirebaseFirestore in Frameworks */,
@@ -146,6 +149,7 @@
 		16CE2DF42C53059500295A69 /* HelpDesk */ = {
 			isa = PBXGroup;
 			children = (
+				1604AA762C6E70D800D3DE4D /* HelpDesk.entitlements */,
 				7A086B7B2C6AB5A000A6505E /* Utils */,
 				7A30C5212C5C3A3000127E62 /* API */,
 				16CE2E272C5B01A500295A69 /* Components */,
@@ -311,6 +315,7 @@
 				16CE2E172C53092000295A69 /* FirebaseFirestore */,
 				16CE2E192C53092000295A69 /* FirebaseFirestoreSwift */,
 				16CE2E1B2C53092000295A69 /* FirebaseStorage */,
+				1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */,
 			);
 			productName = HelpDesk;
 			productReference = 16CE2DF22C53059500295A69 /* HelpDesk.app */;
@@ -540,6 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelpDesk/HelpDesk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HelpDesk/Preview Content\"";
@@ -571,6 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelpDesk/HelpDesk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HelpDesk/Preview Content\"";
@@ -632,6 +639,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseMessaging;
+		};
 		16CE2E132C53092000295A69 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16CE2E032C53067600295A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
