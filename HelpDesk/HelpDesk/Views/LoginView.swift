@@ -24,8 +24,19 @@ struct LoginView: View {
                 .padding()
         }
         .ignoresSafeArea()
+        .onAppear {
+            if sessionManager.currentUser == nil {
+                isShowingHomeView = false
+            }
+        }
         .onReceive(sessionManager.$currentUser) { currentUser in
             isLoggedIn = currentUser != nil
+            if isLoggedIn {
+                isShowingHomeView = true
+            }
+        }
+        .fullScreenCover(isPresented: $isShowingHomeView) {
+            HomeView()
         }
     }
     
@@ -130,11 +141,7 @@ struct LoginView: View {
             
             
         }
-        .fullScreenCover(isPresented: $isShowingHomeView, content: {
-            if isShowingHomeView && isLoggedIn {
-                HomeView()
-            }
-        })
+        
         .padding(15)
         
     }

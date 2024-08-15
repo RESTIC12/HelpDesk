@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     var statusHelp = ["Em aberto", "Concluídos"]
+    @Environment(\.dismiss) var dismiss
+    @State var dismissView: Bool = false
     @State var showAlert = false
     @State var showNewChamadoView = false
     @State var searchText: String = ""
@@ -19,6 +21,7 @@ struct HomeView: View {
             fromUrl: URL(string: "http://localhost:3000/help")!
         )
     )
+    @State private var isShowingLoginView = false
 
     var body: some View {
         
@@ -28,7 +31,10 @@ struct HomeView: View {
                     viewModel.fetchChamados(filter: searchText, solucionado: openHelpOrNotText == "Concluídos", completion: {
                         showAlert = true
                     })
+                } dismissUserView: {
+                    isShowingLoginView = true
                 }
+                
                 
                 Picker("", selection: $openHelpOrNotText) {
                     ForEach(statusHelp, id: \.self) {
@@ -43,6 +49,9 @@ struct HomeView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 .padding(.bottom, 15)
+                .fullScreenCover(isPresented: $isShowingLoginView, content: {
+                    LoginView()
+                })
                 
                 let permissao = SessionManager.shared.currentUser?.permissao
                 HStack {
@@ -101,6 +110,9 @@ struct HomeView: View {
                 
             }
             .background(Color.backGround)
+        }
+        .fullScreenCover(isPresented: $dismissView) {
+            LoginView()
         }
         .alert("Ops!", isPresented: $showAlert) {
             Button("OK", role: .cancel) {
