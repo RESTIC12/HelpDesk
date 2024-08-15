@@ -12,15 +12,10 @@ final class ChamadoDetailViewModel : ObservableObject {
     @Published var help: HelpDesk
     private var service: HelpService
     
-    init(help: HelpDesk,
-         service: HelpService = HelpServiceImp(
-            networkClient: NetworkService(session: URLSession.shared),
-            fromUrl: URL(string: "http://localhost:3000/help")!
-         )
-    ) {
-        self.help = help
-        self.service = service
-    }
+    init(help: HelpDesk, service: HelpService = HelpServiceImp()) {
+            self.help = help
+            self.service = service
+        }
     
     func updateHelp(completion: @escaping (Bool) -> Void) {
         let helpCopy = HelpDesk(
