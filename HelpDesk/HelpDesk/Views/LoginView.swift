@@ -55,7 +55,7 @@ struct LoginView: View {
                 .font(.custom("Poppins-Regular", size: 32))
                 .padding(.top, 10)
                 .padding(.bottom, 5)
-                            
+            
             Text("Let's get to work")
                 .font(.custom("Poppins-Regular", size: 16))
                 .foregroundColor(.callMeDesk)
@@ -66,18 +66,18 @@ struct LoginView: View {
                 .padding(.top, 40)
             
             TextField("", text: $email, prompt: Text("Digite seu email")
-                    .foregroundColor(.callMeDesk.opacity(0.5))
-                )
-                .font(.custom("Poppins-Regular", size: 12))
-                .frame(height: 45)
-                .cornerRadius(8.0)
-                .padding(.horizontal)
-                .overlay(RoundedRectangle(cornerRadius: 16)
-                    .stroke(.callMeDesk, lineWidth: 0.5))
-                .accessibilityLabel(Text("Digite seu email"))
-                .foregroundColor(.callMeDesk)
-                .autocapitalization(.none)
-                            
+                .foregroundColor(.callMeDesk.opacity(0.5))
+            )
+            .font(.custom("Poppins-Regular", size: 12))
+            .frame(height: 45)
+            .cornerRadius(8.0)
+            .padding(.horizontal)
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                .stroke(.callMeDesk, lineWidth: 0.5))
+            .accessibilityLabel(Text("Digite seu email"))
+            .foregroundColor(.callMeDesk)
+            .autocapitalization(.none)
+            
             Text("Senha")
                 .font(.custom("Poppins-Regular", size: 16))
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -142,7 +142,7 @@ struct LoginView: View {
                 .foregroundColor(.callMeDesk)
                 
             }.padding(.top, 5)
-              
+            
             Image("Nuvens")
                 .padding(.top, 20)
             
@@ -158,9 +158,6 @@ struct LoginView: View {
                     .padding(.top, 4)
             }
         })
-            
-        }
-        
         .padding(15)
         
     }
@@ -185,6 +182,8 @@ struct LoginView: View {
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
