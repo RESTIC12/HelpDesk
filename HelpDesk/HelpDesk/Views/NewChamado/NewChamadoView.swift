@@ -17,11 +17,8 @@ struct NewChamadoView: View {
     @State private var selectedpriority: String = "Baixa"
     @Binding var isPresented: Bool
     @StateObject var viewModel = NewChamadoViewModel(
-        service: HelpServiceImp(
-            networkClient: NetworkService(session: URLSession.shared),
-            fromUrl: URL(string: "http://localhost:3000/help")!
+            service: HelpServiceImp()
         )
-    )
     
     let priority = ["Baixa", "Media", "Alta"]
     let departments = ["RH", "TI"]

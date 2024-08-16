@@ -15,12 +15,9 @@ struct HomeView: View {
     @State var showNewChamadoView = false
     @State var searchText: String = ""
     @State var openHelpOrNotText: String = "Em aberto"
-    @StateObject var viewModel = HomeViewModel (
-        service: HelpServiceImp(
-            networkClient: NetworkService(session: URLSession.shared),
-            fromUrl: URL(string: "http://localhost:3000/help")!
+    @StateObject var viewModel = HomeViewModel(
+            service: HelpServiceImp()
         )
-    )
     @State private var isShowingLoginView = false
 
     var body: some View {
