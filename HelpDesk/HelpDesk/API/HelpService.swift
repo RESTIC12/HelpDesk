@@ -96,7 +96,7 @@ public enum HelpDeskResultError: Swift.Error {
                  return
              }
              let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-             print("-----> responseJSON: \(responseJSON)\n")
+             print("-----> responseJSON: \(String(describing: responseJSON))\n")
              if let responseJSON = responseJSON as? [String: Any] {
                  print("-----> responseJSON: \(responseJSON)")
              }
