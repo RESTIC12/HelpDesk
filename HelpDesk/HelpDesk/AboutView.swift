@@ -10,17 +10,12 @@ import SwiftUI
 struct AboutView: View {
     var body: some View {
         HStack {
-            Image(systemName: "arrowshape.backward.fill")
-                .resizable()
-                .frame(width: 25, height: 25)
-
-            
-                .padding(.horizontal, 23)
             
             Text("Sobre o call me desk")
                 .textCase(.uppercase)
+                .font(.title2)
                 .bold()
-            
+                .foregroundColor(.blueTertiary)
                 .padding(20)
             
         }
@@ -30,8 +25,9 @@ struct AboutView: View {
                 Text("O que é o Call me Desk?")
                     .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
                     .fontWeight(.heavy)
+                    .foregroundColor(.blueTertiary)
                 
-                Text("")
+                
                 
                 JustifiedTextView(
                     text: "Lorem ipsum dolor sit amet. Et suscipit autem et modi eius ut expedita quisquam et omnis voluptatem eos quidem pariatur. Eum voluptatem deleniti et omnis omnis id Quis facilis et dolores soluta. Non blanditiis necessitatibus et voluptate vero ea quaerat consequuntur.",
@@ -44,6 +40,8 @@ struct AboutView: View {
                 Text("Quem desenvolve o Call Me Desk?")
                     .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
                     .fontWeight(.heavy)
+                    .foregroundColor(.blueTertiary)
+
                 
                 HStack {
                     Image(.useer)
@@ -54,8 +52,10 @@ struct AboutView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Ângelo Gabriel")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
                             .textCase(.uppercase)
+                            .foregroundColor(.blueTertiary)
+
                         Text("Cargo")
                         Text("IREDE")
                         Text("ver no Linkedln")
@@ -73,8 +73,10 @@ struct AboutView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Íkaro")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
                             .textCase(.uppercase)
+                            .foregroundColor(.blueTertiary)
+
                         Text("Cargo")
                         Text("IREDE")
                         Text("ver no Linkedln")
@@ -91,7 +93,8 @@ struct AboutView: View {
                     
                     VStack(alignment: .leading) {
                         Text("João Matheus")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blueTertiary)
                             .textCase(.uppercase)
                         
                         Text("Cargo")
@@ -110,7 +113,8 @@ struct AboutView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Josimar")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blueTertiary)
                             .textCase(.uppercase)
                         
                         Text("Cargo")
@@ -129,7 +133,8 @@ struct AboutView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Larissa Corrêa")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blueTertiary)
                             .textCase(.uppercase)
                         
                         Text("Cargo")
@@ -147,7 +152,8 @@ struct AboutView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Victor")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blueTertiary)
                             .textCase(.uppercase)
                         
                         Text("Cargo")

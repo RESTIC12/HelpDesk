@@ -8,39 +8,50 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
-    let settingsOptions = ["Notificações", "Segurança", "Privacidade", "Aparência", "Conta", "Sobre o App"]
-    
+
+    let settingsOptions = ["Notificações", "Segurança", "Privacidade", "Conta", "Sobre o App"]
+
+    @State private var showLogoutAlert = false
+    @State private var showDeleteAccountAlert = false
+
     var body: some View {
-        
         NavigationView {
-            VStack {
-                VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading) {
+
+                HStack {
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("Configurações")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.top, 40)
+
+                        Text("Gerencie suas preferências e configurações de conta.")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.bottom, 25)
+                        
+                    }
+                    .padding(.horizontal)
+                    Image("cloud")
+                        .resizable()
+                        .frame(width: 80, height: 60)
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 30)
                     
-                    Text("Configurações")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.top, 40)
-                    
-                    Text("Gerencie suas preferências e configurações de conta.")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    
-                }.padding(.horizontal)
-                
+                }
+
                 List {
                     ForEach(settingsOptions, id: \.self) { option in
-                        NavigationLink(
-                            destination: destinationView(for: option)) {
-                                Text(option)
-                                    .fontWeight(.semibold)
-                            }
+                        NavigationLink(destination: destinationView(for: option)) {
+                            Text(option)
+                                .fontWeight(.semibold)
+                        }
                     }
                 }
-                
+
                 HStack(spacing: 20) {
                     Button(action: {
-                        // Ação para encerrar a sessão
+                        showLogoutAlert = true
                     }) {
                         Text("Encerrar a sessão")
                             .frame(width: 160, height: 50)
@@ -49,9 +60,19 @@ struct SettingsView: View {
                             .cornerRadius(8)
                             .bold()
                     }
-                    
+                    .alert(isPresented: $showLogoutAlert) {
+                        Alert(
+                            title: Text("Encerrar Sessão"),
+                            message: Text("Você tem certeza de que deseja encerrar a sessão?"),
+                            primaryButton: .destructive(Text("Encerrar")) {
+                                // Ação para encerrar a sessão
+                            },
+                            secondaryButton: .cancel(Text("Cancelar"))
+                        )
+                    }
+
                     Button(action: {
-                        // Ação para excluir a conta
+                        showDeleteAccountAlert = true
                     }) {
                         Text("Excluir a conta")
                             .frame(width: 160, height: 50)
@@ -60,28 +81,34 @@ struct SettingsView: View {
                             .cornerRadius(8)
                             .bold()
                     }
+                    .alert(isPresented: $showDeleteAccountAlert) {
+                        Alert(
+                            title: Text("Excluir Conta"),
+                            message: Text("Você tem certeza de que deseja excluir a conta? Esta ação é irreversível."),
+                            primaryButton: .destructive(Text("Excluir")) {
+                                // Ação para excluir a conta
+                            },
+                            secondaryButton: .cancel(Text("Cancelar"))
+                        )
+                    }
                 }
                 .padding()
             }
             .navigationBarHidden(true)
         }
     }
-    
+
     @ViewBuilder
     private func destinationView(for option: String) -> some View {
         switch option {
         case "Notificações":
             NotificationsView()
-        case "Segurança":
-            SecurityView()
         case "Privacidade":
-            PrivacyView()
-        case "Aparência":
-            AppearanceView()
+            PrivacidadeView()
         case "Conta":
-            AccountView()
+            UserProfileView()
         case "Sobre o App":
-            AboutAppView()
+            AboutView()
         default:
             EmptyView()
         }
@@ -94,37 +121,12 @@ struct NotificationsView: View {
     }
 }
 
-struct SecurityView: View {
-    var body: some View {
-        Text("Configurações de Segurança")
-    }
-}
-
-struct PrivacyView: View {
-    var body: some View {
-        Text("Configurações de Privacidade")
-    }
-}
-
-struct AppearanceView: View {
-    var body: some View {
-        Text("Configurações de Aparência")
-    }
-}
-
 struct AccountView: View {
     var body: some View {
         Text("Configurações de Conta")
     }
 }
 
-struct AboutAppView: View {
-    var body: some View {
-        Text("Informações Sobre o App")
-    }
-}
-
 #Preview {
     SettingsView()
 }
-
