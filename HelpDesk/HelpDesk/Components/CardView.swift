@@ -35,7 +35,6 @@ struct CardView: View {
        
                 Text(descricaoChamado)
                     .font(.custom("Poppins-light", size: 12))
-                    .foregroundColor(.black.opacity(0.8))
                     .multilineTextAlignment(.leading)
                     .accessibilityLabel(Text("\(descricaoChamado)"))
                     .padding(.top, -2)
