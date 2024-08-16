@@ -16,7 +16,8 @@ struct LoginView: View {
     @State private var isLoggedIn = false
     @State private var errorMessage = ""
     @State private var isShowingHomeView = false
-    @State private var showAlert = false
+    @State private var showForgetPsw = false
+    @State private var showSignUp = false
     
     var body: some View {
         ZStack {
@@ -100,9 +101,9 @@ struct LoginView: View {
             
             
             Button("Esqueci minha senha"){
-                showAlert = true
+                showForgetPsw = true
             }
-            .alert("Verifique seu e-mail", isPresented: $showAlert, actions: {
+            .alert("Verifique seu e-mail", isPresented: $showForgetPsw, actions: {
                 Button("Ok"){}
             })
             .font(.custom("Poppins-Medium", size: 12))
@@ -140,9 +141,9 @@ struct LoginView: View {
                     .foregroundColor(.callMeDesk)
                 
                 Button("Sign Up!"){
-                    showAlert = true
+                    showSignUp = true
                 }
-                .alert("Solicitação de acesso recebida!", isPresented: $showAlert, actions: {
+                .alert("Solicitação de acesso recebida!", isPresented: $showSignUp, actions: {
                     Button("Ok") {}
                 })
                 .font(.custom("Poppins-Medium", size: 12))
