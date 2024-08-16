@@ -55,7 +55,7 @@ struct LoginView: View {
                 .font(.custom("Poppins-Regular", size: 32))
                 .padding(.top, 10)
                 .padding(.bottom, 5)
-                            
+            
             Text("Let's get to work")
                 .font(.custom("Poppins-Regular", size: 16))
                 .foregroundColor(.callMeDesk)
@@ -65,23 +65,28 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 40)
             
-            TextField("Digite seu email", text: $email)
-                .font(.custom("Poppins-Regular", size: 12))
-                .frame(height: 45)
-                .cornerRadius(8.0)
-                .padding(.horizontal)
-                .overlay(RoundedRectangle(cornerRadius: 16)
-                    .stroke(.callMeDesk, lineWidth: 0.5))
-                .accessibilityLabel(Text("Digite seu email"))
-                .foregroundColor(.callMeDesk)
-                .autocapitalization(.none)
-                            
+            TextField("", text: $email, prompt: Text("Digite seu email")
+                .foregroundColor(.callMeDesk.opacity(0.5))
+            )
+            .font(.custom("Poppins-Regular", size: 12))
+            .frame(height: 45)
+            .cornerRadius(8.0)
+            .padding(.horizontal)
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                .stroke(.callMeDesk, lineWidth: 0.5))
+            .accessibilityLabel(Text("Digite seu email"))
+            .foregroundColor(.callMeDesk)
+            .autocapitalization(.none)
+            
             Text("Senha")
                 .font(.custom("Poppins-Regular", size: 16))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top)
             
-            SecureField("Digite sua senha", text: $password)
+            HStack {
+                
+                SecureField("", text: $password, prompt: Text("Digite sua senha").foregroundColor(.callMeDesk.opacity(0.5))
+                )
                 .font(.custom("Poppins-Regular", size: 12))
                 .frame(height: 45)
                 .cornerRadius(8.0)
@@ -90,6 +95,8 @@ struct LoginView: View {
                     .stroke(.callMeDesk, lineWidth: 0.5))
                 .accessibilityLabel(Text("Digite sua senha"))
                 .foregroundColor(.callMeDesk)
+            }
+            
             
             Button("Esqueci minha senha"){
                 //Solicitar NOVA senha
@@ -135,13 +142,22 @@ struct LoginView: View {
                 .foregroundColor(.callMeDesk)
                 
             }.padding(.top, 5)
-              
+            
             Image("Nuvens")
                 .padding(.top, 20)
             
-            
         }
-        
+        .fullScreenCover(isPresented: $isShowingHomeView, content: {
+            if isShowingHomeView && isLoggedIn {
+                HomeView()
+            }
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .font(.callout)
+                    .foregroundColor(.red)
+                    .padding(.top, 4)
+            }
+        })
         .padding(15)
         
     }
@@ -162,11 +178,12 @@ struct LoginView: View {
                     isShowingHomeView = true
                     print("Usuário logado: \(user.uid)")
                 }
-                
             }
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
