@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1604AA752C6E5BBE00D3DE4D /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */; };
 		163885872C6C0FE400A08E79 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163885862C6C0FE400A08E79 /* UserView.swift */; };
+		164AF4F02C701379003D0ED2 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 164AF4EF2C701379003D0ED2 /* SwiftJWT */; };
 		16CE2DF62C53059500295A69 /* HelpDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF52C53059500295A69 /* HelpDeskApp.swift */; };
 		16CE2DF82C53059500295A69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF72C53059500295A69 /* ContentView.swift */; };
 		16CE2DFA2C53059500295A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16CE2DF92C53059500295A69 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 				16CE2E142C53092000295A69 /* FirebaseAuth in Frameworks */,
 				16CE2E182C53092000295A69 /* FirebaseFirestore in Frameworks */,
 				16CE2E1C2C53092000295A69 /* FirebaseStorage in Frameworks */,
+				164AF4F02C701379003D0ED2 /* SwiftJWT in Frameworks */,
 				16CE2E1A2C53092000295A69 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +318,7 @@
 				16CE2E192C53092000295A69 /* FirebaseFirestoreSwift */,
 				16CE2E1B2C53092000295A69 /* FirebaseStorage */,
 				1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */,
+				164AF4EF2C701379003D0ED2 /* SwiftJWT */,
 			);
 			productName = HelpDesk;
 			productReference = 16CE2DF22C53059500295A69 /* HelpDesk.app */;
@@ -348,6 +351,7 @@
 			mainGroup = 16CE2DE92C53059500295A69;
 			packageReferences = (
 				16CE2E032C53067600295A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				164AF4EE2C701379003D0ED2 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = 16CE2DF32C53059500295A69 /* Products */;
 			projectDirPath = "";
@@ -628,6 +632,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		164AF4EE2C701379003D0ED2 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 		16CE2E032C53067600295A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -642,6 +654,11 @@
 		1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseMessaging;
+		};
+		164AF4EF2C701379003D0ED2 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 164AF4EE2C701379003D0ED2 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
 		};
 		16CE2E132C53092000295A69 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
