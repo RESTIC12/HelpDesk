@@ -8,19 +8,13 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @Binding var searchText: String
-    var fetchHelps: () -> Void
+    @State var searchText: String = ""
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray.opacity(1))
-            TextField("Buscar Tickets", text: $searchText)
-                .onChange(of: searchText) {
-                    fetchHelps()
-                }
+            TextField("Pesquisar por chamado", text: $searchText)
                 .overlay (
-                    Image(systemName: "x.circle.fill")
-                        .foregroundColor(.gray.opacity(1))
+                    Image(systemName: "xmark.circle.fill")
                         .padding()
                         .offset(x: 10)
                         .opacity(0.8)
@@ -30,17 +24,17 @@ struct SearchBarView: View {
                     , alignment: .trailing
                 )
         }
-        .font(.custom("Poppins-light", size: 14))
+        .font(.headline)
         .padding()
         .background (
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.gray.opacity(0.2))
-                .frame(height: 40)
+            RoundedRectangle(cornerRadius: 25)
+                .fill(.background.opacity(0.8))
+                .shadow(radius: 3)
         )
         .padding()
     }
 }
 
 #Preview {
-    SearchBarView(searchText: .constant(""), fetchHelps: {})
+    SearchBarView()
 }

@@ -37,15 +37,15 @@ public enum HelpDeskResultError: Swift.Error {
      }
 
      public func load(completion: @escaping (HelpService.HelpResult) -> Void) {
-         fromUrl = URL(string:"http:localhost:3000/help")!
+         fromUrl = URL(string:"http://localhost:3000/help")!
          let uid = SessionManager.shared.currentUser?.uid
          switch SessionManager.shared.currentUser?.permissao {
          case 0:
              fromUrl = URL(string: "\(fromUrl)?uid_eq=\(uid!)")!
          case 1:
-             fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=TI")!
+             fromUrl = URL(string: "\(fromUrl)?details.departamento_eq=TI")!
          case 2:
-             fromUrl = URL(string: "\(fromUrl)?help.departamento_eq=RH")!
+             fromUrl = URL(string: "\(fromUrl)?details.departamento_eq=RH")!
          default:
              fromUrl = URL(string: "\(fromUrl)")!
          }
@@ -75,16 +75,19 @@ public enum HelpDeskResultError: Swift.Error {
 
      public func createHelp(_ call: HelpDesk, method: String = "POST", completion: @escaping (Bool) -> Void) {
          guard let jsonData = serializeHelpDesk(helpDesk: call) else {
-                print("Erro ao serializar HelpDesk.")
-                return
+             print("Erro ao serializar HelpDesk.")
+             return
          }
-         let url = URL(string: "http://localhost:3000/help")!
+         var url = URL(string: "http://localhost:3000/help")!
+         if method == "PUT" {
+             url = URL(string: "\(url)/\(call.id ?? "")")!
+         }
          var request = URLRequest(url: url)
          request.httpMethod = method
          request.setValue("\(String(describing: jsonData.count))", forHTTPHeaderField: "Content-Length")
          request.setValue("application/json", forHTTPHeaderField: "Content-Type")
          request.httpBody = jsonData
-
+         
          URLSession.shared.dataTask(with: request) { data, response, error in
              guard let data = data,
                    let response = response as? HTTPURLResponse,
@@ -97,11 +100,11 @@ public enum HelpDeskResultError: Swift.Error {
              if let responseJSON = responseJSON as? [String: Any] {
                  print("-----> responseJSON: \(responseJSON)")
              }
-             if response.statusCode == 201 {
+             if response.statusCode == 201 || response.statusCode == 200 {
                  completion(true)
-             } else {
-                 completion(false)
+                 return
              }
+             completion(false)
          }.resume()
      }
 

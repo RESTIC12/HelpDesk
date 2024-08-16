@@ -9,59 +9,41 @@ import SwiftUI
 
 struct HeaderView: View {
     @Binding var searchText: String
-    var statusHelp = ["Em aberto", "Concluídos"]
-    @Binding var showNewChamadoView: Bool
     var fetchHelps: (() -> Void)
-    
-    var body: some View {
-        VStack {
-            HStack(alignment: .top) {
-                
-                Button {
-                    print("user clicked")
-                } label: {
-                    VStack() {
-                        Image(systemName: "person.fill")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                            .foregroundColor(.gray.opacity(0.5))
-                            .cornerRadius(45/2)
-                        Text("Olá, User 1")
-                            .foregroundColor(.gray)
-                    }
-                }
-                
-                Spacer()
-                
-                Button {
-                    showNewChamadoView.toggle()
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .foregroundColor(.blue.opacity(0.8))
-                        .frame(width: 35, height: 35)
-                }
-                
+    @State var isShowingUserView: Bool = false
+    var dismissUserView: (() -> Void)
 
+    var body: some View {
+        VStack(alignment: .leading) {
+            Button {
+                print("user clicergd")
+                isShowingUserView = true
+            } label: {
+                VStack() {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.gray.opacity(0.5))
+                        .cornerRadius(45/2)
+                    Text("Olá, \(SessionManager.shared.currentUser?.nome ?? "Unknowm")")
+                        .foregroundColor(.gray)
+                        .font(.custom("Poppins-light", size: 12))
+                }
+                .padding(.leading)
             }
-            .padding(.bottom, 25)
             SearchBarView(searchText: $searchText, fetchHelps: {
                 fetchHelps()
             })
-                .padding(.bottom, 10)
-            Picker("What is your favorite color?", selection: $searchText) {
-                ForEach(statusHelp, id: \.self) {
-                    Text($0)
-                }
-            }
-            .pickerStyle(.segmented)
+            .padding(.bottom, 10)
         }
-        .padding(.horizontal, 15)
+        .fullScreenCover(isPresented: $isShowingUserView) {
+            UserView(dismissUserView: dismissUserView)
+        }
     }
 }
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(searchText: .constant("placeholder"), showNewChamadoView: .constant(false), fetchHelps: {})
+        HeaderView(searchText: .constant("placeholder"), fetchHelps: {}, dismissUserView: {})
     }
 }

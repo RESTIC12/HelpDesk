@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Firebase
-import UIKit
 
 struct LoginView: View {
     @StateObject var sessionManager = SessionManager.shared
@@ -25,8 +24,19 @@ struct LoginView: View {
                 .padding()
         }
         .ignoresSafeArea()
+        .onAppear {
+            if sessionManager.currentUser == nil {
+                isShowingHomeView = false
+            }
+        }
         .onReceive(sessionManager.$currentUser) { currentUser in
             isLoggedIn = currentUser != nil
+            if isLoggedIn {
+                isShowingHomeView = true
+            }
+        }
+        .fullScreenCover(isPresented: $isShowingHomeView) {
+            HomeView()
         }
     }
     
@@ -66,6 +76,7 @@ struct LoginView: View {
                     .stroke(.callMeDesk, lineWidth: 0.5))
                 .accessibilityLabel(Text("Digite seu email"))
                 .foregroundColor(.callMeDesk)
+                .autocapitalization(.none)
                             
             Text("Senha")
                 .font(.custom("Poppins-Regular", size: 16))
@@ -94,6 +105,14 @@ struct LoginView: View {
             .foregroundColor(.callMeDesk)
             .frame(maxWidth: .infinity, alignment: .bottomTrailing)
             
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .font(.system(size: 14))
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, -50)
+            }
+            
             Button(action: {
                 signIn()
             }) {
@@ -109,6 +128,7 @@ struct LoginView: View {
             .accessibilityLabel(Text("Login"))
             .padding(.top, 50)
             
+            
             HStack {
                 
                 Text("Não possui uma conta?")
@@ -122,7 +142,7 @@ struct LoginView: View {
                 .foregroundColor(.callMeDesk)
                 
             }.padding(.top, 5)
-            
+              
             Image("Nuvens")
                 .padding(.top, 20)
             
@@ -138,6 +158,9 @@ struct LoginView: View {
                     .padding(.top, 4)
             }
         })
+            
+        }
+        
         .padding(15)
         
     }

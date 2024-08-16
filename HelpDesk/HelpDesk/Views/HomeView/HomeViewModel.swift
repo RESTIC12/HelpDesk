@@ -17,19 +17,21 @@ final class HomeViewModel : ObservableObject {
         self.service = service
     }
     
-    func fetchChamados(filter: String) {
+    func fetchChamados(filter: String, solucionado: Bool, completion: @escaping () -> Void) {
         service.load { result in
             switch result {
             case .success(let helps):
                 DispatchQueue.main.async {
                     if !filter.isEmpty {
-                        self.helps = helps.filter { $0.help.titulo.contains(filter) }
+                        self.helps = helps.filter { call in
+                            return call.details.titulo.contains(filter) && call.details.solucionado == solucionado
+                        }
                         return
                     }
-                    self.helps = helps
+                    self.helps = helps.filter { $0.details.solucionado == solucionado}
                 }
             case .failure(_):
-                print("erro")
+                completion()
             }
         }
     }
