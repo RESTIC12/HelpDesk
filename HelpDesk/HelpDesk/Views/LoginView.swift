@@ -3,11 +3,11 @@
 //  HelpDesk
 //
 //  Created by Victor Brigido on 25/07/24.
+//  Implemented by Josimar Ferreira
 //
 
 import SwiftUI
 import Firebase
-import UIKit
 
 struct LoginView: View {
     @StateObject var sessionManager = SessionManager.shared
@@ -15,98 +15,158 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isLoggedIn = false
     @State private var errorMessage = ""
-    
+    @State private var isShowingHomeView = false
+    @State private var showAlert = false
     
     var body: some View {
-            ZStack {
-                Image("background")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                
-                VStack {
-                    if isLoggedIn {
-                        HomeView()
-                    } else {
-                        loginView
-                    }
-                }
+        ZStack {
+            Color("BackGround")
+            loginView
                 .padding()
-            }
-            .onReceive(sessionManager.$currentUser) { currentUser in
-                isLoggedIn = currentUser != nil
+        }
+        .ignoresSafeArea()
+        .onAppear {
+            if sessionManager.currentUser == nil {
+                isShowingHomeView = false
             }
         }
-
+        .onReceive(sessionManager.$currentUser) { currentUser in
+            isLoggedIn = currentUser != nil
+            if isLoggedIn {
+                isShowingHomeView = true
+            }
+        }
+        .fullScreenCover(isPresented: $isShowingHomeView) {
+            HomeView()
+        }
+    }
+    
     
     var loginView: some View {
-            VStack {
-                
-                Image("imagerobot")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.bottom, -20)
-                
-                TextField("Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .accessibilityLabel(Text("Email"))
-
-
-                SecureField("Senha", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.top, 6)
-                    .accessibilityLabel(Text("Senha"))
-                
-
-                
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .font(.callout)
-                        .foregroundColor(.white)
-                        .padding(.top, 4)
-                }
-                
-                Button(action: {
-                    signIn()
-                }) {
-                    Text("Entrar")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-                .accessibilityLabel(Text("Entrar"))
+        
+        VStack {
+            
+            Text("Call Me Desk")
+                .font(.custom("Poppins-SemiBold", size: 42))
+                .foregroundColor(.callMeDesk)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 85)
+            
+            Text("Log In")
+                .font(.custom("Poppins-Regular", size: 32))
+                .padding(.top, 10)
+                .padding(.bottom, 5)
+            
+            Text("Let's get to work")
+                .font(.custom("Poppins-Regular", size: 16))
+                .foregroundColor(.callMeDesk)
+            
+            Text("Email")
+                .font(.custom("Poppins-Regular", size: 16))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 40)
+            
+            TextField("", text: $email, prompt: Text("Digite seu email")
+                .foregroundColor(.callMeDesk.opacity(0.5))
+            )
+            .font(.custom("Poppins-Regular", size: 12))
+            .frame(height: 45)
+            .cornerRadius(8.0)
+            .padding(.horizontal)
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                .stroke(.callMeDesk, lineWidth: 0.5))
+            .accessibilityLabel(Text("Digite seu email"))
+            .foregroundColor(.callMeDesk)
+            .autocapitalization(.none)
+            
+            Text("Senha")
+                .font(.custom("Poppins-Regular", size: 16))
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top)
+            
+            HStack {
                 
-                
-                
-                
-                HStack(spacing:30) {
-                    
-                    Button("esqueci a senha"){
-                        print("esqueci a senha clicked!")
-                    }
-                    
-                    
-                    Divider()
-                        .background(.blue)
-                    
-                    Button("solicitar cadastro"){
-                        print("fazer cadstro clicked!")
-                    }
-         
-                }
-                .foregroundColor(.white .opacity(0.8))
-                .frame(height: 30)
-                .padding(.top, 20)
-                
-                
-                Spacer()
+                SecureField("", text: $password, prompt: Text("Digite sua senha").foregroundColor(.callMeDesk.opacity(0.5))
+                )
+                .font(.custom("Poppins-Regular", size: 12))
+                .frame(height: 45)
+                .cornerRadius(8.0)
+                .padding(.horizontal)
+                .overlay(RoundedRectangle(cornerRadius: 16)
+                    .stroke(.callMeDesk, lineWidth: 0.5))
+                .accessibilityLabel(Text("Digite sua senha"))
+                .foregroundColor(.callMeDesk)
             }
-            .padding()
-
+            
+            
+            Button("Esqueci minha senha"){
+                showAlert = true
+            }
+            .alert("Verifique seu e-mail", isPresented: $showAlert, actions: {
+                Button("Ok"){}
+            })
+            .font(.custom("Poppins-Medium", size: 12))
+            .foregroundColor(.callMeDesk)
+            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+            
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .font(.system(size: 14))
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, -50)
+            }
+            
+            Button(action: {
+                signIn()
+            }) {
+                Text("Login")
+                    .font(.custom("Poppins-SemiBold", size: 16))
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.callMeDesk)
+                    .cornerRadius(10)
+                    .font(.title3)
+            }
+            .accessibilityLabel(Text("Login"))
+            .padding(.top, 50)
+            
+            
+            HStack {
+                
+                Text("Não possui uma conta?")
+                    .font(.custom("Poppins-Light", size: 12))
+                    .foregroundColor(.callMeDesk)
+                
+                Button("Sign Up!"){
+                    showAlert = true
+                }
+                .alert("Solicitação de acesso recebida!", isPresented: $showAlert, actions: {
+                    Button("Ok") {}
+                })
+                .font(.custom("Poppins-Medium", size: 12))
+                .foregroundColor(.callMeDesk)
+                
+            }.padding(.top, 5)
+            
+            Image("Nuvens")
+                .padding(.top, 20)
+            
+        }
+        .fullScreenCover(isPresented: $isShowingHomeView, content: {
+            if isShowingHomeView && isLoggedIn {
+                HomeView()
+            }
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .font(.callout)
+                    .foregroundColor(.red)
+                    .padding(.top, 4)
+            }
+        })
+        .padding(15)
+        
     }
     
     private func signIn() {
@@ -118,20 +178,19 @@ struct LoginView: View {
                 print(errorMessage)
             } else {
                 if let user = authResult?.user {
-                    sessionManager.signIn(withUser: User(uid: user.uid,
-                                                         nome: "",
-                                                         email: "",
-                                                         permissao: ""
-                    ))
+                    sessionManager.signIn(withUser: user.uid)
                     let notificationFeedback = UINotificationFeedbackGenerator()
                     notificationFeedback.notificationOccurred(.success)
                     isLoggedIn = true
+                    isShowingHomeView = true
                     print("Usuário logado: \(user.uid)")
                 }
             }
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -16,11 +16,14 @@ class SessionManager: ObservableObject {
     private let db = Firestore.firestore()
     static let shared = SessionManager()
     
-    private init() {}
+    private init() {
+        if let currentUser = Auth.auth().currentUser  {
+            signIn(withUser: currentUser.uid)
+        }
+    }
     
-    func signIn(withUser user: User) {
-        currentUser = user
-        fetchUserData(uid: user.uid)
+    func signIn(withUser userId: String) {
+        fetchUserData(uid: userId)
     }
     
     func fetchUserData(uid: String) {
@@ -31,7 +34,7 @@ class SessionManager: ObservableObject {
                 if let data = document.data() {
                     if let nome = data["nome"] as? String,
                        let email = data["email"] as? String,
-                       let permissao = data["permissao"] as? String {
+                       let permissao = data["permissao"] as? Int {
                         
                         let fetchedUser = User(uid: uid, nome: nome, email: email, permissao: permissao)
                         self.currentUser = fetchedUser
