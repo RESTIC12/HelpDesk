@@ -75,7 +75,7 @@ struct LoginView: View {
             .overlay(RoundedRectangle(cornerRadius: 16)
                 .stroke(.callMeDesk, lineWidth: 0.5))
             .accessibilityLabel(Text("Digite seu email"))
-            .foregroundColor(.callMeDesk)
+            .foregroundColor(validatingEmail(email) ? .callMeDesk : .red)
             .autocapitalization(.none)
             
             Text("Senha")
@@ -180,6 +180,46 @@ struct LoginView: View {
                 }
             }
         }
+    }
+
+    private func validatingEmail(email: String) -> Bool {
+        var isValid = true
+        //var message: String = "E-mail válido!"
+
+        let validChar: String = "abcdefghijklmnopqrstuvwxyz"
+        let validNum: String = "0123456789"
+        let validSimbol: String = "._"
+
+        let charValid: String = validChar + validNum + validSimbol
+
+        if(!email.contains("@") || email.contains(" ") || !validChar.contains(email.startIndex)) {
+            isValid = false
+          //  message = "E-mail INVÁLIDO!"
+        } else {
+            let pos: Int = email.firstIndex(of: "@")
+            let prefixo: String = email[..<pos]
+            let sufixo: String = email[pos+1..]
+
+            if(sufixo.contains("@")){
+                isValid = false
+            //    message = "E-mail INVÁLIDO!"
+            }
+
+            for char in prefixo {
+                if(!charValid.contains(char)) {
+                    isValid = false
+              //      message = "E-mail INVÁLIDO!"
+                }
+            }
+
+            for char in sufixo {
+                if(!charValid.contains(char)) {
+                    isValid = false
+                //    message = "E-mail INVÁLIDO!"
+                }
+            }
+        }
+        return isValid
     }
 }
 
