@@ -31,13 +31,14 @@ struct CardView: View {
                 Text(tituloChamado)
                     .font(.custom("Poppins-Medium", size: 16))
                     .accessibilityLabel(Text("\(tituloChamado)"))
-                    
+                    .foregroundColor(.text)
        
                 Text(descricaoChamado)
                     .font(.custom("Poppins-light", size: 12))
                     .multilineTextAlignment(.leading)
                     .accessibilityLabel(Text("\(descricaoChamado)"))
                     .padding(.top, -2)
+                    .foregroundColor(.text)
             
             HStack(spacing: 20) {
                 
@@ -45,10 +46,11 @@ struct CardView: View {
                 VStack(alignment: .leading) {
                     Text("Owner")
                         .font(.custom("Poppins", size: 8))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
                     
                     Text(solicitanteChamado)
                         .font(.custom("Poppins-light", size: 8))
+                        .foregroundColor(.text)
                     .accessibilityLabel(Text("\(solicitanteChamado)"))
                 }
                 
@@ -56,10 +58,11 @@ struct CardView: View {
                 VStack(alignment: .leading) {
                     Text("Departament")
                         .font(.custom("Poppins", size: 8))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
                     
                     Text(departamentoChamado)
                         .font(.custom("Poppins-light", size: 8))
+                        .foregroundColor(.text)
                     .accessibilityLabel(Text("\(departamentoChamado)"))
                 }
                 
@@ -73,6 +76,7 @@ struct CardView: View {
                             .fill(corPrioridade(prioridade: prioridadeChamado).opacity(0.7))
                             .frame(width: 50, height: 22)
                     )
+                    .foregroundColor(.text)
                     .accessibilityLabel(Text("\(prioridadeChamado)"))
             }
             .padding(.bottom, -12)
