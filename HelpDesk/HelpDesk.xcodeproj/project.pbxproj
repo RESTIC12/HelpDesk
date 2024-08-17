@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1604AA752C6E5BBE00D3DE4D /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1604AA742C6E5BBE00D3DE4D /* FirebaseMessaging */; };
+		16127ED82C71221E001F2285 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16127ED72C71221E001F2285 /* AboutView.swift */; };
+		16127EDA2C712BCC001F2285 /* CardPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16127ED92C712BCC001F2285 /* CardPersonView.swift */; };
 		163885872C6C0FE400A08E79 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163885862C6C0FE400A08E79 /* UserView.swift */; };
 		164AF4F02C701379003D0ED2 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 164AF4EF2C701379003D0ED2 /* SwiftJWT */; };
 		16CE2DF62C53059500295A69 /* HelpDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF52C53059500295A69 /* HelpDeskApp.swift */; };
@@ -60,6 +62,8 @@
 
 /* Begin PBXFileReference section */
 		1604AA762C6E70D800D3DE4D /* HelpDesk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelpDesk.entitlements; sourceTree = "<group>"; };
+		16127ED72C71221E001F2285 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		16127ED92C712BCC001F2285 /* CardPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPersonView.swift; sourceTree = "<group>"; };
 		163885862C6C0FE400A08E79 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		16CE2DF22C53059500295A69 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CE2DF52C53059500295A69 /* HelpDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskApp.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				7A30C52B2C5C3C7C00127E62 /* HomeView */,
 				7A30C5282C5C3A9300127E62 /* NewChamado */,
 				16CE2E0D2C53078800295A69 /* LoginView.swift */,
+				16127ED72C71221E001F2285 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				7AD5504C2C5AF28700F82DAB /* HeaderView.swift */,
 				16CE2E252C59BA9800295A69 /* CardView.swift */,
 				7A748AB02C5AE4C800553C05 /* SearchBarView.swift */,
+				16127ED92C712BCC001F2285 /* CardPersonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A30C52D2C5C3CC200127E62 /* HomeViewModel.swift in Sources */,
+				16127ED82C71221E001F2285 /* AboutView.swift in Sources */,
 				16CE2E0E2C53078800295A69 /* LoginView.swift in Sources */,
 				16CE2E242C5992F700295A69 /* ChamadoDetailView.swift in Sources */,
 				16CE2E222C584C5F00295A69 /* NewChamadoView.swift in Sources */,
@@ -413,6 +420,7 @@
 				7A30C5252C5C3A6200127E62 /* HelpService.swift in Sources */,
 				7A086B7D2C6AB5AC00A6505E /* Color.swift in Sources */,
 				7AB3334D2C62D3BC00667C1B /* ChamadoDetailViewModel.swift in Sources */,
+				16127EDA2C712BCC001F2285 /* CardPersonView.swift in Sources */,
 				7A748AB12C5AE4C800553C05 /* SearchBarView.swift in Sources */,
 				7AD5504D2C5AF28700F82DAB /* HeaderView.swift in Sources */,
 				7A30C5272C5C3A7D00127E62 /* NetworkClient.swift in Sources */,
@@ -559,7 +567,6 @@
 				INFOPLIST_FILE = HelpDesk/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -591,7 +598,6 @@
 				INFOPLIST_FILE = HelpDesk/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class SessionManager: ObservableObject {
     @Published var currentUser: User?
-    @Published var userDataLoaded = false // Indica se os dados do usuário foram carregados
+    @Published var userDataLoaded = false
     private let db = Firestore.firestore()
     static let shared = SessionManager()
     

@@ -19,6 +19,7 @@ struct HomeView: View {
             service: HelpServiceImp()
         )
     @State private var isShowingLoginView = false
+    
 
     var body: some View {
         
