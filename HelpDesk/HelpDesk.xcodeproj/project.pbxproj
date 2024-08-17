@@ -58,6 +58,7 @@
 		D8B2C2752C5C55A3000FD667 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		D8B2C2772C5C584F000FD667 /* PrivacidadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacidadeView.swift; sourceTree = "<group>"; };
 		D8DE81FD2C66EABF00A6CF91 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D8E8F80F2C7018230081A4F8 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		D8F462412C6C0D110039082D /* AskedQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskedQuestionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +114,7 @@
 				D8986F1B2C6586180036C09E /* DraftView.swift */,
 				D8F462412C6C0D110039082D /* AskedQuestionsView.swift */,
 				D8203DDF2C6C21D0005E5FC9 /* AboutView.swift */,
+				D8E8F80F2C7018230081A4F8 /* Readme.md */,
 			);
 			path = HelpDesk;
 			sourceTree = "<group>";

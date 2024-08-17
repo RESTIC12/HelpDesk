@@ -25,8 +25,8 @@ struct UserProfileView: View {
             
             VStack {
                 Image(.user).resizable().frame(width: 161, height: 161)
-                        Text("User 1")
-                    .fontWeight(.semibold)
+                        Text("HD Team")
+                    .fontWeight(.bold).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 
                         Text("Configurações")
                         .frame(width: 356, height: 50)  // Define a largura e a altura desejada

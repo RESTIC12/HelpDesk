@@ -30,146 +30,165 @@ struct AboutView: View {
                 
                 
                 JustifiedTextView(
-                    text: "Lorem ipsum dolor sit amet. Et suscipit autem et modi eius ut expedita quisquam et omnis voluptatem eos quidem pariatur. Eum voluptatem deleniti et omnis omnis id Quis facilis et dolores soluta. Non blanditiis necessitatibus et voluptate vero ea quaerat consequuntur.",
+                    text: "um novo conceito em suporte técnico que busca trazer conforto e segurança para o seu dia de trabalho",
                     lineWidth: 360 // Defina a largura desejada
                 )
 
                 
                 Spacer()
                 
-                Text("Quem desenvolve o Call Me Desk?")
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.blueTertiary)
+                VStack(alignment: .center) {
+                    Text("Quem desenvolve o Call Me Desk?")
+                        .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.blueTertiary)
 
-                
-                HStack {
-                    Image(.useer)
-                        .resizable()
-                        .frame(width: 60, height: 60)
                     
-    
-                    
-                    VStack(alignment: .leading) {
-                        Text("Ângelo Gabriel")
-                            .fontWeight(.bold)
-                            .textCase(.uppercase)
-                            .foregroundColor(.blueTertiary)
-
-                        Text("Cargo")
-                        Text("IREDE")
-                        Text("ver no Linkedln")
-                                                
-                    }
-                    Spacer()
-                    
-
-                }
-                
-                HStack {
-                    Image(.useer)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Íkaro")
-                            .fontWeight(.bold)
-                            .textCase(.uppercase)
-                            .foregroundColor(.blueTertiary)
-
-                        Text("Cargo")
-                        Text("IREDE")
-                        Text("ver no Linkedln")
+                    HStack(alignment: .center) {
+                        Image(.useer)
+                            .resizable()
+                            .frame(width: 120, height: 120)
                         
-                    }
-                    Spacer()
 
+                        
+                        VStack(alignment: .leading) {
+                            Text("Ângelo Gabriel")
+                                .fontWeight(.bold)
+                                .textCase(.uppercase)
+                                .foregroundColor(.white)
+
+                            Text("Bolsista")
+                            Text("IREDE")
+                            Text("ver no Linkedln")
+                                                    
+                        }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
+                        Spacer()
+                        
+
+                    }.padding(.horizontal, 80)
+                        .padding(.vertical, 5)
+                    
+                    HStack {
+                        Image(.ikaro)
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Íkaro")
+                                .fontWeight(.bold)
+                                .textCase(.uppercase)
+                                .foregroundColor(.white)
+
+                            Text("Bolsista")
+                            Text("IREDE")
+                            Text("ver no Linkedln")
+                            
+                        }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
+                        Spacer()
+
+                    }.padding(.horizontal, 80)
+                    .padding(.vertical, 5)
+                    
+                    HStack {
+                        Image(.useer)
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                        
+                        VStack(alignment: .leading) {
+                            Text("João Matheus")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            
+                            Text("Bolsista")
+                            Text("IREDE")
+                            Text("ver no Linkedln")
+                            
+                        }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
+                        Spacer()
+
+                    }.padding(.horizontal, 80)
+                        .padding(.vertical, 5)
+                    
+                    HStack {
+                        Image(.useer)
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Josimar")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            
+                            Text("Bolsista")
+                            Text("IREDE")
+                            Text("ver no Linkedln")
+                        }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
+                        Spacer()
+
+                        
+                    }.padding(.horizontal, 80)
+                        .padding(.vertical, 5)
+
+                    
+                    HStack {
+                        Image(.larissa)
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Larissa Corrêa")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            
+                            Text("Bolsista")
+                            Text("IREDE")
+                            Text("ver no Linkedln")
+                        }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
+                        Spacer()
+
+                    }.padding(.horizontal, 80)
+                        .padding(.vertical, 5)
+
+                    
+                    HStack {
+                        Image(.useer)
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Victor")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            
+                            Text("Bolsista")
+                            Text("IREDE")
+                            Text("ver no Linkedln")
+                        }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
+                        
+                        Spacer()
+
+                    }.padding(.horizontal, 80)
+                        .padding(.vertical, 5)
+                        .padding(.bottom, 60)
+
+                    Spacer()
+                        
+                    
+                    Image(.cloud)
+                        .resizable().frame(width: 120, height: 80)
                 }
                 
-                HStack {
-                    Image(.useer)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                    
-                    VStack(alignment: .leading) {
-                        Text("João Matheus")
-                            .fontWeight(.bold)
-                            .foregroundColor(.blueTertiary)
-                            .textCase(.uppercase)
-                        
-                        Text("Cargo")
-                        Text("IREDE")
-                        Text("ver no Linkedln")
-                        
-                    }
-                    Spacer()
-
-                }
                 
-                HStack {
-                    Image(.useer)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Josimar")
-                            .fontWeight(.bold)
-                            .foregroundColor(.blueTertiary)
-                            .textCase(.uppercase)
-                        
-                        Text("Cargo")
-                        Text("IREDE")
-                        Text("ver no Linkedln")
-                    }
-                    Spacer()
-
-                    
-                }
                 
-                HStack {
-                    Image(.useer)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Larissa Corrêa")
-                            .fontWeight(.bold)
-                            .foregroundColor(.blueTertiary)
-                            .textCase(.uppercase)
-                        
-                        Text("Cargo")
-                        Text("IREDE")
-                        Text("ver no Linkedln")
-                    }
-                    Spacer()
-
-                }
-                
-                HStack {
-                    Image(.useer)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Victor")
-                            .fontWeight(.bold)
-                            .foregroundColor(.blueTertiary)
-                            .textCase(.uppercase)
-                        
-                        Text("Cargo")
-                        Text("IREDE")
-                        Text("ver no Linkedln")
-                    }
-                    
-                    Spacer()
-
-                }
-                Spacer()
-                    
-                
-                Image(.cloud)
-                    .resizable().frame(width: 120, height: 80)
-                }
+                } // Fim da função de ScrollView
+        
+        
+        
+        
             }
         
         
