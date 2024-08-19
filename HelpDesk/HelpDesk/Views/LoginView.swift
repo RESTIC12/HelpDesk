@@ -23,7 +23,6 @@ struct LoginView: View {
         ZStack {
             Color("BackGround")
             loginView
-                .padding()
         }
         .ignoresSafeArea()
         .onAppear {

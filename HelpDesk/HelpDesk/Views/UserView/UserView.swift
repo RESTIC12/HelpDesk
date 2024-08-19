@@ -9,96 +9,93 @@ import SwiftUI
 import FirebaseAuth
 
 struct UserView: View {
-    @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) var dismiss
     var dismissUserView: (() -> Void)
     
     var body: some View {
-        VStack(spacing: 20) {
-            
-            Button {
-                dismiss()
-            } label: {
-                HStack() {
-                    Spacer()
-                    Image(systemName: "xmark.circle")
-                        .font(.system(size: 24))
-                        .foregroundColor(.gray.opacity(0.8))
-                        .padding(.trailing)
+        NavigationStack {
+            VStack(spacing: 20) {
+                Button {
+                    dismiss()
+                } label: {
+                    HStack() {
+                        Spacer()
+                        Image(systemName: "xmark.circle")
+                            .font(.system(size: 24))
+                            .foregroundColor(.gray.opacity(0.8))
+                            .padding(.trailing)
+                    }
                 }
-            }
-            
-            
-            
-            Spacer()
-            
-            VStack {
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.gray.opacity(0.5))
-            }
-            .cornerRadius(50)
-            
-            Text(SessionManager.shared.currentUser?.nome ?? "Unknowm")
-                .font(.custom("Poppins-light", size: 16))
-            
-            Spacer()
-            
-            
-            Button {
+                Spacer()
                 
-            } label: {
-                Text("Privacidade")
-                    .font(.custom("Poppins-light", size: 16))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.callMeDesk)
-                    .cornerRadius(10)
-            }
-            .accessibilityLabel(Text("Enviar chamado"))
-            .padding(.leading)
-            .padding(.trailing)
-            
-            Button {
+                VStack {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.gray.opacity(0.5))
+                }
+                .cornerRadius(50)
                 
-            } label: {
-                Text("Sobre o Call Me Desk")
+                Text(SessionManager.shared.currentUser?.nome ?? "Unknowm")
                     .font(.custom("Poppins-light", size: 16))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.callMeDesk)
-                    .cornerRadius(10)
+                
+                Spacer()
+                
+                
+                Button {
+                    
+                } label: {
+                    Text("Privacidade")
+                        .font(.custom("Poppins-light", size: 16))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.callMeDesk)
+                        .cornerRadius(10)
+                }
+                .accessibilityLabel(Text("Enviar chamado"))
+                .padding(.leading)
+                .padding(.trailing)
+                
+                NavigationLink(destination: AboutView()) {
+                    HStack {
+                        Text("Sobre o Call Me Desk")
+                            .font(.custom("Poppins-light", size: 16))
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.callMeDesk)
+                            .cornerRadius(10)
+                    }
+                    .accessibilityLabel(Text("Sobre o Call Me Desk"))
+                    .padding(.leading)
+                    .padding(.trailing)
+                }
+                
+                Button {
+                    logOut()
+                } label: {
+                    Text("Fazer Logoff")
+                        .font(.custom("Poppins-light", size: 16))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.callMeDesk)
+                        .cornerRadius(10)
+                }
+                .accessibilityLabel(Text("Enviar chamado"))
+                .padding(.leading)
+                .padding(.trailing)
+                
+                Spacer()
+                
+                
+                Image("Nuvens")
+                
             }
-            .accessibilityLabel(Text("Enviar chamado"))
-            .padding(.leading)
-            .padding(.trailing)
-            
-            Button {
-                logOut()
-            } label: {
-                Text("Fazer Logoff")
-                    .font(.custom("Poppins-light", size: 16))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.callMeDesk)
-                    .cornerRadius(10)
-            }
-            .accessibilityLabel(Text("Enviar chamado"))
-            .padding(.leading)
-            .padding(.trailing)
-            
-            Spacer()
-            
-            
-            Image("Nuvens")
-            
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backGround)
+        }
     }
     
     
