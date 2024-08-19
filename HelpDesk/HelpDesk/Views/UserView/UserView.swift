@@ -42,9 +42,7 @@ struct UserView: View {
                 Spacer()
                 
                 
-                Button {
-                    
-                } label: {
+                NavigationLink(destination: PrivacyView()) {
                     Text("Privacidade")
                         .font(.custom("Poppins-light", size: 16))
                         .foregroundColor(.white)
@@ -56,6 +54,7 @@ struct UserView: View {
                 .accessibilityLabel(Text("Enviar chamado"))
                 .padding(.leading)
                 .padding(.trailing)
+            
                 
                 NavigationLink(destination: AboutView()) {
                     HStack {
@@ -71,6 +70,7 @@ struct UserView: View {
                     .padding(.leading)
                     .padding(.trailing)
                 }
+        
                 
                 Button {
                     logOut()
