@@ -45,7 +45,7 @@ struct AboutView: View {
 
                     
                     HStack(alignment: .center) {
-                        Image(.useer)
+                        Image(.gabs)
                             .resizable()
                             .frame(width: 120, height: 120)
                         
@@ -59,7 +59,8 @@ struct AboutView: View {
 
                             Text("Bolsista")
                             Text("IREDE")
-                            Text("ver no Linkedln")
+                            Link("ver no linkedln", destination: URL(string: "https://www.linkedin.com/in/gabrielpalhano/")!)
+                                .foregroundColor(.white)
                                                     
                         }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
                         Spacer()
@@ -81,7 +82,8 @@ struct AboutView: View {
 
                             Text("Bolsista")
                             Text("IREDE")
-                            Text("ver no Linkedln")
+                            Link("ver no linkedln", destination: URL(string: "https://www.linkedin.com/in/ikaro-oliveira-32347123b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app")!)
+                                .foregroundColor(.white)
                             
                         }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
                         Spacer()
@@ -102,7 +104,9 @@ struct AboutView: View {
                             
                             Text("Bolsista")
                             Text("IREDE")
-                            Text("ver no Linkedln")
+                            
+                            Link("ver no linkedln", destination: URL(string: "https://www.linkedin.com/in/joao-matheus-a059581a2/?original_referer=https%3A%2F%2Fgithub.com%2F")!)
+                                .foregroundColor(.white)
                             
                         }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
                         Spacer()
@@ -124,6 +128,8 @@ struct AboutView: View {
                             Text("Bolsista")
                             Text("IREDE")
                             Text("ver no Linkedln")
+                            Link("ver no linkedln", destination: URL(string: "https://www.linkedin.com/in/josimar-ferreira-7979b0176/")!)
+                                .foregroundColor(.white)
                         }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
                         Spacer()
 
@@ -145,7 +151,8 @@ struct AboutView: View {
                             
                             Text("Bolsista")
                             Text("IREDE")
-                            Text("ver no Linkedln")
+                            Link("ver no linkedln", destination: URL(string: "https://www.linkedin.com/in/larimscorrea/")!)
+                                .foregroundColor(.white)
                         }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
                         Spacer()
 
@@ -166,7 +173,7 @@ struct AboutView: View {
                             
                             Text("Bolsista")
                             Text("IREDE")
-                            Text("ver no Linkedln")
+                            Link("ver no linkedln", destination: URL(string: "https://www.linkedin.com/in/victor-brigido-7b0473144/")!).foregroundColor(.white)
                         }.frame(width: 170, height: 120).background(.blueTertiary).cornerRadius(10)
                         
                         Spacer()
