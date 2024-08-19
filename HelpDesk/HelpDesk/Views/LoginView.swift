@@ -155,17 +155,6 @@ struct LoginView: View {
                 .padding(.top, 20)
             
         }
-        .fullScreenCover(isPresented: $isShowingHomeView, content: {
-            if isShowingHomeView && isLoggedIn {
-                HomeView()
-            }
-            if !errorMessage.isEmpty {
-                Text(errorMessage)
-                    .font(.callout)
-                    .foregroundColor(.red)
-                    .padding(.top, 4)
-            }
-        })
         .padding(15)
         
     }
