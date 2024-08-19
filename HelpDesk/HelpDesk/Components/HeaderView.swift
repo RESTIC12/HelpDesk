@@ -25,7 +25,7 @@ struct HeaderView: View {
                         .frame(width: 35, height: 35)
                         .foregroundColor(.gray.opacity(0.5))
                         .cornerRadius(45/2)
-                    Text("Olá, \(SessionManager.shared.currentUser?.nome ?? "Unknowm")")
+                    Text("Olá, \(SessionManager.shared.currentUser?.nome ?? "")")
                         .foregroundColor(.gray)
                         .font(.custom("Poppins-light", size: 12))
                 }

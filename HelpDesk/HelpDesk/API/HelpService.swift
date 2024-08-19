@@ -29,9 +29,13 @@ public final class HelpServiceImp: HelpService {
 
     public func load(completion: @escaping (HelpService.HelpResult) -> Void) {
         let uid = SessionManager.shared.currentUser?.uid
+        guard let permissao = SessionManager.shared.currentUser?.permissao else {
+            completion(.success([]))
+            return
+        }
         var query: Query = db.collection("chamados")
         
-        switch SessionManager.shared.currentUser?.permissao {
+        switch permissao {
         case 0:
             query = query.whereField("uid", isEqualTo: uid ?? "")
         case 1:
