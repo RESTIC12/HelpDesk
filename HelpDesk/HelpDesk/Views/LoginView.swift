@@ -102,7 +102,7 @@ struct LoginView: View {
             Button("Esqueci minha senha"){
                 showForgetPsw = true
             }
-            .alert("Verifique seu e-mail", isPresented: $showForgetPsw, actions: {
+            .alert("Uma nova senha será enviada para seu email", isPresented: $showForgetPsw, actions: {
                 Button("Ok"){}
             })
             .font(.custom("Poppins-Medium", size: 12))
@@ -142,7 +142,7 @@ struct LoginView: View {
                 Button("Sign Up!"){
                     showSignUp = true
                 }
-                .alert("Solicitação de acesso recebida!", isPresented: $showSignUp, actions: {
+                .alert("Entre em contato com o suporte e suas credenciais serão enviadas pro seu email", isPresented: $showSignUp, actions: {
                     Button("Ok") {}
                 })
                 .font(.custom("Poppins-Medium", size: 12))

@@ -12,6 +12,7 @@
 		16127EDA2C712BCC001F2285 /* CardPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16127ED92C712BCC001F2285 /* CardPersonView.swift */; };
 		163885872C6C0FE400A08E79 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163885862C6C0FE400A08E79 /* UserView.swift */; };
 		164AF4F02C701379003D0ED2 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 164AF4EF2C701379003D0ED2 /* SwiftJWT */; };
+		164AF4F22C740161003D0ED2 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164AF4F12C740161003D0ED2 /* PrivacyView.swift */; };
 		16CE2DF62C53059500295A69 /* HelpDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF52C53059500295A69 /* HelpDeskApp.swift */; };
 		16CE2DF82C53059500295A69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE2DF72C53059500295A69 /* ContentView.swift */; };
 		16CE2DFA2C53059500295A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16CE2DF92C53059500295A69 /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		16127ED72C71221E001F2285 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		16127ED92C712BCC001F2285 /* CardPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPersonView.swift; sourceTree = "<group>"; };
 		163885862C6C0FE400A08E79 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		164AF4F12C740161003D0ED2 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		16CE2DF22C53059500295A69 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CE2DF52C53059500295A69 /* HelpDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskApp.swift; sourceTree = "<group>"; };
 		16CE2DF72C53059500295A69 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				7A30C5282C5C3A9300127E62 /* NewChamado */,
 				16CE2E0D2C53078800295A69 /* LoginView.swift */,
 				16127ED72C71221E001F2285 /* AboutView.swift */,
+				164AF4F12C740161003D0ED2 /* PrivacyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				163885872C6C0FE400A08E79 /* UserView.swift in Sources */,
 				7A30C5232C5C3A4300127E62 /* HelpDesk.swift in Sources */,
 				7A30C52A2C5C3A9F00127E62 /* NewChamadoViewModel.swift in Sources */,
+				164AF4F22C740161003D0ED2 /* PrivacyView.swift in Sources */,
 				16CE2E062C5306A000295A69 /* AppDelegate.swift in Sources */,
 				7A30C5252C5C3A6200127E62 /* HelpService.swift in Sources */,
 				7A086B7D2C6AB5AC00A6505E /* Color.swift in Sources */,
