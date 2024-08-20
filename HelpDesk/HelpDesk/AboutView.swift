@@ -52,7 +52,7 @@ struct AboutView: View {
 
                         
                         VStack(alignment: .leading) {
-                            Text("Ângelo Gabriel")
+                            Text("Gabriel Palhano")
                                 .fontWeight(.bold)
                                 .textCase(.uppercase)
                                 .foregroundColor(.white)
@@ -75,7 +75,7 @@ struct AboutView: View {
                             .frame(width: 120, height: 120)
                         
                         VStack(alignment: .leading) {
-                            Text("Íkaro")
+                            Text("Íkaro Oliveira")
                                 .fontWeight(.bold)
                                 .textCase(.uppercase)
                                 .foregroundColor(.white)
@@ -92,7 +92,7 @@ struct AboutView: View {
                     .padding(.vertical, 5)
                     
                     HStack {
-                        Image(.useer)
+                        Image(.jm)
                             .resizable()
                             .frame(width: 120, height: 120)
                         
@@ -115,12 +115,12 @@ struct AboutView: View {
                         .padding(.vertical, 5)
                     
                     HStack {
-                        Image(.useer)
+                        Image(.josimar)
                             .resizable()
                             .frame(width: 120, height: 120)
                         
                         VStack(alignment: .leading) {
-                            Text("Josimar")
+                            Text("Josimar Ferreira")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .textCase(.uppercase)
@@ -161,12 +161,12 @@ struct AboutView: View {
 
                     
                     HStack {
-                        Image(.useer)
+                        Image(.victor)
                             .resizable()
                             .frame(width: 120, height: 120)
                         
                         VStack(alignment: .leading) {
-                            Text("Victor")
+                            Text("Victor Brigido")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .textCase(.uppercase)
