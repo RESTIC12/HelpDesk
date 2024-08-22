@@ -90,6 +90,7 @@ struct NewChamadoView: View {
                             texto: descricaoChamado,
                             departamento: selectedDepartment,
                             prioridade: selectedpriority,
+                            empresa: SessionManager.shared.currentUser?.empresa ?? "Not found",
                             solucionado: false
                         )),
                     completion: { success in

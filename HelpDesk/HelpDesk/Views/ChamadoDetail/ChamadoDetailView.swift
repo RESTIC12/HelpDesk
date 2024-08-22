@@ -110,7 +110,7 @@ struct ChamadoDetail_Previews: PreviewProvider {
             tituloChamado: "Chamado exemplo",
             descricaoChamado: "Esta é uma descrição de exemplo para o chamado. Inclui todos os detalhes relevantes que devem ser exibidos ao suporte.",
             solicitante: "Zezinho",
-            prioridade: "Alta", viewModel: ChamadoDetailViewModel(help: HelpDesk(id: nil, uid: "", details: HelpRoot(solicitante: "", titulo: "", texto: "", departamento: "", prioridade: "", solucionado: false)))
+            prioridade: "Alta", viewModel: ChamadoDetailViewModel(help: HelpDesk(id: nil, uid: "", details: HelpRoot(solicitante: "", titulo: "", texto: "", departamento: "", prioridade: "", empresa: "", solucionado: false)))
         )
     }
 }

@@ -20,6 +20,7 @@ public struct HelpRoot: Codable, Equatable, Hashable {
     let texto: String
     let departamento: String
     let prioridade: String
+    let empresa: String?
     var solucionado: Bool
 }
 

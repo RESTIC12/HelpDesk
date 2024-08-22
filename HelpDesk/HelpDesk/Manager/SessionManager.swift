@@ -35,9 +35,9 @@ class SessionManager: ObservableObject {
                     if let nome = data["nome"] as? String,
                        let email = data["email"] as? String,
                        let permissao = data["permissao"] as? Int,
-                       let fcmToken = data["fcmToken"] as? String {
-                        
-                        let fetchedUser = User(uid: uid, nome: nome, email: email, permissao: permissao, fcmToken: fcmToken)
+                       let fcmToken = data["fcmToken"] as? String,
+                       let empresa = data["empresa"] as? String {
+                        let fetchedUser = User(uid: uid, nome: nome, email: email, permissao: permissao, empresa: empresa, fcmToken: fcmToken)
                         self.currentUser = fetchedUser
                         self.userDataLoaded = true
                     }
