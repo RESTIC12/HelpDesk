@@ -12,5 +12,6 @@ struct User: Codable, Equatable {
     let nome: String
     let email: String
     let permissao: Int
+    let empresa: String
     let fcmToken: String?
 }

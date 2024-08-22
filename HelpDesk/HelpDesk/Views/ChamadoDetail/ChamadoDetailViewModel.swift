@@ -27,6 +27,7 @@ final class ChamadoDetailViewModel : ObservableObject {
                 texto: help.details.texto,
                 departamento: help.details.departamento,
                 prioridade: help.details.prioridade,
+                empresa: help.details.empresa,
                 solucionado: true
             )
         )
