@@ -70,9 +70,9 @@ public final class HelpServiceImp: HelpService {
         do {
             var ref: DocumentReference?
             if method == "PUT", let id = call.id {
-                ref = db.collection("chamados").document(id)
+                ref = db.collection("empresa").document(call.details.empresa!).collection("chamados").document(id)
             } else {
-                ref = db.collection("chamados").document()
+                ref = db.collection("empresa").document(call.details.empresa!).collection("chamados").document()
             }
             try ref?.setData(from: call, merge: true, completion: { error in
                 if let error = error {
