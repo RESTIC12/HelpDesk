@@ -28,15 +28,16 @@ public final class HelpServiceImp: HelpService {
     public init() {}
 
     public func load(completion: @escaping (HelpService.HelpResult) -> Void) {
-        let uid = SessionManager.shared.currentUser?.uid
-        guard let empresa = SessionManager.shared.currentUser?.empresa else { return }
-        var query: Query = db.collection("chamados")
-        
+        guard let uid = SessionManager.shared.currentUser?.uid,
+              let empresa = SessionManager.shared.currentUser?.empresa else { return }
+
+        var query: Query = db.collection("empresa").document(empresa).collection("chamados")
+
         switch SessionManager.shared.currentUser?.permissao {
         case 0:
-            query = query.whereField("uid", isEqualTo: uid ?? "")
+            query = query.whereField("uid", isEqualTo: uid)
         case 1:
-            query = query.whereField("details.empresa", isEqualTo: "\(empresa)").whereField("details.departamento", isEqualTo: "TI")
+            query = query.whereField("details.departamento", isEqualTo: "TI")
         case 2:
             query = query.whereField("details.departamento", isEqualTo: "RH")
         default:
@@ -62,6 +63,7 @@ public final class HelpServiceImp: HelpService {
             }
         }
     }
+
 
 
     public func createHelp(_ call: HelpDesk, method: String = "POST", completion: @escaping (Bool) -> Void) {
